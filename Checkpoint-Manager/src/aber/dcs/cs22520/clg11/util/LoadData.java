@@ -173,9 +173,9 @@ public class LoadData {
             Entrant newEntrant = new Entrant();
 
             newEntrant.setNumber(Integer.parseInt(newLine[0]));
-            newEntrant.setCourseID(newLine[0].charAt(0));
-            newEntrant.setFirstName(newLine[1]);
-            newEntrant.setLastName(newLine[2]);
+            newEntrant.setCourseID(newLine[1].charAt(0));
+            newEntrant.setFirstName(newLine[2]);
+            newEntrant.setLastName(newLine[3]);
 
             comp.getEntrants().add(newEntrant);
 

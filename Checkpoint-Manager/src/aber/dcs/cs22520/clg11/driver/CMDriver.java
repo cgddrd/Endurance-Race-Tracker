@@ -28,7 +28,7 @@ public class CMDriver {
         
         ProcessData proc = new ProcessData(comp);
         
-        proc.getCourse();
+        proc.getTimes();
         
           
     }
