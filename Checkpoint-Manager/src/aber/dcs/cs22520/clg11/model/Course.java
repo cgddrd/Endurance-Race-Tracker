@@ -12,8 +12,9 @@ import java.util.ArrayList;
  */
 public class Course {
     
-    private ArrayList<Node> courseNodes;
+    private ArrayList<Node> courseNodes = new ArrayList<>();
     private int courseLength;
+    private char courseID;
     
     public Course() {
            
@@ -21,7 +22,7 @@ public class Course {
     
     public void addNewNode(Node newNode) {
         
-        courseNodes.add(newNode);
+        getCourseNodes().add(newNode);
         
     }
 
@@ -30,13 +31,6 @@ public class Course {
      */
     public ArrayList<Node> getCourseNodes() {
         return courseNodes;
-    }
-
-    /**
-     * @param courseNodes the courseNodes to set
-     */
-    public void setCourseNodes(ArrayList<Node> courseNodes) {
-        this.courseNodes = courseNodes;
     }
 
     /**
@@ -51,6 +45,27 @@ public class Course {
      */
     public void setCourseLength(int courseLength) {
         this.courseLength = courseLength;
+    }
+
+    /**
+     * @param courseNodes the courseNodes to set
+     */
+    public void setCourseNodes(ArrayList<Node> courseNodes) {
+        this.courseNodes = courseNodes;
+    }
+
+    /**
+     * @return the courseID
+     */
+    public char getCourseID() {
+        return courseID;
+    }
+
+    /**
+     * @param courseID the courseID to set
+     */
+    public void setCourseID(char courseID) {
+        this.courseID = courseID;
     }
     
 }

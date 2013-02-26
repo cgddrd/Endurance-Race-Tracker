@@ -10,9 +10,11 @@ package aber.dcs.cs22520.clg11.model;
  */
 public class Entrant {
     
-    private String name;
+    private String firstName;
+    private String lastName;
     private int number;
     private int currentProgress;
+    private char courseID;
     
     public Entrant() {
         
@@ -20,9 +22,11 @@ public class Entrant {
         
     }
     
-    public Entrant(String enName, int enNumber) {
+    public Entrant(String firstName, String lastName, char courseID, int enNumber) {
      
-        this.name = enName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.courseID = courseID;
         this.number = enNumber;
         this.currentProgress = 0;
         
@@ -31,15 +35,17 @@ public class Entrant {
     /**
      * @return the name
      */
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return getFirstName() + " " + getLastName();
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String name) {
+        String[] tempName = name.split(" ");
+        this.setFirstName(tempName[0]);
+        this.setLastName(tempName[1]);
     }
 
     /**
@@ -68,6 +74,48 @@ public class Entrant {
      */
     public void setCurrentProgress(int currentProgress) {
         this.currentProgress = currentProgress;
+    }
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * @return the courseID
+     */
+    public char getCourseID() {
+        return courseID;
+    }
+
+    /**
+     * @param courseID the courseID to set
+     */
+    public void setCourseID(char courseID) {
+        this.courseID = courseID;
     }
    
 }
