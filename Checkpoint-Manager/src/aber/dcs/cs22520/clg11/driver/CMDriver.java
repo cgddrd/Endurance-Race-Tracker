@@ -4,6 +4,7 @@
  */
 package aber.dcs.cs22520.clg11.driver;
 
+import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Datatype;
 import aber.dcs.cs22520.clg11.util.*;
 
@@ -17,19 +18,18 @@ public class CMDriver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Datastore comp = new Datastore();
+        LoadData load = new LoadData(comp);
        
-        LoadData read = new LoadData();
+        load.loadFiles(Datatype.NODE);
+        load.loadFiles(Datatype.COURSE);
+        load.loadFiles(Datatype.ENTRANT);
         
-        read.readIn("nodes.txt", Datatype.NODE);
-        read.displayNodes();
+        ProcessData proc = new ProcessData(comp);
         
-        read.readIn("courses.txt", Datatype.COURSE);
-        read.displayCourses();
+        proc.getCourse();
         
-        read.readIn("entrants.txt", Datatype.ENTRANT);
-        read.displayEntrants();
-        
-        
-        
+          
     }
 }
