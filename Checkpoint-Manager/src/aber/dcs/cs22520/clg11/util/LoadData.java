@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -118,6 +117,7 @@ public class LoadData {
         } catch (IOException iOE) {
 
             System.out.println("WE GOT A PROBLEM...");
+            iOE.printStackTrace();
         }
 
     }

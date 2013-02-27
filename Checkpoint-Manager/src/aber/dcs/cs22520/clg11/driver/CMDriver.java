@@ -7,6 +7,7 @@ package aber.dcs.cs22520.clg11.driver;
 import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Datatype;
 import aber.dcs.cs22520.clg11.util.*;
+import java.util.Scanner;
 
 /**
  *
@@ -19,6 +20,8 @@ public class CMDriver {
      */
     public static void main(String[] args) {
         
+        Scanner scan = new Scanner(System.in);
+        
         Datastore comp = new Datastore();
         LoadData load = new LoadData(comp);
        
@@ -30,6 +33,11 @@ public class CMDriver {
         
         proc.getTimes();
         
+        proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 1);
+        
+        System.out.println(comp.getCourses().get(0).getCourseID());
+        System.out.println(comp.getEntrants().get(1).getNumber());
+        System.out.println(comp.getEntrants().get(1).getCurrentProgress());
           
     }
 }

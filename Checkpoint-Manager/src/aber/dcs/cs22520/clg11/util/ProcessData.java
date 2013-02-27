@@ -6,12 +6,13 @@ package aber.dcs.cs22520.clg11.util;
 
 import aber.dcs.cs22520.clg11.model.Course;
 import aber.dcs.cs22520.clg11.model.Datastore;
-import aber.dcs.cs22520.clg11.model.Datatype;
 import aber.dcs.cs22520.clg11.model.Entrant;
 import aber.dcs.cs22520.clg11.model.Node;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -51,7 +52,7 @@ public class ProcessData {
                                 e.setCurrentProgress((i + 1));
                                 isUpdated = true;
                                 
-                                System.out.println("ENTRANT UPDATED: Node: " + nodeNo + ", Entrant No: " + entrantNo + ", Progress: " + e.getCurrentProgress());
+                                System.out.println("ENTRANT UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + e.getCurrentProgress());
 
                             }
 
@@ -68,6 +69,25 @@ public class ProcessData {
         }
 
 
+    }
+    
+    public void checkNextNode(ArrayList<Node> courseNodes, int currentNodeProgress, int newNode) {
+        
+       for (int i = currentNodeProgress; i < courseNodes.size(); i++) {
+          
+           if (courseNodes.get(i).getNumber() == newNode) {
+            
+            //Entrant at the correct node
+            System.out.println("THIS CAN BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
+            
+        } else {
+            
+           //Entrant on the wrong path
+            System.out.println("THIS CANNOT BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
+        }
+           
+       }
+  
     }
 
     public void getCourse() {
@@ -113,6 +133,7 @@ public class ProcessData {
         } catch (IOException iOE) {
 
             System.out.println("WE GOT A PROBLEM...");
+            iOE.printStackTrace();
         }
 
     }
