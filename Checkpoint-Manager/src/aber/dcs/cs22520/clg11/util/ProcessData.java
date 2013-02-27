@@ -73,19 +73,31 @@ public class ProcessData {
     
     public void checkNextNode(ArrayList<Node> courseNodes, int currentNodeProgress, int newNode) {
         
+       boolean nodeFound = false; 
+        
        for (int i = currentNodeProgress; i < courseNodes.size(); i++) {
           
-           if (courseNodes.get(i).getNumber() == newNode) {
+          if (courseNodes.get(i).getNumber() == newNode) {
             
             //Entrant at the correct node
-            System.out.println("THIS CAN BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
+          //  System.out.println("THIS CAN BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
+            nodeFound = true;
             
-        } else {
+        } /*else {
             
            //Entrant on the wrong path
             System.out.println("THIS CANNOT BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
-        }
+        } */
+        
            
+       }
+       
+       if (!nodeFound) {
+           
+           System.out.println("ENTRANT HAS GONE THE WRONG WAY");
+       } else {
+           
+           System.out.println("ENTRANT HAS GONE THE RIGHT WAY");   
        }
   
     }

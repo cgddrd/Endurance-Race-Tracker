@@ -34,10 +34,6 @@ public class CMDriver {
         proc.getTimes();
         
         proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 1);
-        
-        System.out.println(comp.getCourses().get(0).getCourseID());
-        System.out.println(comp.getEntrants().get(1).getNumber());
-        System.out.println(comp.getEntrants().get(1).getCurrentProgress());
           
     }
 }

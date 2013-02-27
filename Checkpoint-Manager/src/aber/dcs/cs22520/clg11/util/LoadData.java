@@ -136,7 +136,7 @@ public class LoadData {
                 int test1 = n.getNumber();
                 int test2 = Integer.parseInt(newLine[i]);
 
-                if (test1 == test2) {
+                if (test1 == test2 && (n.getType().equals("CP") || n.getType().equals("MC"))) {
 
                     newCourse.addNewNode(n);
                 }
