@@ -31,7 +31,7 @@ public class ProcessData {
 
     }
 
-    public void processNewTime(int nodeNo, int entrantNo) {
+    public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) {
         
         boolean isUpdated = false;
 
@@ -46,7 +46,14 @@ public class ProcessData {
                         for (int i = 0; i < c.getCourseNodes().size(); i++) {
 
                             if (i > (e.getCurrentProgress() - 1) && c.getCourseNodes().get(i).getNumber() == nodeNo && !isUpdated) {
-
+                                
+                                if (timeDelimiter.equals("D")) {
+                                    
+                                    isUpdated = true;
+                                    System.out.println("ENTRANT PARTIALLY UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + e.getCurrentProgress());
+                                    
+                                } else { 
+ 
                                 //If the read in node from time file is further along the course than the current progress,
                                 // update the current progress. 
                                 e.setCurrentProgress((i + 1));
@@ -69,6 +76,8 @@ public class ProcessData {
         }
 
 
+    }
+        
     }
     
     public void checkNextNode(ArrayList<Node> courseNodes, int currentNodeProgress, int newNode) {
@@ -134,7 +143,7 @@ public class ProcessData {
 
                 String[] details = line.split(" ");
 
-                processNewTime(Integer.parseInt(details[1]), Integer.parseInt(details[2]));
+                processNewTime(details[0], Integer.parseInt(details[1]), Integer.parseInt(details[2]));
 
             }
 
