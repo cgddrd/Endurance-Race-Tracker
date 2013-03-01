@@ -20,8 +20,8 @@ import java.util.ArrayList;
  */
 public class ProcessData {
 
-    Datastore data;
-    LoadData load;
+    private Datastore data;
+    private LoadData load;
 
     public ProcessData() {
         

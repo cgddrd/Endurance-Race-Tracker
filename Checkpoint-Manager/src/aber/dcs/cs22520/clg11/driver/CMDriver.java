@@ -46,7 +46,7 @@ public class CMDriver {
         
         }
         
-        //GUIFrame frame = new GUIFrame();
+        GUIFrame frame = new GUIFrame(comp, load);
          
     } 
 }

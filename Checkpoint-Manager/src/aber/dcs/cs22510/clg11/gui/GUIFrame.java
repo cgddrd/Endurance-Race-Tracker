@@ -4,6 +4,8 @@
  */
 package aber.dcs.cs22510.clg11.gui;
 
+import aber.dcs.cs22520.clg11.model.Datastore;
+import aber.dcs.cs22520.clg11.util.LoadData;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -14,16 +16,18 @@ import javax.swing.JFrame;
  */
 public class GUIFrame extends JFrame {
     
-    GUIPanel panel;
+    private GUIPanel panel;
     
-    public GUIFrame() {
+    
+            
+    public GUIFrame(Datastore newData, LoadData newLoad) {
         
-        //Initialise and set up frame
-		this.setTitle("AberPizza Till - By Connor Goddard (clg11)");
+                //Initialise and set up frame
+		this.setTitle("Checkpoint Manager | Connor Goddard (clg11)");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
                 
-                panel = new GUIPanel();
+                panel = new GUIPanel(newData, newLoad);
                 
                 this.add(panel);
                 
