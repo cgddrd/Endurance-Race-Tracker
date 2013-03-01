@@ -35,7 +35,9 @@ public class CMDriver {
         
         proc.getTimes();
         
-        proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 1);
+        if (!comp.getEntrants().get(1).getIsExcluded()) {
+
+        proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 13);
         
         System.out.println("COURSE NODES:");
         
@@ -44,9 +46,11 @@ public class CMDriver {
             
              System.out.println(n.getNumber());
             
+            }
+        
         }
         
-        GUIFrame frame = new GUIFrame();
+      //  GUIFrame frame = new GUIFrame();
        
           
     }

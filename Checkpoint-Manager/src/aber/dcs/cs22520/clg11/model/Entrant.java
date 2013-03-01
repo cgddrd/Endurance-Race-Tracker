@@ -15,6 +15,7 @@ public class Entrant {
     private int number;
     private int currentProgress;
     private char courseID;
+    private boolean isExcluded = false;
     
     public Entrant() {
         
@@ -116,6 +117,20 @@ public class Entrant {
      */
     public void setCourseID(char courseID) {
         this.courseID = courseID;
+    }
+
+    /**
+     * @return the isExcluded
+     */
+    public boolean getIsExcluded() {
+        return isExcluded;
+    }
+
+    /**
+     * @param isExcluded the isExcluded to set
+     */
+    public void setIsExcluded(boolean isExcluded) {
+        this.isExcluded = isExcluded;
     }
    
 }
