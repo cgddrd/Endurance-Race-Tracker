@@ -33,7 +33,7 @@ public class CMDriver {
         
         if (!comp.getEntrants().get(1).getIsExcluded()) {
 
-            proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 13);
+            proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1), 4, "11:23");
         
         System.out.println("COURSE NODES:");
         

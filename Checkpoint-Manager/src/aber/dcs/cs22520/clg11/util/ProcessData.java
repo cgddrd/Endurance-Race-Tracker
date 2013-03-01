@@ -113,40 +113,19 @@ public class ProcessData {
 
     }
 
-    public void checkNextNode(ArrayList<Node> courseNodes, int nextNodeIndex, int newNode) {
-
-        boolean nodeFound = false;
-
-        /*  for (int i = currentNodeProgress; i < courseNodes.size(); i++) {
-          
-         if (courseNodes.get(i).getNumber() == newNode) {
-            
-         //Entrant at the correct node
-         //  System.out.println("THIS CAN BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
-         nodeFound = true;
-            
-         } /*else {
-            
-         //Entrant on the wrong path
-         System.out.println("THIS CANNOT BE DONE - " + i + " / " + courseNodes.get(i).getNumber());
-         } */
-
-
-        //   } 
-
-        if (courseNodes.get(nextNodeIndex).getNumber() == newNode) {
-
-            nodeFound = true;
-
-        }
-
-        if (!nodeFound) {
+    public void checkNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
+        
+        int nextNodeIndex = selectedEntrant.getCurrentProgress();
+                
+        if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
             System.out.println("ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
+            load.writeTime(new File("times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
         } else {
 
             System.out.println("ENTRANT HAS GONE THE RIGHT WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
+            load.writeTime(new File("times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
         }
 
     }
@@ -171,42 +150,5 @@ public class ProcessData {
            processNewTime(newTime[0], Integer.parseInt(newTime[1]), Integer.parseInt(newTime[2])); 
             
         }
-
-        /*
-        try {
-
-            //Create File IO objects
-            FileReader fileReader;
-            BufferedReader bufferedReader;
-
-            //Initialise the File IO objects, passing in the selected file path
-            fileReader = new FileReader("times.txt");
-            bufferedReader = new BufferedReader(fileReader);
-
-            //Initialise local variable used to store the current line being read in
-            String line;
-
-
-            //While there are still lines to read in from the file (i.e. read in every line in the file)
-            while ((line = bufferedReader.readLine()) != null) {
-
-                String[] details = line.split(" ");
-
-                processNewTime(details[0], Integer.parseInt(details[1]), Integer.parseInt(details[2]));
-
-            }
-
-            //Once completed, safely close the file reader
-            bufferedReader.close();
-
-            //If any IO exceptions occur...
-        } catch (IOException iOE) {
-
-            System.out.println("WE GOT A PROBLEM...");
-            iOE.printStackTrace();
-        }
-        * 
-        * */
-
     }
 }

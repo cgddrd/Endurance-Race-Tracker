@@ -6,8 +6,10 @@ package aber.dcs.cs22520.clg11.util;
 
 import aber.dcs.cs22520.clg11.model.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -228,5 +230,26 @@ public class LoadData {
             System.out.println(comp.getEntrants().get(i).getNumber() + " - " + comp.getEntrants().get(i).getCourseID() + " - " + comp.getEntrants().get(i).getFullName());
             System.out.println("******************\n");
         }
+    }
+    
+    public void writeTime(File writeFile, String timeStamp) {
+        
+        try {
+ 
+			// if file doesnt exists, then create it
+			if (!writeFile.exists()) {
+				writeFile.createNewFile();
+			}
+ 
+			FileWriter fw = new FileWriter(writeFile.getAbsoluteFile(), true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(timeStamp);
+			bw.close();
+ 
+			System.out.println("Done");
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
