@@ -6,6 +6,7 @@ package aber.dcs.cs22510.clg11.gui;
 
 import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Entrant;
+import aber.dcs.cs22520.clg11.model.Node;
 import aber.dcs.cs22520.clg11.util.LoadData;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -13,8 +14,6 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import javax.swing.*;
 
 /**
@@ -53,12 +52,10 @@ public class GUIPanel extends JPanel implements ActionListener {
 
     public void initComponents() {
 
-        String[] petStrings = {"Bird", "Cat", "Dog", "Rabbit", "Pig"};
-
         entrantList = new JComboBox(getAllEntrants().toArray());
         entrantList.setSelectedIndex(0);
 
-        nodeList = new JComboBox(petStrings);
+        nodeList = new JComboBox(getAllCheckpoints().toArray());
         nodeList.setSelectedIndex(0);
 
         //Create new instance of JButton with specified button text
@@ -95,6 +92,20 @@ public class GUIPanel extends JPanel implements ActionListener {
         }
         
         return entrantList;
+        
+    }
+    
+    public ArrayList<String> getAllCheckpoints() {
+        
+        ArrayList<String> checkpointList = new ArrayList();
+        
+        for (Node cp : data.getNodes()) {
+            
+            checkpointList.add(Integer.toString(cp.getNumber()));
+            
+        }
+        
+        return checkpointList;
         
     }
 
