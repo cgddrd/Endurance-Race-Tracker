@@ -9,10 +9,10 @@ import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Entrant;
 import aber.dcs.cs22520.clg11.model.Node;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -20,31 +20,33 @@ import java.util.Scanner;
  */
 public class ProcessData {
 
-    Datastore data = new Datastore();
+    Datastore data;
+    LoadData load;
 
     public ProcessData() {
+        
     }
 
-    public ProcessData(Datastore newData) {
+    public ProcessData(Datastore newData, LoadData newLoad) {
 
         this.data = newData;
+        this.load = newLoad;
 
     }
 
     public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) {
 
         boolean isUpdated = false;
-
+        Entrant e = obtainEntrant(entrantNo);
+        
         if (timeDelimiter.equals("I")) {
 
             excludeEntrant(entrantNo);
             System.out.println("ENTRANT EXCLUDED - " + entrantNo);
 
-        } else {
+        } else if (!e.getIsExcluded()) {
 
-            Entrant e = obtainEntrant(entrantNo);
             ArrayList<Node> courseNodes = obtainCourseNodes(e);
-
             for (int i = 0; i < courseNodes.size(); i++) {
 
                 if (i > (e.getCurrentProgress() - 1) && courseNodes.get(i).getNumber() == nodeNo && !isUpdated) {
@@ -161,7 +163,16 @@ public class ProcessData {
     }
 
     public void getTimes() {
+       
+        ArrayList<String[]> times = load.readIn(new File("times.txt"));
+        
+        for (String[] newTime : times) {
+            
+           processNewTime(newTime[0], Integer.parseInt(newTime[1]), Integer.parseInt(newTime[2])); 
+            
+        }
 
+        /*
         try {
 
             //Create File IO objects
@@ -194,6 +205,8 @@ public class ProcessData {
             System.out.println("WE GOT A PROBLEM...");
             iOE.printStackTrace();
         }
+        * 
+        * */
 
     }
 }

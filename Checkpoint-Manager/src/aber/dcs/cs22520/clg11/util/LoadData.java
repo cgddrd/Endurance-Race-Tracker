@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -29,16 +30,17 @@ public class LoadData {
 
         Scanner scan = new Scanner(System.in);
         File f;
+        ArrayList<String[]> readValues;
 
         if (type.equals(Datatype.NODE)) {
             System.out.println("Please enter a node filename:");
         } else if (type.equals(Datatype.COURSE)) {
             System.out.println("Please enter a course filename:");
-        } else {
+        } else if (type.equals(Datatype.ENTRANT)){
             System.out.println("Please enter an entrants filename:");
         }
-
-        f = new File(scan.next());
+        
+                    f = new File(scan.next());
 
         while (!f.exists()) {
 
@@ -46,22 +48,38 @@ public class LoadData {
             f = new File(scan.next());
 
         }
+        
+        readValues = readIn(f);
 
         if (type.equals(Datatype.NODE)) {
 
-            readIn(f, Datatype.NODE);
+            for (String [] newItem : readValues) {
+                
+                loadNodes(newItem);
+                
+            }
+            
             displayNodes();
 
         } else if (type.equals(Datatype.COURSE)) {
 
-            readIn(f, Datatype.COURSE);
+            for (String [] newItem : readValues) {
+                
+                loadCourses(newItem);
+                
+            }
+            
             displayCourses();
 
         } else {
 
-            readIn(f, Datatype.ENTRANT);
+            for (String [] newItem : readValues) {
+                
+                loadEntrants(newItem);
+                
+            }
+            
             displayEntrants();
-
         }
     }
 
@@ -73,7 +91,9 @@ public class LoadData {
      * @param fileName The directory of the file to be parsed.
      * @return Vector containing the contents of the parsed file.
      */
-    public void readIn(File fileName, Datatype type) {
+    public ArrayList<String[]> readIn(File fileName) {
+        
+        ArrayList<String[]> values = new ArrayList<>();
 
         try {
 
@@ -88,36 +108,24 @@ public class LoadData {
             //Initialise local variable used to store the current line being read in
             String line;
 
-
             //While there are still lines to read in from the file (i.e. read in every line in the file)
             while ((line = bufferedReader.readLine()) != null) {
 
                 String[] details = line.split(" ");
-
-                if (type == Datatype.COURSE) {
-
-                    loadCourses(details);
-
-                } else if (type == Datatype.ENTRANT) {
-
-                    loadEntrants(details);
-
-                } else if (type == Datatype.NODE) {
-
-                    loadNodes(details);
-
-                }
+                values.add(details);
 
             }
 
             //Once completed, safely close the file reader
             bufferedReader.close();
+            return values;
 
             //If any IO exceptions occur...
         } catch (IOException iOE) {
 
             System.out.println("WE GOT A PROBLEM...");
             iOE.printStackTrace();
+            return null;
         }
 
     }

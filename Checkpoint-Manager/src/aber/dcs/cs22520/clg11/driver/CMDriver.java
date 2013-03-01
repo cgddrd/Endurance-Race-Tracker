@@ -9,7 +9,6 @@ import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Datatype;
 import aber.dcs.cs22520.clg11.model.Node;
 import aber.dcs.cs22520.clg11.util.*;
-import java.util.Scanner;
 
 /**
  *
@@ -22,22 +21,19 @@ public class CMDriver {
      */
     public static void main(String[] args) {
         
-        Scanner scan = new Scanner(System.in);
-        
         Datastore comp = new Datastore();
         LoadData load = new LoadData(comp);
-       
         load.loadFiles(Datatype.NODE);
         load.loadFiles(Datatype.COURSE);
         load.loadFiles(Datatype.ENTRANT);
         
-        ProcessData proc = new ProcessData(comp);
+        ProcessData proc = new ProcessData(comp, load);
         
         proc.getTimes();
         
         if (!comp.getEntrants().get(1).getIsExcluded()) {
 
-        proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 13);
+            proc.checkNextNode(comp.getCourses().get(0).getCourseNodes(), comp.getEntrants().get(1).getCurrentProgress(), 13);
         
         System.out.println("COURSE NODES:");
         
@@ -50,8 +46,7 @@ public class CMDriver {
         
         }
         
-      //  GUIFrame frame = new GUIFrame();
-       
-          
-    }
+        //GUIFrame frame = new GUIFrame();
+         
+    } 
 }
