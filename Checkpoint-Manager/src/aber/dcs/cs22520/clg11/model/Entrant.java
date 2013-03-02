@@ -16,6 +16,7 @@ public class Entrant {
     private int currentProgress;
     private char courseID;
     private boolean isExcluded = false;
+    private boolean isFinished = false;
     
     public Entrant() {
         
@@ -131,6 +132,20 @@ public class Entrant {
      */
     public void setIsExcluded(boolean isExcluded) {
         this.isExcluded = isExcluded;
+    }
+
+    /**
+     * @return the isFinished
+     */
+    public boolean getIsFinished() {
+        return isFinished;
+    }
+
+    /**
+     * @param isFinished the isFinished to set
+     */
+    public void setIsFinished(boolean isFinished) {
+        this.isFinished = isFinished;
     }
    
 }

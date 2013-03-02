@@ -27,9 +27,9 @@ public class CMDriver {
         load.loadFiles(Datatype.COURSE);
         load.loadFiles(Datatype.ENTRANT);
         
-        ProcessData proc = new ProcessData(comp, load);
+    //    ProcessData proc = new ProcessData(comp, load);
         
-        proc.getTimes();
+      /*  proc.getTimes();
         
         if (!comp.getEntrants().get(1).getIsExcluded()) {
 
@@ -44,9 +44,9 @@ public class CMDriver {
             
             }
         
-        }
+        } */
         
-        GUIFrame frame = new GUIFrame(comp, load);
+        GUIFrame test = new GUIFrame(comp, load);
          
     } 
 }

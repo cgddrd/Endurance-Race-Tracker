@@ -8,9 +8,11 @@ import aber.dcs.cs22520.clg11.model.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.channels.FileLock;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,15 +21,15 @@ import java.util.Scanner;
  * @author connor
  */
 public class LoadData {
-    
+
     private Datastore comp;
-    
+
     public LoadData(Datastore comp) {
-        
+
         this.comp = comp;
-       
+
     }
-   
+
     public void loadFiles(Datatype type) {
 
         Scanner scan = new Scanner(System.in);
@@ -38,11 +40,11 @@ public class LoadData {
             System.out.println("Please enter a node filename:");
         } else if (type.equals(Datatype.COURSE)) {
             System.out.println("Please enter a course filename:");
-        } else if (type.equals(Datatype.ENTRANT)){
+        } else if (type.equals(Datatype.ENTRANT)) {
             System.out.println("Please enter an entrants filename:");
         }
-        
-                    f = new File(scan.next());
+
+        f = new File(scan.next());
 
         while (!f.exists()) {
 
@@ -50,37 +52,37 @@ public class LoadData {
             f = new File(scan.next());
 
         }
-        
+
         readValues = readIn(f);
 
         if (type.equals(Datatype.NODE)) {
 
-            for (String [] newItem : readValues) {
-                
+            for (String[] newItem : readValues) {
+
                 loadNodes(newItem);
-                
+
             }
-            
+
             displayNodes();
 
         } else if (type.equals(Datatype.COURSE)) {
 
-            for (String [] newItem : readValues) {
-                
+            for (String[] newItem : readValues) {
+
                 loadCourses(newItem);
-                
+
             }
-            
+
             displayCourses();
 
         } else {
 
-            for (String [] newItem : readValues) {
-                
+            for (String[] newItem : readValues) {
+
                 loadEntrants(newItem);
-                
+
             }
-            
+
             displayEntrants();
         }
     }
@@ -94,7 +96,7 @@ public class LoadData {
      * @return Vector containing the contents of the parsed file.
      */
     public ArrayList<String[]> readIn(File fileName) {
-        
+
         ArrayList<String[]> values = new ArrayList<>();
 
         try {
@@ -143,10 +145,10 @@ public class LoadData {
 
             for (Node n : comp.getNodes()) {
 
-                int test1 = n.getNumber();
-                int test2 = Integer.parseInt(newLine[i]);
+                int origNodeNo = n.getNumber();
+                int courseNodeNo = Integer.parseInt(newLine[i]);
 
-                if (test1 == test2 && (n.getType().equals("CP") || n.getType().equals("MC"))) {
+                if (origNodeNo == courseNodeNo && (n.getType().equals("CP") || n.getType().equals("MC"))) {
 
                     newCourse.addNewNode(n);
                 }
@@ -231,25 +233,36 @@ public class LoadData {
             System.out.println("******************\n");
         }
     }
-    
+
     public void writeTime(File writeFile, String timeStamp) {
-        
+
         try {
- 
-			// if file doesnt exists, then create it
-			if (!writeFile.exists()) {
-				writeFile.createNewFile();
-			}
- 
-			FileWriter fw = new FileWriter(writeFile.getAbsoluteFile(), true);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(timeStamp);
-			bw.close();
- 
-			System.out.println("Done");
- 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+            if (!writeFile.exists()) {
+                writeFile.createNewFile();
+            }
+
+            FileOutputStream fos = new FileOutputStream(writeFile.getAbsoluteFile(), true);
+            FileLock fl = fos.getChannel().tryLock();
+
+            if (fl != null) {
+
+                System.out.println("OK we have the lock.. adding to the file");
+
+                FileWriter fw = new FileWriter(fos.getFD());
+                
+                fw.write(timeStamp);
+
+                fl.release();
+                System.out.println("Released Lock");
+                fw.close();
+
+            } else {
+                System.out.println("Already locked by another process... bad luck\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

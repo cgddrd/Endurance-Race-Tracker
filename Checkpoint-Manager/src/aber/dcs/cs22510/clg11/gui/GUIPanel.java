@@ -4,10 +4,12 @@
  */
 package aber.dcs.cs22510.clg11.gui;
 
+import aber.dcs.cs22520.clg11.model.Course;
 import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Entrant;
 import aber.dcs.cs22520.clg11.model.Node;
 import aber.dcs.cs22520.clg11.util.LoadData;
+import aber.dcs.cs22520.clg11.util.ProcessData;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,12 +36,12 @@ public class GUIPanel extends JPanel implements ActionListener {
     private JComboBox nodeList;
     private JSpinner spinner;
     private SpinnerDateModel sm;
-
     private Datastore data;
     private LoadData load;
-    
+    private ProcessData proc;
+
     public GUIPanel(Datastore newData, LoadData newLoad) {
-        
+
         this.data = newData;
         this.load = newLoad;
 
@@ -51,6 +53,8 @@ public class GUIPanel extends JPanel implements ActionListener {
     }
 
     public void initComponents() {
+        
+        proc = new ProcessData(data, load);
 
         entrantList = new JComboBox(getAllEntrants().toArray());
         entrantList.setSelectedIndex(0);
@@ -61,7 +65,7 @@ public class GUIPanel extends JPanel implements ActionListener {
         //Create new instance of JButton with specified button text
         submitTime = new JButton("Submit Checkpoint Time");
         submitTime.addActionListener(this);
-        
+
         setCurrentTime = new JButton("Set to Current Time");
         setCurrentTime.addActionListener(this);
 
@@ -80,33 +84,37 @@ public class GUIPanel extends JPanel implements ActionListener {
         this.add(setCurrentTime);
 
     }
-    
+
     public ArrayList<String> getAllEntrants() {
-        
+
         ArrayList<String> entrantList = new ArrayList();
-        
+
         for (Entrant e : data.getEntrants()) {
-            
+
             entrantList.add(e.getFullName());
-            
+
         }
-        
+
         return entrantList;
-        
+
     }
-    
+
     public ArrayList<String> getAllCheckpoints() {
-        
+
         ArrayList<String> checkpointList = new ArrayList();
-        
+
         for (Node cp : data.getNodes()) {
-            
-            checkpointList.add(Integer.toString(cp.getNumber()));
-            
+
+            if (cp.getType().equals("CP") || cp.getType().equals("MC")) {
+
+                checkpointList.add(Integer.toString(cp.getNumber()));
+
+            }
+
         }
-        
+
         return checkpointList;
-        
+
     }
 
     /**
@@ -121,30 +129,37 @@ public class GUIPanel extends JPanel implements ActionListener {
          //Set the WEST edge of the button to be 80 pixels to the right of the WEST edge of the panel
          layout.putConstraint(SpringLayout.WEST,newOrder,80,SpringLayout.WEST,this);
 
-         layout.putConstraint(SpringLayout.NORTH,printReceipt,5,SpringLayout.NORTH,this);
-         layout.putConstraint(SpringLayout.WEST,printReceipt,10,SpringLayout.EAST,newOrder);
-
-         layout.putConstraint(SpringLayout.NORTH,saveTill,10,SpringLayout.SOUTH,newOrder);
-         layout.putConstraint(SpringLayout.WEST,saveTill,10,SpringLayout.WEST,this);
-
-         layout.putConstraint(SpringLayout.NORTH,loadTill,10,SpringLayout.SOUTH,newOrder);
-         layout.putConstraint(SpringLayout.WEST,loadTill,10,SpringLayout.EAST,saveTill);
-
-         layout.putConstraint(SpringLayout.NORTH,exitTill,10,SpringLayout.SOUTH,newOrder);
-         layout.putConstraint(SpringLayout.WEST,exitTill,10,SpringLayout.EAST,loadTill);
-
          */
     }
 
-    public void actionPerformed(ActionEvent evt) {
+    public void submitCheckpoint() {
         
+        proc.resetEntrants();
+
+        proc.getTimes();
+        
+        Entrant currentEntrant = data.getEntrants().get(entrantList.getSelectedIndex());
+        ArrayList<Node> entrantNodes = proc.getEntrantCourseNodes(currentEntrant);
+
+        if (!data.getEntrants().get(1).getIsExcluded()) {
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+           
+            proc.checkNextNode(entrantNodes, currentEntrant, Integer.parseInt((String)nodeList.getSelectedItem()), sdf.format(spinner.getValue()));
+
+        }
+    }
+    
+    
+
+    public void actionPerformed(ActionEvent evt) {
+
         String actionCommand = evt.getActionCommand();
         //If the "New Order" button is clicked
         switch (actionCommand) {
-            
+
             case "Submit Checkpoint Time":
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-                System.out.println("THE CURRENT TIME: " + sdf.format(spinner.getValue()));
+                submitCheckpoint();
                 break;
             case "Set to Current Time":
                 Calendar currentTime = Calendar.getInstance();
