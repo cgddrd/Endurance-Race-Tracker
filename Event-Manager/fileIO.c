@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <sys/file.h> 
 #include "fileIO.h"
 
 /* 
@@ -76,29 +77,41 @@ FILE * openFile(char *prompt) {
 }
 
 void writeFile(char *file_name, char *message) {
-    
-    FILE * file = fopen(file_name, "a+"); 
+
+
+
+    FILE * file = fopen(file_name, "a+");
+
+    flock(fileno(file), LOCK_EX); /*lock log file*/
+
+    printf("\n%s", message);
     fprintf(file, "%s", message); /*writes*/
     fclose(file); /*done!*/
+
+    flock(fileno(file), LOCK_UN); /*unlock log file*/
+    printf("\nFile unlocked.");
+
     printf("\nText written to file.");
-    
+
 }
 
 void logActivity(char *activity) {
-    
-  char message[200];
-  time_t rawtime;
-  struct tm * timeinfo;
 
-  time ( &rawtime );
-  timeinfo = localtime ( &rawtime );
-  
-  
-  strcat ( message, activity );
-  strcat ( message, " - " );     
-  strcat ( message, asctime (timeinfo) );
-  
-  writeFile("../files/log.txt", message);
- 
+    char message[2000];
+    time_t rawtime;
+    struct tm * timeinfo;
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    message[0] = '\0';
+
+    strcat(message, "LOG: ");
+    strcat(message, activity);
+    strcat(message, " - ");
+    strcat(message, asctime(timeinfo));
     
+    writeFile("../files/log.txt", message);
+
+
 }

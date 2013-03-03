@@ -120,12 +120,15 @@ void displayMenu() {
 
             case 1:
                 checkNotStarted();
+                logActivity("System queried for all entrants yet to start.");
                 break;
             case 2:
                 checkStarted();
+                logActivity("System queried for all entrants that have started.");
                 break;
             case 3:
                 checkFinished();
+                logActivity("System queried for all entrants that have finished.");
                 break;
             case 4:
                 /* Brackets are required as variables are being defined here. */
@@ -138,9 +141,11 @@ void displayMenu() {
             }
             case 5:
                 loadTimes();
+                logActivity("Entrant times file loaded into system.");
                 break;
             case 6:
                 displayResultsList();
+                logActivity("System results list .");
                 break;
             case 7:
                 getSpecificEntrantStatus();

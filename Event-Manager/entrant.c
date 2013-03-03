@@ -19,7 +19,8 @@
 int loadEntrants() {
 
     /* Obtain entrant FILE pointer returned by openFile (fileIO.c). */
-    FILE * entrant_file = openFile("Enter entrants file name:");
+   /* FILE * entrant_file = openFile("Enter entrants file name:");*/
+    FILE * entrant_file = fopen("../files/entrants.txt", "r");
 
     /* Allocate memory for entrant linked-list data structure (fileIO.c). */
     initialise(&entrant_list);

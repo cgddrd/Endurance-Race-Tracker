@@ -18,8 +18,8 @@
 int loadNodes() {
 
     /* Obtain node FILE pointer returned by openFile (fileIO.c). */
-    FILE * file_two = openFile("Enter node file name:");
-
+/*    FILE * file_two = openFile("Enter node file name:"); */
+FILE * file_two = fopen("../files/nodes.txt", "r");
     /* Allocate memory for course  node linked-list data structure (fileIO.c). */
     initialise(&node_list);
 

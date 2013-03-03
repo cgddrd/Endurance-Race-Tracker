@@ -17,8 +17,9 @@
 int loadCourses() {
 
     /* Obtain course FILE pointer returned by openFile (fileIO.c). */
-    FILE * course_file = openFile("Enter courses file name:");
+   /* FILE * course_file = openFile("Enter courses file name:"); */
 
+     FILE * course_file = fopen("../files/courses.txt", "r");
     /* Allocate memory for course linked-list data structure (fileIO.c). */
     initialise(&course_list);
 
