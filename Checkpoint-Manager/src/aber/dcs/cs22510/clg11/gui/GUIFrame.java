@@ -4,8 +4,8 @@
  */
 package aber.dcs.cs22510.clg11.gui;
 
-import aber.dcs.cs22520.clg11.model.Datastore;
-import aber.dcs.cs22520.clg11.util.LoadData;
+import aber.dcs.cs22510.clg11.model.Datastore;
+import aber.dcs.cs22510.clg11.util.LoadData;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;

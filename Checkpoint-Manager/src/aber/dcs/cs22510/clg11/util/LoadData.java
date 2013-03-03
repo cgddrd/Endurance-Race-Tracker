@@ -2,9 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package aber.dcs.cs22520.clg11.util;
+package aber.dcs.cs22510.clg11.util;
 
-import aber.dcs.cs22520.clg11.model.*;
+import aber.dcs.cs22510.clg11.model.Entrant;
+import aber.dcs.cs22510.clg11.model.Datatype;
+import aber.dcs.cs22510.clg11.model.Datastore;
+import aber.dcs.cs22510.clg11.model.Course;
+import aber.dcs.cs22510.clg11.model.Node;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
