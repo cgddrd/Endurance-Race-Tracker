@@ -35,15 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/546370707/course.o \
-	${OBJECTDIR}/_ext/546370707/display.o \
-	${OBJECTDIR}/_ext/546370707/entrant.o \
-	${OBJECTDIR}/_ext/546370707/event.o \
-	${OBJECTDIR}/_ext/546370707/fileIO.o \
-	${OBJECTDIR}/_ext/546370707/main.o \
-	${OBJECTDIR}/_ext/546370707/node.o \
-	${OBJECTDIR}/_ext/546370707/process.o \
-	${OBJECTDIR}/_ext/546370707/track.o
+	${OBJECTDIR}/course.o \
+	${OBJECTDIR}/display.o \
+	${OBJECTDIR}/entrant.o \
+	${OBJECTDIR}/event.o \
+	${OBJECTDIR}/fileIO.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/node.o \
+	${OBJECTDIR}/process.o \
+	${OBJECTDIR}/track.o
 
 
 # C Compiler Flags
@@ -70,50 +70,50 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/event-manager: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/event-manager ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/546370707/course.o: ../../CS237-Assignment/Extended-Mission/course.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/course.o: course.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/course.o ../../CS237-Assignment/Extended-Mission/course.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/course.o course.c
 
-${OBJECTDIR}/_ext/546370707/display.o: ../../CS237-Assignment/Extended-Mission/display.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/display.o: display.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/display.o ../../CS237-Assignment/Extended-Mission/display.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/display.o display.c
 
-${OBJECTDIR}/_ext/546370707/entrant.o: ../../CS237-Assignment/Extended-Mission/entrant.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/entrant.o: entrant.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/entrant.o ../../CS237-Assignment/Extended-Mission/entrant.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/entrant.o entrant.c
 
-${OBJECTDIR}/_ext/546370707/event.o: ../../CS237-Assignment/Extended-Mission/event.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/event.o: event.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/event.o ../../CS237-Assignment/Extended-Mission/event.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/event.o event.c
 
-${OBJECTDIR}/_ext/546370707/fileIO.o: ../../CS237-Assignment/Extended-Mission/fileIO.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/fileIO.o: fileIO.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/fileIO.o ../../CS237-Assignment/Extended-Mission/fileIO.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/fileIO.o fileIO.c
 
-${OBJECTDIR}/_ext/546370707/main.o: ../../CS237-Assignment/Extended-Mission/main.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/main.o: main.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/main.o ../../CS237-Assignment/Extended-Mission/main.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
 
-${OBJECTDIR}/_ext/546370707/node.o: ../../CS237-Assignment/Extended-Mission/node.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/node.o: node.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/node.o ../../CS237-Assignment/Extended-Mission/node.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/node.o node.c
 
-${OBJECTDIR}/_ext/546370707/process.o: ../../CS237-Assignment/Extended-Mission/process.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/process.o: process.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/process.o ../../CS237-Assignment/Extended-Mission/process.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/process.o process.c
 
-${OBJECTDIR}/_ext/546370707/track.o: ../../CS237-Assignment/Extended-Mission/track.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/546370707
+${OBJECTDIR}/track.o: track.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/546370707/track.o ../../CS237-Assignment/Extended-Mission/track.c
+	$(COMPILE.c) -g -Wall -std=c89 -ansi -MMD -MP -MF $@.d -o ${OBJECTDIR}/track.o track.c
 
 # Subprojects
 .build-subprojects:
