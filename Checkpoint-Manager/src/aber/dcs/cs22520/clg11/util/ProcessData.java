@@ -33,7 +33,7 @@ public class ProcessData {
 
     }
     
-    public void resetEntrants() {
+    public void resetEntrantProgress() {
         
         for (Entrant e : data.getEntrants()) {
             
@@ -58,7 +58,7 @@ public class ProcessData {
 
                 if (i > (e.getCurrentProgress() - 1) && courseNodes.get(i).getNumber() == nodeNo && !isUpdated) {
 
-                    if (timeDelimiter.equals("D")) {
+                    if (timeDelimiter.equals("A")) {
 
                         isUpdated = true;
                         System.out.println("ENTRANT PARTIALLY UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + e.getCurrentProgress());
@@ -127,7 +127,7 @@ public class ProcessData {
         }
 
     }
-
+    
     public void checkNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
 
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
@@ -143,6 +143,37 @@ public class ProcessData {
 
                 System.out.println("ENTRANT HAS GONE THE RIGHT WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
                 load.writeTime(new File("times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+            }
+
+        } else {
+            
+            System.out.println("ENTRANT FINISHED!!");
+            
+        }
+
+    }
+    
+    public void checkNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
+
+        int nextNodeIndex = selectedEntrant.getCurrentProgress();
+
+        if (selectedEntrant.getCurrentProgress() < courseNodes.size() && !selectedEntrant.getIsExcluded()) {
+
+            if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
+
+                System.out.println("ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
+                load.writeTime(new File("times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+            } else {
+                
+                if (mcType.equals("Arriving")) {
+                   
+                    load.writeTime(new File("times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                    
+                } else {
+                    
+                    load.writeTime(new File("times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                }
             }
 
         } else {

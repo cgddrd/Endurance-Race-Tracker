@@ -34,6 +34,8 @@ public class GUIPanel extends JPanel implements ActionListener {
     private SpringLayout layout = new SpringLayout();
     private JComboBox entrantList;
     private JComboBox nodeList;
+    private JComboBox mcType;
+    private String[] mcArriveDepart = {"Arriving", "Departing"};
     private JSpinner spinner;
     private SpinnerDateModel sm;
     private Datastore data;
@@ -61,6 +63,12 @@ public class GUIPanel extends JPanel implements ActionListener {
 
         nodeList = new JComboBox(getAllCheckpoints().toArray());
         nodeList.setSelectedIndex(0);
+        nodeList.addActionListener(this);
+        
+        mcType = new JComboBox(mcArriveDepart);
+        mcType.setSelectedIndex(0);
+        mcType.setEnabled(false);
+     
 
         //Create new instance of JButton with specified button text
         submitTime = new JButton("Submit Checkpoint Time");
@@ -80,6 +88,7 @@ public class GUIPanel extends JPanel implements ActionListener {
         this.add(spinner);
         this.add(entrantList);
         this.add(nodeList);
+        this.add(mcType);
         this.add(submitTime);
         this.add(setCurrentTime);
 
@@ -116,6 +125,20 @@ public class GUIPanel extends JPanel implements ActionListener {
         return checkpointList;
 
     }
+    
+    public Node getNode(int nodeNo) {
+        
+        for (Node n : data.getNodes()) {
+            
+            if (n.getNumber() == nodeNo) {
+                
+                return n;
+            }
+        }
+        
+        return null;
+        
+    }
 
     /**
      * Sets up the 'SpringLayout' layout manager to organise all components on
@@ -134,7 +157,7 @@ public class GUIPanel extends JPanel implements ActionListener {
 
     public void submitCheckpoint() {
         
-        proc.resetEntrants();
+        proc.resetEntrantProgress();
 
         proc.getTimes();
         
@@ -144,8 +167,18 @@ public class GUIPanel extends JPanel implements ActionListener {
         if (!data.getEntrants().get(1).getIsExcluded()) {
             
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            
+            if (mcType.isEnabled()) {
+                
+                proc.checkNextNode(entrantNodes, currentEntrant, Integer.parseInt((String) nodeList.getSelectedItem()), (String) mcType.getSelectedItem(), sdf.format(spinner.getValue()));
+                
+            } else {
+               
+                proc.checkNextNode(entrantNodes, currentEntrant, Integer.parseInt((String) nodeList.getSelectedItem()), sdf.format(spinner.getValue()));
+                
+            }
            
-            proc.checkNextNode(entrantNodes, currentEntrant, Integer.parseInt((String)nodeList.getSelectedItem()), sdf.format(spinner.getValue()));
+         
 
         }
     }
@@ -153,7 +186,7 @@ public class GUIPanel extends JPanel implements ActionListener {
     
 
     public void actionPerformed(ActionEvent evt) {
-
+        
         String actionCommand = evt.getActionCommand();
         //If the "New Order" button is clicked
         switch (actionCommand) {
@@ -166,6 +199,20 @@ public class GUIPanel extends JPanel implements ActionListener {
                 spinner.setValue(currentTime.getTime());
                 break;
 
+        }
+        
+        if (evt.getSource() == nodeList) {
+            
+            Node n = getNode(Integer.parseInt((String) nodeList.getSelectedItem()));
+            
+            if (n.getType().equals("MC")) {
+                
+                this.mcType.setEnabled(true);
+                
+            } else {
+                
+                this.mcType.setEnabled(false);
+            }
         }
     }
 }
