@@ -131,15 +131,11 @@ void displayMenu() {
                 logActivity("System queried for all entrants that have finished.");
                 break;
             case 4:
-                /* Brackets are required as variables are being defined here. */
-            {
-                int entrant;
-                printf("Enter required competitor number:\n");
-                scanf(" %d", &entrant);
-                userUpdateEntrant(entrant_list->head, entrant);
+        
                 break;
-            }
+            
             case 5:
+                resetAll(entrant_list->head);
                 loadTimes();
                 logActivity("Entrant times file loaded into system.");
                 break;

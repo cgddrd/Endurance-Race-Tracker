@@ -113,5 +113,4 @@ void logActivity(char *activity) {
     
     writeFile("../files/log.txt", message);
 
-
 }

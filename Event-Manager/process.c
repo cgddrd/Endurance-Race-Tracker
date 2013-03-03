@@ -54,6 +54,22 @@ int loadTimes() {
     }
 }
 
+void resetAll(linked_item * current) {
+  
+    competitor * temp_competitor = (competitor *) current->data;
+    
+    temp_competitor->current_progress = 0;
+    temp_competitor->last_logged_node_index = 0;
+    temp_competitor->last_logged_node = NULL;       
+    
+    if (current->next != NULL) {
+
+            resetAll(current->next);
+
+    }
+    
+}
+
 /* 
  * Update current status, location, time and progress of an entrant 
  * using data read in from time log file or manually entered by user.
@@ -540,122 +556,4 @@ int checkEntrantCompletedTrack(competitor * current_competitor, competitor * new
         return 0;
     }
 
-}
-
-/* 
- * Provides input prompts to allow a user to input a new time log value for a
- * particular entrant.
- */
-void userUpdateEntrant(linked_item * entrant, int requested_no) {
-
-    competitor * current_competitor = (competitor *) entrant->data;
-
-    if (current_competitor->competitor_number == requested_no) {
-
-        int node, MC_choice, exc_choice, isMC, checkpoint_exists, exc_reason, i;
-        char time[5];
-        char log_entry_id;
-
-        printf("\nEnter checkpoint number:\n");
-        scanf(" %d", &node);
- 
-        for (i = 0; i < current_competitor->course->course_length; i++) {
-
-            /* 
-             * Determine if the entered checkpoint number exists and if so 
-             * is a time checkpoint.
-             */
-            if (current_competitor->course->course_nodes[i]->number == node 
-                    && strcmp(current_competitor->course->course_nodes[i]->type, "CP") == 0) {
-
-                checkpoint_exists = 1;
-
-            /* 
-             * Otherwise determine if the entered checkpoint number exists and if so 
-             * is a medical checkpoint.
-             */
-            } else if (current_competitor->course->course_nodes[i]->number == node 
-                    && strcmp(current_competitor->course->course_nodes[i]->type, "MC") == 0) {
-
-                checkpoint_exists = 1;
-                isMC = 1;
-            }
-        }
-
-        if (checkpoint_exists == 1) {
-
-            printf("\nEntrant excluded (1 = Yes, 2 = No):\n");
-            scanf(" %d", &exc_choice);
-
-            if (exc_choice == 1) {
-
-                printf("\nEntrant reason (1 = Wrong CP, 2 = Failed Medical):\n");
-                scanf(" %d", &exc_reason);
-
-                if (exc_reason == 1) {
-
-                    log_entry_id = 'I';
-
-                } else {
-
-                    /* 
-                     * If the user tries to exclude an entrant for medical reasons
-                     * but the entrant is not at a medical checkpoint, prevent this.
-                     */
-                    if (isMC != 1) {
-
-                        printf("\nEntered CP not a medical CP. Entrant cannot have failed medical check.");
-                        log_entry_id = 'I';
-
-                    } else {
-
-                        log_entry_id = 'E';
-
-                    }
-                }
-
-            } else {
-
-                if (isMC == 1) {
-
-                    printf("\nArriving (1), Departing (2):\n");
-                    scanf(" %d", &MC_choice);
-
-                    if (MC_choice == 1) {
-
-                        log_entry_id = 'A';
-
-                    } else {
-                        
-                        log_entry_id = 'D';
-                        
-                    }
-
-                } else {
-                    
-                    log_entry_id = 'T';
-                    
-                }
-
-            }
-
-            printf("\nEnter recorded for checkpoint time (HH:MM):\n");
-            scanf(" %s", time);
-
-            updateEntrant(entrant_list->head, log_entry_id, node, requested_no, time);
-
-        } else {
-            printf("\nEntered node is not a checkpoint. Please try again.\n");
-        }
-
-    } else {
-
-        if (entrant->next != NULL) {
-
-            userUpdateEntrant(entrant->next, requested_no);
-
-        } else {
-            printf("\nEntrant cannot be located. Please try again.");
-        }
-    }
 }

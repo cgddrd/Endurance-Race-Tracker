@@ -24,7 +24,7 @@ extern "C" {
     int calcMCDelay(char * arrive_time, char * depart_time);
     int checkEntrantCompletedTrack(competitor * current_competitor, competitor * new_competitor);
     
-    void userUpdateEntrant(linked_item * entrant, int requested_no);
+    void resetAll(linked_item * current);
     void convertTime(competitor * new_competitor, char * time_string);
     void updateCurrentEntrantTrack(competitor * current_competitor);
     void updateEntrant(linked_item * current, char type, int node, int entrant, char * time);
