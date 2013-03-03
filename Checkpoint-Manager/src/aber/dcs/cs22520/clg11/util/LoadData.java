@@ -23,6 +23,7 @@ import java.util.Scanner;
 public class LoadData {
 
     private Datastore comp;
+    private FileIO fileIO = new FileIO();
 
     public LoadData(Datastore comp) {
 
@@ -53,7 +54,7 @@ public class LoadData {
 
         }
 
-        readValues = readIn(f);
+        readValues = fileIO.readIn(f);
 
         if (type.equals(Datatype.NODE)) {
 
@@ -64,6 +65,7 @@ public class LoadData {
             }
 
             displayNodes();
+            fileIO.addActivityLog("Nodes file loaded successfully (nodes.txt)");
 
         } else if (type.equals(Datatype.COURSE)) {
 
@@ -74,6 +76,7 @@ public class LoadData {
             }
 
             displayCourses();
+            fileIO.addActivityLog("Courses file loaded successfully (courses.txt)");
 
         } else {
 
@@ -84,57 +87,14 @@ public class LoadData {
             }
 
             displayEntrants();
+            fileIO.addActivityLog("Entrants file loaded successfully (courses.txt)");
         }
     }
 
-    /**
-     * Reads in the contents of internal/external dictionary files and places
-     * the contents into a Vector which is then returned, and used to populate
-     * the {@link aber.dcs.clg11.wordladder.model.Graph}.
-     *
-     * @param fileName The directory of the file to be parsed.
-     * @return Vector containing the contents of the parsed file.
-     */
-    public ArrayList<String[]> readIn(File fileName) {
-
-        ArrayList<String[]> values = new ArrayList<>();
-
-        try {
-
-            //Create File IO objects
-            FileReader fileReader;
-            BufferedReader bufferedReader;
-
-            //Initialise the File IO objects, passing in the selected file path
-            fileReader = new FileReader(fileName);
-            bufferedReader = new BufferedReader(fileReader);
-
-            //Initialise local variable used to store the current line being read in
-            String line;
-
-            //While there are still lines to read in from the file (i.e. read in every line in the file)
-            while ((line = bufferedReader.readLine()) != null) {
-
-                String[] details = line.split(" ");
-                values.add(details);
-
-            }
-
-            //Once completed, safely close the file reader
-            bufferedReader.close();
-            return values;
-
-            //If any IO exceptions occur...
-        } catch (IOException iOE) {
-
-            System.out.println("WE GOT A PROBLEM...");
-            iOE.printStackTrace();
-            return null;
-        }
-
-    }
-
+    
     public void loadCourses(String[] newLine) {
+        
+        try {
 
         Course newCourse = new Course();
 
@@ -157,6 +117,11 @@ public class LoadData {
         }
 
         comp.getCourses().add(newCourse);
+        
+        } catch (Exception e) {
+            
+           fileIO.addActivityLog("ERROR - Cannot create new course object (" + newLine[0] +")"); 
+        }
 
     }
 
@@ -173,7 +138,7 @@ public class LoadData {
 
         } catch (Exception e) {
 
-            System.out.println("Cannot parse Node. - " + e);
+            fileIO.addActivityLog("ERROR - Cannot create new node object (" + Integer.parseInt(newLine[0]) + " / " + newLine[1] + ")");
         }
 
     }
@@ -193,7 +158,7 @@ public class LoadData {
 
         } catch (Exception e) {
 
-            System.out.println("Cannot parse Entrant. - " + e);
+            fileIO.addActivityLog("ERROR - Cannot create new entrant object (" + Integer.parseInt(newLine[0]) + " / " + newLine[1] + " / " + newLine[2] + " " + newLine[3] + ")");
         }
 
     }
@@ -231,38 +196,6 @@ public class LoadData {
 
             System.out.println(comp.getEntrants().get(i).getNumber() + " - " + comp.getEntrants().get(i).getCourseID() + " - " + comp.getEntrants().get(i).getFullName());
             System.out.println("******************\n");
-        }
-    }
-
-    public void writeTime(File writeFile, String timeStamp) {
-
-        try {
-
-            if (!writeFile.exists()) {
-                writeFile.createNewFile();
-            }
-
-            FileOutputStream fos = new FileOutputStream(writeFile.getAbsoluteFile(), true);
-            FileLock fl = fos.getChannel().tryLock();
-
-            if (fl != null) {
-
-                System.out.println("OK we have the lock.. adding to the file");
-
-                FileWriter fw = new FileWriter(fos.getFD());
-                
-                fw.write(timeStamp);
-
-                fl.release();
-                System.out.println("Released Lock");
-                fw.close();
-
-            } else {
-                System.out.println("Already locked by another process... bad luck\n");
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

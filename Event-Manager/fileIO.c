@@ -106,7 +106,7 @@ void logActivity(char *activity) {
 
     message[0] = '\0';
 
-    strcat(message, "LOG: ");
+    strcat(message, "LOG - EM: ");
     strcat(message, activity);
     strcat(message, " - ");
     strcat(message, asctime(timeinfo));

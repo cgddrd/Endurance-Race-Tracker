@@ -8,10 +8,7 @@ import aber.dcs.cs22520.clg11.model.Course;
 import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Entrant;
 import aber.dcs.cs22520.clg11.model.Node;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -21,15 +18,14 @@ import java.util.ArrayList;
 public class ProcessData {
 
     private Datastore data;
-    private LoadData load;
+    private FileIO fileIO = new FileIO();
 
     public ProcessData() {
     }
 
-    public ProcessData(Datastore newData, LoadData newLoad) {
+    public ProcessData(Datastore newData) {
 
         this.data = newData;
-        this.load = newLoad;
 
     }
     
@@ -39,6 +35,8 @@ public class ProcessData {
             
             e.setCurrentProgress(0);
         }
+        
+         fileIO.addActivityLog("All entrant details successfully reset."); 
     }
 
     public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) {
@@ -50,6 +48,7 @@ public class ProcessData {
 
             excludeEntrant(entrantNo);
             System.out.println("ENTRANT EXCLUDED - " + entrantNo);
+            fileIO.addActivityLog("Entrant no: " + entrantNo + " successfully excluded."); 
 
         } else if (!e.getIsExcluded()) {
 
@@ -62,7 +61,8 @@ public class ProcessData {
 
                         isUpdated = true;
                         System.out.println("ENTRANT PARTIALLY UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + e.getCurrentProgress());
-
+                        fileIO.addActivityLog("Entrant no: " + entrantNo + " has arrived at medical checkpoint " + nodeNo + "."); 
+                        
                     } else {
 
                         //If the read in node from time file is further along the course than the current progress,
@@ -72,13 +72,14 @@ public class ProcessData {
                         if (e.getCurrentProgress() >= courseNodes.size()) {
                             
                             System.out.println("CURRENT PROGRESS = " + e.getCurrentProgress() + ", COURSE NODES SIZE = " + courseNodes.size());
-                            
                             e.setIsFinished(true);
+                            fileIO.addActivityLog("Entrant no: " + e.getNumber() + " has sucessfully finished the course."); 
                         }
                         
                         isUpdated = true;
 
                         System.out.println("ENTRANT UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + e.getCurrentProgress());
+                        fileIO.addActivityLog("Entrant no: " + entrantNo + " has been updated to checkpoint " + nodeNo + "."); 
 
                     }
                 }
@@ -128,8 +129,8 @@ public class ProcessData {
 
     }
     
-    public void checkNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
-
+    public void processNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
+        
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
 
         if (selectedEntrant.getCurrentProgress() < courseNodes.size() && !selectedEntrant.getIsExcluded()) {
@@ -137,12 +138,12 @@ public class ProcessData {
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
                 System.out.println("ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
-                load.writeTime(new File("times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
             } else {
 
                 System.out.println("ENTRANT HAS GONE THE RIGHT WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
-                load.writeTime(new File("times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                fileIO.writeFile(new File("../files/times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
             }
 
         } else {
@@ -153,7 +154,7 @@ public class ProcessData {
 
     }
     
-    public void checkNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
+    public void processNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
 
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
 
@@ -161,18 +162,21 @@ public class ProcessData {
 
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
+                fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")"); 
                 System.out.println("ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
-                load.writeTime(new File("times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
             } else {
                 
                 if (mcType.equals("Arriving")) {
                    
-                    load.writeTime(new File("times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                    fileIO.addActivityLog("New MC arrival time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")"); 
+                    fileIO.writeFile(new File("../files/times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
                     
                 } else {
                     
-                    load.writeTime(new File("times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                    fileIO.addActivityLog("New MC departure time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")"); 
+                    fileIO.writeFile(new File("../files/times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
                 }
             }
 
@@ -184,20 +188,9 @@ public class ProcessData {
 
     }
 
-    public void getCourse() {
-
-        System.out.println("TWAT");
-
-        for (int i = 0; i < data.getCourses().size(); i++) {
-
-            System.out.println(data.getCourses().get(i).getCourseID());
-        }
-
-    }
-
     public void getTimes() {
 
-        ArrayList<String[]> times = load.readIn(new File("times.txt"));
+        ArrayList<String[]> times = fileIO.readIn(new File("../files/times.txt"));
 
         for (String[] newTime : times) {
 
@@ -205,6 +198,8 @@ public class ProcessData {
             //System.out.println("FROM FILE: Node = " + Integer.parseInt(newTime[1]) + ", Entrant = " + Integer.parseInt(newTime[2]));
 
         }
+        
+        fileIO.addActivityLog("Time logs file loaded successfully (times.txt)");
     }
 
     public ArrayList<Node> getEntrantCourseNodes(Entrant e) {
@@ -222,4 +217,5 @@ public class ProcessData {
 
         return nodes;
     }
+    
 }

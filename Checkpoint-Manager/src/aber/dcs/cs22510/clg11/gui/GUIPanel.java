@@ -4,7 +4,6 @@
  */
 package aber.dcs.cs22510.clg11.gui;
 
-import aber.dcs.cs22520.clg11.model.Course;
 import aber.dcs.cs22520.clg11.model.Datastore;
 import aber.dcs.cs22520.clg11.model.Entrant;
 import aber.dcs.cs22520.clg11.model.Node;
@@ -56,7 +55,7 @@ public class GUIPanel extends JPanel implements ActionListener {
 
     public void initComponents() {
         
-        proc = new ProcessData(data, load);
+        proc = new ProcessData(data);
 
         entrantList = new JComboBox(getAllEntrants().toArray());
         entrantList.setSelectedIndex(0);
@@ -170,11 +169,11 @@ public class GUIPanel extends JPanel implements ActionListener {
             
             if (mcType.isEnabled()) {
                 
-                proc.checkNextNode(entrantNodes, currentEntrant, Integer.parseInt((String) nodeList.getSelectedItem()), (String) mcType.getSelectedItem(), sdf.format(spinner.getValue()));
+                proc.processNextNode(entrantNodes, currentEntrant, Integer.parseInt((String) nodeList.getSelectedItem()), (String) mcType.getSelectedItem(), sdf.format(spinner.getValue()));
                 
             } else {
                
-                proc.checkNextNode(entrantNodes, currentEntrant, Integer.parseInt((String) nodeList.getSelectedItem()), sdf.format(spinner.getValue()));
+                proc.processNextNode(entrantNodes, currentEntrant, Integer.parseInt((String) nodeList.getSelectedItem()), sdf.format(spinner.getValue()));
                 
             }
            

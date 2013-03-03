@@ -22,3 +22,115 @@ LOG: Entrant times file loaded into system. - Sun Mar  3 17:18:34 2013
 LOG: Entrant times file loaded into system. - Sun Mar  3 17:20:58 2013
 LOG: Entrant times file loaded into system. - Sun Mar  3 17:21:20 2013
 LOG: System queried for all entrants that have finished. - Sun Mar  3 17:21:48 2013
+LOG: Entrant times file loaded into system. - Sun Mar  3 17:29:53 2013
+LOG: Entrant times file loaded into system. - Sun Mar  3 17:30:26 2013
+LOG: Entrant times file loaded into system. - Sun Mar  3 19:04:11 2013
+LOG: Entrant times file loaded into system. - Sun Mar  3 19:05:28 2013
+LOG - CM: 2013/03/03 19:47:38 - Nodes file loaded successfully (nodes.txt)LOG - CM: 2013/03/03 19:47:47 - Courses file loaded successfully (courses.txt)LOG - CM: 2013/03/03 19:47:53 - Entrants file loaded successfully (courses.txt)LOG - CM: Nodes file loaded successfully (nodes.txt) - 03/03/2013 20:08:12
+LOG - CM: Courses file loaded successfully (courses.txt) - 03/03/2013 20:08:18
+LOG - CM: Entrants file loaded successfully (courses.txt) - 03/03/2013 20:08:23
+LOG - CM: All entrant details successfully reset. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 1 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 4 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 5 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 6 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 7 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 8 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 9 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 10 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 11 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 12 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 13 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 14 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 16 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 1 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 17 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 4 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 18 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 19 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 7 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 5 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 20 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 6 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 22 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 9 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 23 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 4 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 24 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 10 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 7 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 8 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 26 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 12 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 27 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 6 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 11 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 13 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 28 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 9 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 14 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 30 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 10 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 31 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 17 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 12 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 1 has been updated to checkpoint 13. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 4 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 32 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 11 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 7 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 16 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 34 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 18 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 13 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 35 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 19 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 14 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 5 has been updated to checkpoint 13. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 8 has been updated to checkpoint 13. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 36 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 38 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 20 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 17 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 23 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 6 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 39 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 10 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 22 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 9 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 12 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 40 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 18 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 11 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 19 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 41 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 24 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 42 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 13 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 20 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 14 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 16 has been updated to checkpoint 13. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 23 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 44 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 28 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 22 has been updated to checkpoint 5. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 26 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 27 has been updated to checkpoint 9. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 30 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 45 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has arrived at medical checkpoint 14. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 17 has been updated to checkpoint 7. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 14. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 46 has been updated to checkpoint 1. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 4 has been updated to checkpoint 13. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 32 has been updated to checkpoint 4. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 7 has arrived at medical checkpoint 14. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 17. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has arrived at medical checkpoint 14. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 14. - 03/03/2013 20:08:31
+LOG - CM: Entrant no: 3 has been updated to checkpoint 13. - 03/03/2013 20:08:31
+LOG - CM: Time logs file loaded successfully (times.txt) - 03/03/2013 20:08:31
