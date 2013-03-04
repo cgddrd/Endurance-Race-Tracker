@@ -6,6 +6,7 @@
  */
 
 #include <cstdlib>
+#include "Entrant.h"
 
 using namespace std;
 
@@ -13,6 +14,9 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
+    
+    Entrant emp("Neal", 12, 'C');
+    emp.print();
 
     return 0;
 }

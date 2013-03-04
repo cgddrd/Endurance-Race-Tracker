@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Course.h</itemPath>
+      <itemPath>Entrant.h</itemPath>
+      <itemPath>Event.h</itemPath>
+      <itemPath>Node.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +16,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Course.cpp</itemPath>
+      <itemPath>Entrant.cpp</itemPath>
+      <itemPath>Event.cpp</itemPath>
+      <itemPath>Node.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -35,6 +43,22 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Course.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Course.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Entrant.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Entrant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Event.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Node.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -57,6 +81,22 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Course.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Course.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Entrant.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Entrant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Event.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Node.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
