@@ -18,7 +18,7 @@ public:
     Process(const Process& orig);
     virtual ~Process();
     void addEntrant();
-    std::vector<Entrant*> getSalaryInfoRequestCount(void);
+    std::vector<Entrant*> getEntrantList(void);
 private:
    std::vector<Entrant*> entrantList;
    Entrant *emp;

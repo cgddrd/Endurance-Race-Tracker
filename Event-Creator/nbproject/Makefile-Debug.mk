@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Course.o \
 	${OBJECTDIR}/Entrant.o \
 	${OBJECTDIR}/Event.o \
+	${OBJECTDIR}/FileIO.o \
 	${OBJECTDIR}/Node.o \
 	${OBJECTDIR}/Process.o \
 	${OBJECTDIR}/main.o
@@ -81,6 +82,11 @@ ${OBJECTDIR}/Event.o: Event.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Event.o Event.cpp
+
+${OBJECTDIR}/FileIO.o: FileIO.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/FileIO.o FileIO.cpp
 
 ${OBJECTDIR}/Node.o: Node.cpp 
 	${MKDIR} -p ${OBJECTDIR}

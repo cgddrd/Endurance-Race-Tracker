@@ -18,6 +18,18 @@ Entrant::~Entrant() {
     
 }
 
+std::string Entrant::getEntrantName() {
+    return entrant_name;
+}
+
+int Entrant::getEntrantNo() {
+    return entrant_no;
+}
+
+char Entrant::getCourseID() {
+    return course_id;
+}
+
 void Entrant::print(void) const {
     using namespace std;
     cout << "Entrant name: " << entrant_name << ' ';

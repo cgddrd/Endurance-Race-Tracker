@@ -7,6 +7,7 @@
       <itemPath>Course.h</itemPath>
       <itemPath>Entrant.h</itemPath>
       <itemPath>Event.h</itemPath>
+      <itemPath>FileIO.h</itemPath>
       <itemPath>Node.h</itemPath>
       <itemPath>Process.h</itemPath>
     </logicalFolder>
@@ -20,6 +21,7 @@
       <itemPath>Course.cpp</itemPath>
       <itemPath>Entrant.cpp</itemPath>
       <itemPath>Event.cpp</itemPath>
+      <itemPath>FileIO.cpp</itemPath>
       <itemPath>Node.cpp</itemPath>
       <itemPath>Process.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -56,6 +58,10 @@
       <item path="Event.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FileIO.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FileIO.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Node.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -98,6 +104,10 @@
       <item path="Event.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FileIO.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FileIO.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Node.cpp" ex="false" tool="1" flavor2="0">
       </item>

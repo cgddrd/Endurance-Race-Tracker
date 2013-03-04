@@ -9,6 +9,7 @@
 #include "Entrant.h"
 #include <vector>
 #include <iostream>
+#include <limits> 
 
 using namespace std;
 
@@ -30,7 +31,9 @@ void Process::addEntrant() {
    char cid;
    
    cout << "Please enter a name: ";
-   cin >> test; 
+   
+   
+   getline(cin, test);
    
    cout << "Please enter an entrant no: ";
    cin >> enno; 
@@ -38,13 +41,15 @@ void Process::addEntrant() {
    cout << "Please enter an course ID: ";
    cin >> cid; 
    
+   std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+   
+   
    emp = new Entrant(test, enno, cid);            
    entrantList.push_back(emp);        
     
 }
 
-vector<Entrant*> Process::getSalaryInfoRequestCount() {
-    
+vector<Entrant*> Process::getEntrantList() {
     return entrantList;
 }
 
