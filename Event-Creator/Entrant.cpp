@@ -9,13 +9,13 @@
 #include <iostream>
 
 
-Entrant::Entrant(const std::string &theName, int theEnNo, char theCourseID) : entrant_name(theName) {
+Entrant::Entrant(const std::string &theName, const int theEnNo, char theCourseID) : entrant_name(theName), entrant_no(theEnNo){
     
-    entrant_no = theEnNo;
     course_id = theCourseID;
 }
 
 Entrant::~Entrant() {
+    
 }
 
 void Entrant::print(void) const {

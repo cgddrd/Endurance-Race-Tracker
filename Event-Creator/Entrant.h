@@ -13,12 +13,12 @@
 class Entrant {
     
 public:
-    Entrant(const std::string &theName, int theEnNo, char theCourseID);
+    Entrant(const std::string &theName, const int theEnNo, char theCourseID);
     virtual ~Entrant();
     void print(void) const;
 private:
     std::string entrant_name;
-    int entrant_no;
+    const int entrant_no;
     char course_id;
 };
 
