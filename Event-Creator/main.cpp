@@ -28,6 +28,8 @@ int main(int argc, char** argv) {
   //  io.writeEntrants(test.getEntrantList());
     
     test.getAllNodes();
+    
+    test.showCourseEditor();
 
     return 0;
 }

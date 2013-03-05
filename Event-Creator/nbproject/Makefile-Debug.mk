@@ -36,9 +36,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Course.o \
+	${OBJECTDIR}/Datastore.o \
 	${OBJECTDIR}/Entrant.o \
 	${OBJECTDIR}/Event.o \
 	${OBJECTDIR}/FileIO.o \
+	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Node.o \
 	${OBJECTDIR}/Process.o \
 	${OBJECTDIR}/main.o
@@ -73,6 +75,11 @@ ${OBJECTDIR}/Course.o: Course.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Course.o Course.cpp
 
+${OBJECTDIR}/Datastore.o: Datastore.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Datastore.o Datastore.cpp
+
 ${OBJECTDIR}/Entrant.o: Entrant.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -87,6 +94,11 @@ ${OBJECTDIR}/FileIO.o: FileIO.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/FileIO.o FileIO.cpp
+
+${OBJECTDIR}/Menu.o: Menu.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Menu.o Menu.cpp
 
 ${OBJECTDIR}/Node.o: Node.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -39,6 +39,29 @@ void FileIO::writeEntrants(std::vector<Entrant*> entrantList) {
 
 }
 
+void FileIO::writeCourses(std::vector<Course*> courseList) {
+
+    ofstream myfile;
+    myfile.open("../files/examplecourses.txt", ios::out | ios::app);
+
+
+    for (std::vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
+        myfile << (*it)->getCourseID() << " " << (*it)->getCourseSize() << " ";
+        
+        std::vector<Node*> testy = (*it)->getCourseNodes();
+        
+         for (std::vector<Node*>::iterator jt = testy.begin(); jt != testy.end(); ++jt) {
+             //cout << "THIS NODE: " << (*jt)->getNodeNo() << endl;
+              myfile << (*jt)->getNodeNo() << " ";
+         }
+        
+        myfile << "\n";
+    }
+
+    myfile.close();
+
+}
+
 std::vector<std::vector<std::string > > FileIO::getFile() {
 
     string line;

@@ -6,7 +6,6 @@
  */
 
 #include "Process.h"
-#include "Entrant.h"
 #include "FileIO.h"
 #include <vector>
 #include <iostream>
@@ -60,11 +59,11 @@ void Process::getAllNodes() {
 
         cout << (*it).at(0) << "\n";
         cout << (*it).at(1) << "\n";
-        
+
         int value = atoi((*it).at(0).c_str());
-        
+
         Node *tempNode = new Node(value, (*it).at(1));
-        
+
         this->nodeList.push_back(tempNode);
 
         //it is now a pointer to a vector<int>
@@ -73,11 +72,116 @@ void Process::getAllNodes() {
         //       cout << (*jt).at(0) << "\n";
         //   }
     }
-    
-     for (std::vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
+
+    for (std::vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
         (*it)->print();
     }
 
+
+}
+
+void Process::showCourseEditor() {
+
+
+    int x;
+
+    while (x != 9) {
+
+        cout << "\n*************************************\n"
+                << "Course Editor | Please make a choice:\n"
+                << "-------------------------------------\n"
+                << "1. Create a new course.\n"
+                << "2. Add a new node to existing course.\n"
+                << "3. Export courses to file.\n"
+                << "4. Return to main menu.\n"
+                << "*************************************\n";
+
+        cin >> x;
+
+        switch (x) {
+
+            case 1:
+
+                createNewCourse();
+
+                break;
+
+            case 2:
+            {
+                Course *newCourse = NULL;
+
+                while (newCourse == NULL) {
+
+                    newCourse = getSelectedCourse();
+
+                }
+
+                addCourseNode(newCourse);
+
+                std::vector<Node*> tester = newCourse->getCourseNodes();
+
+                cout << "COURSE NODES:\n";
+
+                for (std::vector<Node*>::iterator it = tester.begin(); it != tester.end(); ++it) {
+                    cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << ")\n";
+                }
+
+                break;
+            }
+            case 3:
+                cout << "Exporting all courses to file.\n";
+                io.writeCourses(this->courseList);
+                break;
+            case 9:
+                cout << "Returning to main menu...\n";
+                break;
+            default:
+                cout << "Incorrect option. Please try again.\n";
+        }
+    }
+}
+
+
+void Process::createNewCourse() {
+
+    char cid;
+
+    cout << "Please enter a new course ID: ";
+    cin >> cid;
+
+    Course *newCourse = new Course(cid);
+
+    courseList.push_back(newCourse);
+
+
+}
+
+void Process::addCourseNode(Course *currentCourse) {
+
+    int nodeNo;
+
+    cout << "Please select a node to add: \n";
+
+    for (std::vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
+        cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << "), ";
+    }
+
+    cout << endl;
+
+    cin >> nodeNo;
+
+    for (std::vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
+
+        if ((*it)->getNodeNo() == nodeNo) {
+
+            currentCourse->addCourseNode((*it));
+            cout << "NODE ADDED\n";
+            return;
+        }
+
+    }
+
+    cout << "NODE NOT FOUND\n";
 
 }
 
@@ -87,5 +191,25 @@ const vector<Entrant*> Process::getEntrantList() const {
 
 const vector<Node*> Process::getNodeList() const {
     return nodeList;
+}
+
+Course* Process::getSelectedCourse() {
+
+    char selectedID;
+
+    cout << "Please enter ID of the course: \n";
+
+    cin >> selectedID;
+
+    for (std::vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
+
+        if ((*it)->getCourseID() == selectedID) {
+
+            return (*it);
+        }
+    }
+
+    return NULL;
+
 }
 

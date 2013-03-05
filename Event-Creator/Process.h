@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include "Entrant.h"
 #include "Node.h"
+#include "Course.h"
 
 class Process {
 public:
@@ -20,11 +21,16 @@ public:
     virtual ~Process();
     void addEntrant();
     void getAllNodes();
+    void showCourseEditor();
+    void createNewCourse();
+    Course* getSelectedCourse();
+    void addCourseNode(Course *currentCourse);
     const std::vector<Entrant*> getEntrantList(void) const;
     const std::vector<Node*> getNodeList() const;
 private:
    std::vector<Entrant*> entrantList;
    std::vector<Node*> nodeList;
+   std::vector<Course*> courseList;
    Entrant *emp;
 };
 
