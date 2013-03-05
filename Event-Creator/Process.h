@@ -22,11 +22,13 @@ public:
     Process(const Process& orig);
     virtual ~Process();
     void addEntrant();
+    void createEvent();
     void getAllNodes();
     void showCourseEditor();
     void createNewCourse();
     Course* getSelectedCourse();
     void addCourseNode(Course *currentCourse);
+    
 private:
    Entrant *emp;
    FileIO io;

@@ -145,10 +145,9 @@ void Menu::showEntrantEditor() {
         cout << "\n*************************************\n"
                 << "Entrant Editor | Please make a choice:\n"
                 << "-------------------------------------\n"
-                << "1. Enter event title.\n"
-                << "2. Enter event date.\n"
-                << "3. Enter event time.\n"
-                << "3. Return to main menu..\n"
+                << "1. Create a new entrant.\n"
+                << "2. Export entrants to file.\n"
+                << "3. Return to main menu.\n"
                 << "*************************************\n";
 
         cin >> x;
@@ -184,8 +183,8 @@ void Menu::showEventEditor() {
         cout << "\n*************************************\n"
                 << "Event Editor | Please make a choice:\n"
                 << "-------------------------------------\n"
-                << "1. Set new Event Title. \n"
-                << "2. Export entrants to file.\n"
+                << "1. Create new event.\n"
+                << "2. Write event to file.\n"
                 << "3. Return to main menu.\n"
                 << "*************************************\n";
 
@@ -196,7 +195,7 @@ void Menu::showEventEditor() {
             case 1:
 
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                proc->addEntrant();
+                proc->createEvent();
                 break;
 
             case 2:

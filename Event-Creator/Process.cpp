@@ -24,6 +24,12 @@ Process::Process(const Process& orig) {
 Process::~Process() {
 }
 
+void Process::createEvent() {
+    
+    //If event !=null (already exists) then let the user know.
+    //Prompt for name, date and time, then save to event structure.
+    
+}
 void Process::addEntrant() {
 
     string test;
@@ -93,10 +99,7 @@ void Process::createNewCourse() {
     Course *newCourse = new Course(cid);
 
     data->addNewCourse(newCourse);
-    
-    cout << "SIZE: " << data->getCourseList().size() << endl;
-
-
+   
 }
 
 void Process::addCourseNode(Course *currentCourse) {
