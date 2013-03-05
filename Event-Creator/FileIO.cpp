@@ -27,7 +27,7 @@ FileIO::~FileIO() {
 void FileIO::writeEntrants(std::vector<Entrant*> entrantList) {
 
     ofstream myfile;
-    myfile.open("../files/example.txt", ios::out | ios::app);
+    myfile.open("../files/exampleentrants.txt", ios::out | ios::app);
 
 
     for (std::vector<Entrant*>::iterator it = entrantList.begin(); it != entrantList.end(); ++it) {

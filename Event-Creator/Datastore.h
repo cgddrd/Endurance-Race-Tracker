@@ -17,8 +17,15 @@
 class Datastore {
 public:
     Datastore();
-    Datastore(const Datastore& orig);
     virtual ~Datastore();
+    std::vector<Course*> getCourseList();
+    std::vector<Node*> getNodeList();
+    std::vector<Entrant*> getEntrantList();
+    void addNewCourse (Course* newCourse);
+    void addNewNode (Node* newNode);
+    void addNewEntrant (Entrant* newEntrant);
+    Course* getInCourse (char courseID);
+    Node* obtainNode (int nodeNo);
 private:
    std::vector<Entrant*> entrantList;
    std::vector<Node*> nodeList;

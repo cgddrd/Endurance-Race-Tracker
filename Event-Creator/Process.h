@@ -13,10 +13,12 @@
 #include "Entrant.h"
 #include "Node.h"
 #include "Course.h"
+#include "FileIO.h"
+#include "Datastore.h"
 
 class Process {
 public:
-    Process();
+    Process(Datastore *newData);
     Process(const Process& orig);
     virtual ~Process();
     void addEntrant();
@@ -25,13 +27,10 @@ public:
     void createNewCourse();
     Course* getSelectedCourse();
     void addCourseNode(Course *currentCourse);
-    const std::vector<Entrant*> getEntrantList(void) const;
-    const std::vector<Node*> getNodeList() const;
 private:
-   std::vector<Entrant*> entrantList;
-   std::vector<Node*> nodeList;
-   std::vector<Course*> courseList;
    Entrant *emp;
+   FileIO io;
+   Datastore *data; 
 };
 
 #endif	/* PROCESS_H */

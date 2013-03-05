@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Process.h"
 #include "FileIO.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -19,17 +20,25 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    Process test;
-    FileIO io;
+    Datastore *data = new Datastore();
+    Process *proc = new Process(data);
+    
+    Menu *menu = new Menu(data, proc);
+    
+    proc->getAllNodes();
+    menu->showMainMenu();
+    
+ //   Process test();
+  //  FileIO io;
 
   //  test.addEntrant();
   //  test.addEntrant();
 
   //  io.writeEntrants(test.getEntrantList());
     
-    test.getAllNodes();
+  //  test.getAllNodes();
     
-    test.showCourseEditor();
+  //  test.showCourseEditor();
 
     return 0;
 }
