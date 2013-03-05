@@ -7,15 +7,18 @@
 
 #include "Process.h"
 #include "Entrant.h"
+#include "FileIO.h"
 #include <vector>
 #include <iostream>
 #include <limits> 
 
 using namespace std;
 
+FileIO io;
+
 Process::Process() {
-    
-    
+
+
 }
 
 Process::Process(const Process& orig) {
@@ -25,31 +28,64 @@ Process::~Process() {
 }
 
 void Process::addEntrant() {
-    
-   string test;
-   int enno;
-   char cid;
-   
-   cout << "Please enter a name: ";
-   
-   
-   getline(cin, test);
-   
-   cout << "Please enter an entrant no: ";
-   cin >> enno; 
-   
-   cout << "Please enter an course ID: ";
-   cin >> cid; 
-   
-   std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-   
-   
-   emp = new Entrant(test, enno, cid);            
-   entrantList.push_back(emp);        
-    
+
+    string test;
+    char cid;
+
+    cout << "Please enter a name: ";
+
+    getline(cin, test);
+
+    // cout << "Please enter an entrant no: ";
+    //   cin >> enno; 
+
+    cout << "Please enter an course ID: ";
+    cin >> cid;
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    int enno = (entrantList.size() + 1);
+
+    Entrant *emp = new Entrant(test, enno, cid);
+
+    entrantList.push_back(emp);
+
 }
 
-vector<Entrant*> Process::getEntrantList() {
+void Process::getAllNodes() {
+
+    std::vector<std::vector<std::string > > temp = io.getFile();
+
+    for (std::vector<std::vector<std::string > >::iterator it = temp.begin(); it != temp.end(); ++it) {
+
+        cout << (*it).at(0) << "\n";
+        cout << (*it).at(1) << "\n";
+        
+        int value = atoi((*it).at(0).c_str());
+        
+        Node *tempNode = new Node(value, (*it).at(1));
+        
+        this->nodeList.push_back(tempNode);
+
+        //it is now a pointer to a vector<int>
+        //  for (std::vector<std::string>::iterator jt = it->begin(); jt != it->end(); ++jt) {
+        // jt is now a pointer to an integer.
+        //       cout << (*jt).at(0) << "\n";
+        //   }
+    }
+    
+     for (std::vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
+        (*it)->print();
+    }
+
+
+}
+
+const vector<Entrant*> Process::getEntrantList() const {
     return entrantList;
+}
+
+const vector<Node*> Process::getNodeList() const {
+    return nodeList;
 }
 

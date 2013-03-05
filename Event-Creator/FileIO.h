@@ -9,6 +9,7 @@
 #define	FILEIO_H
 
 #include "Entrant.h"
+#include <iterator> //for std::istream_iterator
 
 class FileIO {
 public:
@@ -16,8 +17,10 @@ public:
     FileIO(const FileIO& orig);
     virtual ~FileIO();
     void writeEntrants(std::vector<Entrant*> entrantList);
+    std::vector<std::vector<std::string > > getFile();
 private:
-
+    std::vector<std::string> arrayTokens;
+    std::vector<std::vector<std::string > > test;
 };
 
 #endif	/* FILEIO_H */

@@ -22,23 +22,12 @@ int main(int argc, char** argv) {
     Process test;
     FileIO io;
 
-    // test.addEntrant("David", 45, 'B');
-    // test.addEntrant("Connor", 1, 'E');
+  //  test.addEntrant();
+  //  test.addEntrant();
 
-    test.addEntrant();
-    test.addEntrant();
-
-  /*  vector<Entrant*> bar = test.getEntrantList();
-
-    for (std::vector<Entrant*>::iterator it = bar.begin(); it != bar.end(); ++it) {
-        (*it)->print();
-    }
-
-    test.addEntrant();
-
-    bar = test.getEntrantList(); */
-
-    io.writeEntrants(test.getEntrantList());
+  //  io.writeEntrants(test.getEntrantList());
+    
+    test.getAllNodes();
 
     return 0;
 }

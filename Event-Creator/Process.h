@@ -11,6 +11,7 @@
 #include <vector>
 #include <cstdlib>
 #include "Entrant.h"
+#include "Node.h"
 
 class Process {
 public:
@@ -18,9 +19,12 @@ public:
     Process(const Process& orig);
     virtual ~Process();
     void addEntrant();
-    std::vector<Entrant*> getEntrantList(void);
+    void getAllNodes();
+    const std::vector<Entrant*> getEntrantList(void) const;
+    const std::vector<Node*> getNodeList() const;
 private:
    std::vector<Entrant*> entrantList;
+   std::vector<Node*> nodeList;
    Entrant *emp;
 };
 
