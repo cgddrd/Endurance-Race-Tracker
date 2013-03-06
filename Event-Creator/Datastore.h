@@ -1,8 +1,9 @@
 /* 
- * File:   Datastore.h
- * Author: connor
- *
- * Created on March 5, 2013, 4:40 PM
+ * File: Course.h
+ * Description: Defines all variables/methods for the Datastore class.
+ * Author: Connor Luke Goddard (clg11)
+ * Date: March 2013
+ * Copyright: Aberystwyth University, Aberystwyth
  */
 
 #ifndef DATASTORE_H
@@ -15,6 +16,10 @@
 #include "Course.h"
 #include "Event.h"
 
+/**
+ * Datastore class used for storing and providing access to all the of 
+ * shared data used throughout the application..
+ */
 class Datastore {
 public:
     Datastore();
@@ -31,9 +36,17 @@ public:
     Node* obtainNode (int nodeNo);
     
 private:
-   std::vector<Entrant*> entrantList;
+    
+    /** Vector of pointers to all Entrant objects created. */
+   std::vector<Entrant*> entrantList; 
+   
+   /** Vector of pointers to all Nodes objects read into the system. */
    std::vector<Node*> nodeList;
+   
+   /** Vector of pointers to all Course objects created. */
    std::vector<Course*> courseList;
+   
+   /** Pointer to Event object used to define the race event. */
    Event *event;
 };
 

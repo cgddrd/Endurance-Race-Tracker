@@ -1,9 +1,12 @@
 /* 
- * File:   Menu.cpp
- * Author: connor
- * 
- * Created on March 5, 2013, 4:41 PM
+ * File: FileIO.h
+ * Description: Generates system menus to provide a means of interacting with
+ * the application.
+ * Author: Connor Luke Goddard (clg11)
+ * Date: March 2013
+ * Copyright: Aberystwyth University, Aberystwyth
  */
+
 
 #include <vector>
 #include <iostream>
@@ -13,6 +16,13 @@
 
 using namespace std;
 
+/**
+ * Constructor for Menu that allows access to Process and Datastore classes
+ * created in "main.cpp". This allows Menu to access the same data stored in 
+ * Datastore as the Process class.
+ * @param newData Pointer to the shared Datastore class created in the main method.
+ * @param newProc Pointer to the shared Process class created in the main method.
+ */
 Menu::Menu(Datastore *newData, Process *newProc) {
 
     data = newData;
@@ -20,15 +30,20 @@ Menu::Menu(Datastore *newData, Process *newProc) {
 
 }
 
-Menu::Menu(const Menu& orig) {
-}
-
+/**
+ * Destructor to be used once object is removed.
+ * Removes the objects stored on the heap.
+ */
 Menu::~Menu() {
 
     delete data;
     delete proc;
 }
 
+/**
+ * Provides top-level interactive menu to allow user to interact with the
+ * application and utilise its functions.
+ */
 void Menu::showMainMenu(void) {
 
     int x;
@@ -64,23 +79,36 @@ void Menu::showMainMenu(void) {
 
                 showCourseEditor();
                 break;
+
             case 4:
+
+                /**
+                 * Export all data to their files.
+                 * As this method writes ALL the data, it has to check
+                 * that at least one instance of each object (Entrant, Event
+                 * and Course) exists before being able to write them all to file.
+                 */
 
                 cout << "Writing all data to files...\n";
 
+                //Check if an event has been created.
                 if (data->getEvent() == NULL) {
 
                     cout << "ERROR: No event created. Nothing to export.\n";
 
+                    //Check if any entrants have been created.
                 } else if (data->getEntrantList().size() <= 0) {
 
-                        cout << "ERROR: No entrants created. Nothing to export.\n";
-                        
+                    cout << "ERROR: No entrants created. Nothing to export.\n";
+
+                    //Check if any courses have been created.
                 } else if (data->getCourseList().size() <= 0) {
-                    
+
                     cout << "ERROR: No courses created. Nothing to export.\n";
 
                 } else {
+
+                    //If there are no problems, write all the data to file.
                     io.writeEvent(data->getEvent());
                     io.writeEntrants(data->getEntrantList());
                     io.writeCourses(data->getCourseList());
@@ -97,6 +125,10 @@ void Menu::showMainMenu(void) {
     }
 }
 
+/**
+ * Provides sub-level interactive menu to allow user to create new
+ * courses and write them to file.
+ */
 void Menu::showCourseEditor(void) {
 
     int x;
@@ -126,39 +158,38 @@ void Menu::showCourseEditor(void) {
             {
                 Course *newCourse = NULL;
 
+                //Prompt user for the ID of the course they wish to edit.
                 newCourse = proc->getSelectedCourse();
 
+                //If the specified course does not exist..
                 if (newCourse == NULL) {
 
+                    //.. inform the user.
                     cout << "ERROR: Course does not exist. Please try again";
 
+                //Otherwise if the course does exist..
                 } else {
 
+                    //Prompt the user for the node they wish to add and add it. 
                     proc->addCourseNode(newCourse);
-
-                    std::vector<Node*> tester = newCourse->getCourseNodes();
-
-                    cout << "\nCurrent nodes contained in Course (" << newCourse->getCourseID() << "):\n";
-
-                    for (std::vector<Node*>::iterator it = tester.begin(); it != tester.end(); ++it) {
-                        cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << ")\n";
-                    }
 
                 }
 
                 break;
             }
             case 3:
-                
+
                 cout << "Exporting all courses to file.\n";
+                
+                //Check if any courses have been created. 
                 if (data->getCourseList().size() > 0) {
-                   io.writeCourses(data->getCourseList());
+                    io.writeCourses(data->getCourseList());
                 } else {
-                   cout << "\nERROR: No courses created. Nothing to export.\n"; 
+                    cout << "\nERROR: No courses created. Nothing to export.\n";
                 }
-                
-                
+
                 break;
+                
             case 4:
                 cout << "Returning to main menu...\n";
                 break;
@@ -168,6 +199,10 @@ void Menu::showCourseEditor(void) {
     }
 }
 
+/**
+ * Provides sub-level interactive menu to allow user to create new
+ * entrants and write them to file.
+ */
 void Menu::showEntrantEditor(void) {
 
     int x;
@@ -187,20 +222,25 @@ void Menu::showEntrantEditor(void) {
         switch (x) {
 
             case 1:
-
+                
+                //Flush the input buffer to prevent skipping on "getline()".
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                
+                //Run method to add a new entrant.
                 proc->addEntrant();
                 break;
 
             case 2:
 
                 cout << "Exporting all entrants to file.\n";
-                if (data->getEntrantList().size() > 0) {
-                   io.writeEntrants(data->getEntrantList());
-                } else {
-                   cout << "\nERROR: No entrants created. Nothing to export.\n"; 
-                }
                 
+                //Check is any entrants have been created.
+                if (data->getEntrantList().size() > 0) {
+                    io.writeEntrants(data->getEntrantList());
+                } else {
+                    cout << "\nERROR: No entrants created. Nothing to export.\n";
+                }
+
                 break;
 
             case 3:
@@ -212,6 +252,10 @@ void Menu::showEntrantEditor(void) {
     }
 }
 
+/**
+ * Provides sub-level interactive menu to allow user to create a new
+ * event and write it's details to file.
+ */
 void Menu::showEventEditor(void) {
 
     int x;
@@ -232,19 +276,24 @@ void Menu::showEventEditor(void) {
 
             case 1:
 
+                //Flush the input buffer to prevent skipping on "getline()".
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                
+                //Perform check to see if an event has already been created.
                 checkExistingEvent();
                 break;
 
             case 2:
-                
+
                 cout << "Exporting event to file.\n";
-                if (data->getEvent() != NULL) {
-                   io.writeEvent(data->getEvent()); 
-                } else {
-                   cout << "\nERROR: No event created. Nothing to export.\n"; 
-                }
                 
+                //Check to see if an event had been created.
+                if (data->getEvent() != NULL) {
+                    io.writeEvent(data->getEvent());
+                } else {
+                    cout << "\nERROR: No event created. Nothing to export.\n";
+                }
+
                 break;
 
             case 3:
@@ -256,12 +305,18 @@ void Menu::showEventEditor(void) {
     }
 }
 
+/**
+ * Checks to see if an existing event has already been created in this session,
+ * and provides suitable prompting and error checking as required.
+ */
 void Menu::checkExistingEvent(void) {
 
     char input;
 
+    //Check to see if the 'event' pointer in Datastore has been set to an Event object.
     if (data->getEvent() != NULL) {
 
+        //If an event has already been created, prompt user for confirmation.
         while (!((input == 'y') || (input == 'n') || (input == 'Y') || (input == 'N'))) {
 
             cout << "WARNING: An event has already been created.\n";
@@ -272,9 +327,16 @@ void Menu::checkExistingEvent(void) {
 
                 case 'Y':
                 case 'y':
+                    
+                    //Flush the input buffer to prevent skipping on "getline()".
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    
+                    //Prompt user for event information and create the new event.
                     proc->createEvent();
                     break;
+                
+                //If the answer is no, nothing needs to happen. 
+                //Case is left in to prevent system thinking 'n/N' keys are incorrect.
                 case 'N':
                 case 'n':
                     break;
@@ -284,6 +346,8 @@ void Menu::checkExistingEvent(void) {
             }
         }
     } else {
+        
+        //Otherwise if no event has been created as of yet, create a new one.
         proc->createEvent();
     }
 }

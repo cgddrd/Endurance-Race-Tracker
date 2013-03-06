@@ -1,39 +1,56 @@
 /* 
- * File:   Entrant.cpp
- * Author: connor
- * 
- * Created on March 4, 2013, 10:21 AM
+ * File: Entrant.cpp
+ * Description: Provides a data model for an entrant in an event.
+ * Author: Connor Luke Goddard (clg11)
+ * Date: March 2013
+ * Copyright: Aberystwyth University, Aberystwyth
  */
 
 #include "Entrant.h"
 #include <iostream>
 
+using namespace std;
 
+
+/**
+ * Constructor that allows the constant 'entrant_name' and 'entrant_no' variables
+ * to be specified. Also specifies the ID of the course the entrant is registered for.
+ * @param theName The inputted name of the entrant.
+ * @param theEnNo The inputted unique entrant number.
+ * @param theCourseID The new course ID value to be set.
+ */
 Entrant::Entrant(const std::string &theName, const int theEnNo, char theCourseID) : entrant_name(theName), entrant_no(theEnNo){
     
     course_id = theCourseID;
 }
 
+/**
+ * Destructor to be used once object is removed.
+ */
 Entrant::~Entrant() {
     
 }
 
-std::string Entrant::getEntrantName(void) {
+/**
+ * Fetches the name of the entrant.
+ * @return A string containing the name of the entrant.
+ */
+string Entrant::getEntrantName(void) {
     return entrant_name;
 }
 
+/**
+ * Fetches the ID number of the entrant.
+ * @return An integer containing the entrant number.
+ */
 int Entrant::getEntrantNo(void) {
     return entrant_no;
 }
 
+/**
+ * Fetches the ID of the course the entrant is registered for.
+ * @return An char containing the course ID.
+ */
 char Entrant::getCourseID(void) {
     return course_id;
 }
-
-void Entrant::print(void) const {
-    using namespace std;
-    cout << "Entrant name: " << entrant_name << ' ';
-    cout << "Employee no: " << entrant_no << ' ';
-    cout << "Course ID: " << course_id << endl;
-}
-

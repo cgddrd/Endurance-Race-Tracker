@@ -1,18 +1,28 @@
 /* 
- * File:   Event.cpp
- * Author: connor
- * 
- * Created on March 4, 2013, 10:19 AM
+ * File: Event.cpp
+ * Description: Provides a data model for a particular event.
+ * Author: Connor Luke Goddard (clg11)
+ * Date: March 2013
+ * Copyright: Aberystwyth University, Aberystwyth
  */
 
 #include "Event.h"
 
 using namespace std;
 
+/**
+ * Default constructor for Event.
+ */
 Event::Event() {
     
 }
 
+/**
+ * Constructor that allows the characteristics of an event to be specified.
+ * @param newEventName The inputted name/description of the event.
+ * @param newEventDate The inputted date of the event.
+ * @param newEventTime The inputted start time of the event.
+ */
 Event::Event(string newEventName, string newEventDate, string newEventTime) {
     
     eventName = newEventName;
@@ -21,32 +31,56 @@ Event::Event(string newEventName, string newEventDate, string newEventTime) {
     
 }
 
-Event::Event(const Event& orig) {
-}
-
+/**
+ * Destructor to be used once object is removed.
+ */
 Event::~Event() {
 }
 
+/**
+ * Updates the start time of the event to an inputted value.
+ * @param eventTime Recently inputted start time value.
+ */
 void Event::setEventTime(string eventTime) {
     this->eventTime = eventTime;
 }
 
-std::string Event::getEventTime(void) const {
+/**
+ * Fetches the start time of the event.
+ * @return The value of the 'eventTime' string variable.
+ */
+string Event::getEventTime(void) const {
     return eventTime;
 }
 
+/**
+ * Updates the date of the event to an inputted value.
+ * @param eventDate Recently inputted event date value.
+ */
 void Event::setEventDate(string eventDate) {
     this->eventDate = eventDate;
 }
 
-std::string Event::getEventDate(void) const {
+/**
+ * Fetches the date of the event.
+ * @return The value of the 'eventDate' string variable.
+ */
+string Event::getEventDate(void) const {
     return eventDate;
 }
 
+/**
+ * Updates the name/description of the event to an inputted value.
+ * @param eventTime Recently inputted event name/description..
+ */
 void Event::setEventName(string eventName) {
     this->eventName = eventName;
 }
 
-std::string Event::getEventName(void) const {
+/**
+ * Fetches the name/description of the event.
+ * @return The value of the 'eventName' string variable.
+ */
+string Event::getEventName(void) const {
     return eventName;
 }

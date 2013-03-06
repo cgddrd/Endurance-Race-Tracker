@@ -1,8 +1,9 @@
 /* 
- * File:   FileIO.h
- * Author: connor
- *
- * Created on March 4, 2013, 10:49 PM
+ * File: FileIO.h
+ * Description: Defines all variables/methods for the FileIO class.
+ * Author: Connor Luke Goddard (clg11)
+ * Date: March 2013
+ * Copyright: Aberystwyth University, Aberystwyth
  */
 
 #ifndef FILEIO_H
@@ -11,7 +12,6 @@
 #include "Entrant.h"
 #include "Course.h"
 #include "Event.h"
-#include <iterator> //for std::istream_iterator
 
 class FileIO {
 public:
@@ -23,7 +23,12 @@ public:
     void writeEvent(Event *event);
     std::vector<std::vector<std::string > > getFile(std::string fileName);
 private:
-    std::vector<std::vector<std::string > > arrayTokens;
+    
+    /** 
+     * Vector of vectors used to store the contents of individual line
+     * that collect to form the entire file.
+     */
+    std::vector<std::vector<std::string > > arrayTokens; 
 };
 
 #endif	/* FILEIO_H */

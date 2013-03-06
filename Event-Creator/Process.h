@@ -1,8 +1,9 @@
 /* 
- * File:   Process.h
- * Author: connor
- *
- * Created on March 4, 2013, 3:25 PM
+ * File: Process.h
+ * Description: Defines all variables/methods for the Process class.
+ * Author: Connor Luke Goddard (clg11)
+ * Date: March 2013
+ * Copyright: Aberystwyth University, Aberystwyth
  */
 
 #ifndef PROCESS_H
@@ -18,7 +19,9 @@
 #include "Event.h"
 
 class Process {
+    
 public:
+    
     Process(Datastore *newData);
     Process(const Process& orig);
     virtual ~Process();
@@ -30,9 +33,13 @@ public:
     Course* getSelectedCourse(void);
     void addCourseNode(Course *currentCourse);
     std::string convertDate(std::string &input);
+    
 private:
-   Entrant *emp;
+    
+   /** Allows access to file I/O methods.*/
    FileIO io;
+   
+   /** Pointer to shared Datastore class created in "main.cpp".*/
    Datastore *data; 
 };
 
