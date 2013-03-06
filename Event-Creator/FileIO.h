@@ -10,6 +10,7 @@
 
 #include "Entrant.h"
 #include "Course.h"
+#include "Event.h"
 #include <iterator> //for std::istream_iterator
 
 class FileIO {
@@ -19,10 +20,10 @@ public:
     virtual ~FileIO();
     void writeEntrants(std::vector<Entrant*> entrantList);
     void writeCourses(std::vector<Course*> courseList);
-    std::vector<std::vector<std::string > > getFile();
+    void writeEvent(Event *event);
+    std::vector<std::vector<std::string > > getFile(std::string fileName);
 private:
-    std::vector<std::string> arrayTokens;
-    std::vector<std::vector<std::string > > test;
+    std::vector<std::vector<std::string > > arrayTokens;
 };
 
 #endif	/* FILEIO_H */

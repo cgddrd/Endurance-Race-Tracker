@@ -12,6 +12,7 @@
 #include <sstream>  //for std::istringstream
 #include <iterator> //for std::istream_iterator
 #include "FileIO.h"
+#include "Event.h"
 
 using namespace std;
 
@@ -24,11 +25,10 @@ FileIO::FileIO(const FileIO& orig) {
 FileIO::~FileIO() {
 }
 
-void FileIO::writeEntrants(std::vector<Entrant*> entrantList) {
+void FileIO::writeEntrants(vector<Entrant*> entrantList) {
 
     ofstream myfile;
     myfile.open("../files/exampleentrants.txt", ios::out | ios::app);
-
 
     for (std::vector<Entrant*>::iterator it = entrantList.begin(); it != entrantList.end(); ++it) {
         (*it)->print();
@@ -39,19 +39,17 @@ void FileIO::writeEntrants(std::vector<Entrant*> entrantList) {
 
 }
 
-void FileIO::writeCourses(std::vector<Course*> courseList) {
+void FileIO::writeCourses(vector<Course*> courseList) {
 
     ofstream myfile;
     myfile.open("../files/examplecourses.txt", ios::out | ios::app);
 
-
-    for (std::vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
+    for (vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
         myfile << (*it)->getCourseID() << " " << (*it)->getCourseSize() << " ";
         
-        std::vector<Node*> testy = (*it)->getCourseNodes();
+        vector<Node*> testy = (*it)->getCourseNodes();
         
-         for (std::vector<Node*>::iterator jt = testy.begin(); jt != testy.end(); ++jt) {
-             //cout << "THIS NODE: " << (*jt)->getNodeNo() << endl;
+         for (vector<Node*>::iterator jt = testy.begin(); jt != testy.end(); ++jt) {
               myfile << (*jt)->getNodeNo() << " ";
          }
         
@@ -62,28 +60,37 @@ void FileIO::writeCourses(std::vector<Course*> courseList) {
 
 }
 
-std::vector<std::vector<std::string > > FileIO::getFile() {
+void FileIO::writeEvent(Event *event) {
+
+    ofstream myfile;
+    myfile.open("../files/exampleevent.txt", ios::out | ios::trunc);
+    
+    myfile << (*event).getEventName() << "\n" << (*event).getEventDate() << "\n" << (*event).getEventTime() << "\n";
+
+    myfile.close();
+
+}
+
+vector<vector<string > > FileIO::getFile(string fileName) {
 
     string line;
-    ifstream myfile("../files/nodes.txt");
+    ifstream myfile(fileName.c_str());
     if (myfile.is_open()) {
         
         while (std::getline(myfile, line)) {
 
-            std::istringstream ss(line);
-            std::istream_iterator<std::string> begin(ss), end;
+            istringstream ss(line);
+            istream_iterator<string> begin(ss), end;
 
             //putting all the tokens in the vector
-            std::vector<std::string> poo(begin, end);
-            //line.at(0)
-            test.push_back(poo);
+            vector<string> allStrings(begin, end);
+            arrayTokens.push_back(allStrings);
 
         }
         
-        myfile.close();
+        myfile.close();  
     }
     
-    return test;
-  
+    return arrayTokens;
 }
 

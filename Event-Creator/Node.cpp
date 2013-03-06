@@ -23,16 +23,15 @@ void Node::setNodeType(std::string nodeType) {
     this->nodeType = nodeType;
 }
 
-std::string Node::getNodeType() const {
+std::string Node::getNodeType(void) const {
     return nodeType;
 }
 
-const int Node::getNodeNo() const {
+const int Node::getNodeNo(void) const {
     return nodeNo;
 }
 
 void Node::print(void) const {
-    using namespace std;
     cout << "Node no: " << nodeNo << ' ';
     cout << "Node type: " << nodeType << endl;
 }

@@ -8,21 +8,28 @@
 #include "Datastore.h"
 
 Datastore::Datastore() {
+    
+    event = NULL;
 }
 
 Datastore::~Datastore() {
+    delete event;
 }
 
-std::vector<Course*> Datastore::getCourseList(){
+std::vector<Course*> Datastore::getCourseList(void){
     return courseList;
 }
 
-std::vector<Node*> Datastore::getNodeList(){
+std::vector<Node*> Datastore::getNodeList(void) {
     return nodeList;
 }
 
-std::vector<Entrant*> Datastore::getEntrantList(){
+std::vector<Entrant*> Datastore::getEntrantList(void){
     return entrantList;
+}
+
+Event* Datastore::getEvent(void) const {
+    return event;
 }
 
 void Datastore::addNewCourse (Course* newCourse) {
@@ -43,6 +50,11 @@ void Datastore::addNewEntrant (Entrant* newEntrant) {
     
 }
 
+void Datastore::setNewEvent(Event* newEvent) {
+    
+    this->event = newEvent;
+    
+}
 
 Course* Datastore::getInCourse (char selectedID) {
     
@@ -72,4 +84,3 @@ Node* Datastore::obtainNode (int nodeNo) {
     
     return NULL;
 }
-

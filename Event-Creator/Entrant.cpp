@@ -18,15 +18,15 @@ Entrant::~Entrant() {
     
 }
 
-std::string Entrant::getEntrantName() {
+std::string Entrant::getEntrantName(void) {
     return entrant_name;
 }
 
-int Entrant::getEntrantNo() {
+int Entrant::getEntrantNo(void) {
     return entrant_no;
 }
 
-char Entrant::getCourseID() {
+char Entrant::getCourseID(void) {
     return course_id;
 }
 

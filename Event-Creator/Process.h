@@ -15,20 +15,21 @@
 #include "Course.h"
 #include "FileIO.h"
 #include "Datastore.h"
+#include "Event.h"
 
 class Process {
 public:
     Process(Datastore *newData);
     Process(const Process& orig);
     virtual ~Process();
-    void addEntrant();
-    void createEvent();
-    void getAllNodes();
-    void showCourseEditor();
-    void createNewCourse();
-    Course* getSelectedCourse();
+    void addEntrant(void);
+    void createEvent(void);
+    void getAllNodes(void);
+    void showCourseEditor(void);
+    void createNewCourse(void);
+    Course* getSelectedCourse(void);
     void addCourseNode(Course *currentCourse);
-    
+    std::string convertDate(std::string &input);
 private:
    Entrant *emp;
    FileIO io;

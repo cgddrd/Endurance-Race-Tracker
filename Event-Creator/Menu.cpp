@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <limits> 
+#include <string.h>
 #include "Menu.h"
 
 using namespace std;
@@ -23,9 +24,12 @@ Menu::Menu(const Menu& orig) {
 }
 
 Menu::~Menu() {
+
+    delete data;
+    delete proc;
 }
 
-void Menu::showMainMenu() {
+void Menu::showMainMenu(void) {
 
     int x;
 
@@ -52,21 +56,38 @@ void Menu::showMainMenu() {
                 break;
 
             case 2:
-                
+
                 showEntrantEditor();
                 break;
-           
+
             case 3:
-                
+
                 showCourseEditor();
                 break;
             case 4:
-                
+
                 cout << "Writing all data to files...\n";
-                io.writeEntrants(data->getEntrantList());
-                io.writeCourses(data->getCourseList());
+
+                if (data->getEvent() == NULL) {
+
+                    cout << "ERROR: No event created. Nothing to export.\n";
+
+                } else if (data->getEntrantList().size() <= 0) {
+
+                        cout << "ERROR: No entrants created. Nothing to export.\n";
+                        
+                } else if (data->getCourseList().size() <= 0) {
+                    
+                    cout << "ERROR: No courses created. Nothing to export.\n";
+
+                } else {
+                    io.writeEvent(data->getEvent());
+                    io.writeEntrants(data->getEntrantList());
+                    io.writeCourses(data->getCourseList());
+                }
+
                 break;
-                
+
             case 5:
                 cout << "Exiting...\n";
                 break;
@@ -76,7 +97,7 @@ void Menu::showMainMenu() {
     }
 }
 
-void Menu::showCourseEditor() {
+void Menu::showCourseEditor(void) {
 
     int x;
 
@@ -105,27 +126,38 @@ void Menu::showCourseEditor() {
             {
                 Course *newCourse = NULL;
 
-                while (newCourse == NULL) {
+                newCourse = proc->getSelectedCourse();
 
-                    newCourse = proc->getSelectedCourse();
+                if (newCourse == NULL) {
 
-                }
+                    cout << "ERROR: Course does not exist. Please try again";
 
-                proc->addCourseNode(newCourse);
+                } else {
 
-                std::vector<Node*> tester = newCourse->getCourseNodes();
+                    proc->addCourseNode(newCourse);
 
-                cout << "COURSE NODES:\n";
+                    std::vector<Node*> tester = newCourse->getCourseNodes();
 
-                for (std::vector<Node*>::iterator it = tester.begin(); it != tester.end(); ++it) {
-                    cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << ")\n";
+                    cout << "\nCurrent nodes contained in Course (" << newCourse->getCourseID() << "):\n";
+
+                    for (std::vector<Node*>::iterator it = tester.begin(); it != tester.end(); ++it) {
+                        cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << ")\n";
+                    }
+
                 }
 
                 break;
             }
             case 3:
+                
                 cout << "Exporting all courses to file.\n";
-                io.writeCourses(data->getCourseList());
+                if (data->getCourseList().size() > 0) {
+                   io.writeCourses(data->getCourseList());
+                } else {
+                   cout << "\nERROR: No courses created. Nothing to export.\n"; 
+                }
+                
+                
                 break;
             case 4:
                 cout << "Returning to main menu...\n";
@@ -136,7 +168,7 @@ void Menu::showCourseEditor() {
     }
 }
 
-void Menu::showEntrantEditor() {
+void Menu::showEntrantEditor(void) {
 
     int x;
 
@@ -162,7 +194,13 @@ void Menu::showEntrantEditor() {
 
             case 2:
 
-                io.writeEntrants(data->getEntrantList());
+                cout << "Exporting all entrants to file.\n";
+                if (data->getEntrantList().size() > 0) {
+                   io.writeEntrants(data->getEntrantList());
+                } else {
+                   cout << "\nERROR: No entrants created. Nothing to export.\n"; 
+                }
+                
                 break;
 
             case 3:
@@ -174,7 +212,7 @@ void Menu::showEntrantEditor() {
     }
 }
 
-void Menu::showEventEditor() {
+void Menu::showEventEditor(void) {
 
     int x;
 
@@ -195,12 +233,18 @@ void Menu::showEventEditor() {
             case 1:
 
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                proc->createEvent();
+                checkExistingEvent();
                 break;
 
             case 2:
-
-                io.writeEntrants(data->getEntrantList());
+                
+                cout << "Exporting event to file.\n";
+                if (data->getEvent() != NULL) {
+                   io.writeEvent(data->getEvent()); 
+                } else {
+                   cout << "\nERROR: No event created. Nothing to export.\n"; 
+                }
+                
                 break;
 
             case 3:
@@ -209,5 +253,37 @@ void Menu::showEventEditor() {
             default:
                 cout << "Incorrect option. Please try again.\n";
         }
+    }
+}
+
+void Menu::checkExistingEvent(void) {
+
+    char input;
+
+    if (data->getEvent() != NULL) {
+
+        while (!((input == 'y') || (input == 'n') || (input == 'Y') || (input == 'N'))) {
+
+            cout << "WARNING: An event has already been created.\n";
+            cout << "Do you wish to create a new event? (Y/N)\n";
+            cin >> input;
+
+            switch (input) {
+
+                case 'Y':
+                case 'y':
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    proc->createEvent();
+                    break;
+                case 'N':
+                case 'n':
+                    break;
+                default:
+                    cout << "Not a valid option. Please try again.\n";
+                    break;
+            }
+        }
+    } else {
+        proc->createEvent();
     }
 }

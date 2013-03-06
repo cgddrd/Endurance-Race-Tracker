@@ -26,15 +26,15 @@ void Course::setCourseSize(int courseSize) {
     this->courseSize = courseSize;
 }
 
-int Course::getCourseSize() const {
+int Course::getCourseSize(void) const {
     return courseSize;
 }
 
-std::vector<Node*> Course::getCourseNodes() const {
+std::vector<Node*> Course::getCourseNodes(void) const {
     return courseNodes;
 }
 
-const char Course::getCourseID() const {
+const char Course::getCourseID(void) const {
     return courseID;
 }
 

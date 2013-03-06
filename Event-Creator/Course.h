@@ -16,9 +16,9 @@ public:
     virtual ~Course();
     void addCourseNode(Node *newNode);
     void setCourseSize(int courseSize);
-    int getCourseSize() const;
-    std::vector<Node*> getCourseNodes() const;
-    const char getCourseID() const;
+    int getCourseSize(void) const;
+    std::vector<Node*> getCourseNodes(void) const;
+    const char getCourseID(void) const;
 private:
     const char courseID;
     std::vector<Node*> courseNodes;

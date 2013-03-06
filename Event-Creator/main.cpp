@@ -27,19 +27,7 @@ int main(int argc, char** argv) {
     
     proc->getAllNodes();
     menu->showMainMenu();
-    
- //   Process test();
-  //  FileIO io;
 
-  //  test.addEntrant();
-  //  test.addEntrant();
-
-  //  io.writeEntrants(test.getEntrantList());
-    
-  //  test.getAllNodes();
-    
-  //  test.showCourseEditor();
-
-    return 0;
+   return 0;
 }
 

@@ -17,10 +17,11 @@ public:
     Menu(Datastore *newData, Process *newProc);
     Menu(const Menu& orig);
     virtual ~Menu();
-    void showEventEditor();
-    void showCourseEditor();
-    void showEntrantEditor();
-    void showMainMenu();
+    void showEventEditor(void);
+    void showCourseEditor(void);
+    void showEntrantEditor(void);
+    void showMainMenu(void);
+    void checkExistingEvent(void); 
 private:
     Process *proc;
     Datastore *data;

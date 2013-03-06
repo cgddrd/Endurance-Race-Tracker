@@ -16,9 +16,9 @@ public:
     Entrant(const std::string &theName, const int theEnNo, char theCourseID);
     virtual ~Entrant();
     void print(void) const;
-    std::string getEntrantName();
-    int getEntrantNo();
-    char getCourseID();
+    std::string getEntrantName(void);
+    int getEntrantNo(void);
+    char getCourseID(void);
 private:
     std::string entrant_name;
     const int entrant_no;

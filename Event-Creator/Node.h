@@ -18,8 +18,8 @@ public:
     Node(const int newNodeNo, std::string newNodeType);
     virtual ~Node();
     void setNodeType(std::string nodeType);
-    std::string getNodeType() const;
-    const int getNodeNo() const;
+    std::string getNodeType(void) const;
+    const int getNodeNo(void) const;
     void print(void) const;
 private:
     const int nodeNo;
