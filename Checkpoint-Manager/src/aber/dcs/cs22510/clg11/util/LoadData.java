@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class LoadData {
 
     private Datastore data;
-    private FileIO fileIO = new FileIO();
+    private FileIO fileIO;
 
     /**
      * Constructor to instantiate a new LoadData. Takes the shared data store
@@ -24,9 +24,10 @@ public class LoadData {
      *
      * @param newData Datastore object created in CMDriver.
      */
-    public LoadData(Datastore comp) {
+    public LoadData(Datastore comp, FileIO newFileIO) {
 
         this.data = comp;
+        this.fileIO = newFileIO;
 
     }
 
@@ -67,7 +68,7 @@ public class LoadData {
         
 
         //If the file does exist, read in the data from the file.
-        readValues = fileIO.readIn(f);
+        readValues = fileIO.readIn(f, false);
 
         //Determine the type of data being loaded.
         if (type.equals(Datatype.NODE)) {

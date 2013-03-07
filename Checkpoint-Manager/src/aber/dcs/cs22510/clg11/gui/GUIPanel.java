@@ -3,6 +3,7 @@ package aber.dcs.cs22510.clg11.gui;
 import aber.dcs.cs22510.clg11.model.Datastore;
 import aber.dcs.cs22510.clg11.model.Entrant;
 import aber.dcs.cs22510.clg11.model.Node;
+import aber.dcs.cs22510.clg11.util.FileIO;
 import aber.dcs.cs22510.clg11.util.LoadData;
 import aber.dcs.cs22510.clg11.util.ProcessData;
 import java.awt.Dimension;
@@ -62,6 +63,8 @@ public class GUIPanel extends JPanel implements ActionListener {
      * Enables the GUI to access the methods used for processing times.
      */
     private ProcessData proc;
+    
+    private FileIO fileIO;
 
     /**
      * Constructor to instantiate a new GUIPanel. Takes the two classes passed 
@@ -70,10 +73,12 @@ public class GUIPanel extends JPanel implements ActionListener {
      * @param newData Datastore object passed down from GUIFrame.
      * @param newLoad LoadData object passed down from GUIFrame.
      */
-    public GUIPanel(Datastore newData, LoadData newLoad) {
+    public GUIPanel(Datastore newData, LoadData newLoad, FileIO newFileIO) {
 
         this.data = newData;
         this.load = newLoad;
+        this.fileIO = newFileIO;
+        
 
         //Set the size of the panel
         this.setPreferredSize(new Dimension(500, 400));
@@ -95,7 +100,7 @@ public class GUIPanel extends JPanel implements ActionListener {
          * Instantiate new ProcessData class to allow access to data processing
          * facilties.
          */
-        proc = new ProcessData(data);
+        proc = new ProcessData(data, fileIO);
 
         //Load all entrant names into entrant drop-down GUI box component.
         comboValues = Arrays.copyOf(getAllEntrants().toArray(), getAllEntrants().toArray().length, String[].class);

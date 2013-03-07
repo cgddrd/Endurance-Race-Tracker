@@ -20,9 +20,10 @@ import java.util.ArrayList;
 public class ProcessData {
 
     private Datastore data;
+    private FileIO fileIO;
     
     /** Allows access to the file read/write facilities. */
-    private FileIO fileIO = new FileIO();
+   // private FileIO fileIO = new FileIO();
 
 
     public ProcessData() {
@@ -36,9 +37,10 @@ public class ProcessData {
      * 
      * @param newData Datastore object created in CMDriver.
      */
-    public ProcessData(Datastore newData) {
+    public ProcessData(Datastore newData, FileIO newFileIO) {
 
         this.data = newData;
+        this.fileIO = newFileIO;
 
     }
     
@@ -336,7 +338,7 @@ public class ProcessData {
     public void getTimes() {
 
         //Obtain a collection of ALL the time logs read in from the "times.txt" file.
-        ArrayList<String[]> times = fileIO.readIn(new File("../files/times.txt"));
+        ArrayList<String[]> times = fileIO.readIn(new File("../files/times.txt"), true);
 
         //For every time log read in from the file...
         for (String[] newTime : times) {

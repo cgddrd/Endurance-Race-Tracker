@@ -20,6 +20,8 @@ import java.util.Calendar;
  * Copyright: Aberystwyth University, Aberystwyth.
  */
 public class FileIO {
+    
+    private int timesFilePosition = 0;
 
     /**
      * Default constructor for FileIO.
@@ -36,7 +38,7 @@ public class FileIO {
      * @param fileName The directory of the file to be parsed.
      * @return Arraylist of String arrays containing the contents of the parsed file.
      */
-    public ArrayList<String[]> readIn(File fileName) {
+    public ArrayList<String[]> readIn(File fileName, boolean isTimesFile) {
 
         ArrayList<String[]> values = new ArrayList<>();
 
@@ -61,11 +63,18 @@ public class FileIO {
                 
                 //Add these broken down values to the larger collection of lines.
                 values.add(details);
+                
+                if (isTimesFile) {
+                    timesFilePosition++; 
+                }
+               
 
             }
 
             //Once completed, safely close the file reader
             bufferedReader.close();
+            
+            System.out.println("*** LINES IN FILE: " + this.timesFilePosition + " ***");
             return values;
 
             //If any IO exceptions occur...
