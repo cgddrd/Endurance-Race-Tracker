@@ -28,6 +28,9 @@ public class Entrant {
     /** Defines if the entrant has finished or not. */
     private boolean isFinished = false;
     
+    /** Defines if the entrant is currently at a medical checkpoint. */
+    private boolean atMC = false;
+    
     /**
      * Default constructor for an Entrant.
      * Sets the current progress to 0 as a new entrant will
@@ -188,6 +191,22 @@ public class Entrant {
      */
     public void setIsFinished(boolean isFinished) {
         this.isFinished = isFinished;
+    }
+
+    /**
+     * Returns if the entrant is currently at a medical checkpoint.
+     * @return Boolean determining if the entrant is at an MC.
+     */
+    public boolean getAtMC() {
+        return atMC;
+    }
+
+    /**
+     * Sets if an entrant is at a medical checkpoint.
+     * @param atMC Whether the entrant is currently at an MC or not.
+     */
+    public void setAtMC(boolean atMC) {
+        this.atMC = atMC;
     }
    
 }

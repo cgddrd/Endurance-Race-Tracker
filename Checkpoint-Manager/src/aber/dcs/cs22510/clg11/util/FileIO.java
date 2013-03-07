@@ -21,6 +21,7 @@ import java.util.Calendar;
  */
 public class FileIO {
     
+    /** The last read-in line number from "times.txt". */
     private int timesFilePosition = 0;
 
     /**
@@ -53,8 +54,18 @@ public class FileIO {
             bufferedReader = new BufferedReader(fileReader);
             
             
+            /*
+             * Check if the current file being read in is the times file, 
+             * and if so whether or not the file has been read-in previously.
+             */
             if (isTimesFile && this.timesFilePosition > 0) {
                 
+                /*
+                 * Read down to the last logged line read-in file
+                 * without processing any of the lines (used to "skip" down
+                 * to any lines that could have been added after the last time 
+                 * the file was read in by this application).
+                 */
                 for(int i = 0; i < this.timesFilePosition; i++) {
                     bufferedReader.readLine();
                 }
@@ -72,17 +83,19 @@ public class FileIO {
                 //Add these broken down values to the larger collection of lines.
                 values.add(details);
                 
+                /*
+                 * If the current file being read in is "times.txt", updated the
+                 * last line to be read in by the system. (Used for when the
+                 * file is re-"readin" by the system).
+                 */
                 if (isTimesFile) {
                     timesFilePosition++; 
                 }
-               
-
             }
 
             //Once completed, safely close the file reader
             bufferedReader.close();
             
-            System.out.println("*** LINES IN FILE: " + this.timesFilePosition + " ***");
             return values;
 
             //If any IO exceptions occur...
@@ -117,16 +130,14 @@ public class FileIO {
 
             //Check if the lock was successfull.
             if (fl != null) {
-
-                //If so write the data to the file.
-                FileWriter fw = new FileWriter(fos.getFD());
-                fw.write(output);
-
-                //Once the data has been successfully written, release the lock.
-                fl.release();
                 
-                //Close the connection to the file.
-                fw.close();
+                try (FileWriter fw = new FileWriter(fos.getFD())) {
+                    
+                    fw.write(output);
+
+                    //Once the data has been successfully written, release the lock.
+                    fl.release();
+                }
 
             } else {
                 

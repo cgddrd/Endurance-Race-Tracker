@@ -24,7 +24,7 @@ public class CMDriver {
         //Instantiate new Datastore object that will be shared by other classes.
         Datastore comp = new Datastore();
         
-        
+        //Instantiate new FileIO object to allow shared file I/O facilities.
         FileIO fileIO = new FileIO();
         
         //Instantiate new Datastore object that will be shared by other classes.
