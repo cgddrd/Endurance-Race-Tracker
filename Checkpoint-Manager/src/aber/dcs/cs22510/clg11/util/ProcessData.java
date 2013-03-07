@@ -242,13 +242,22 @@ public class ProcessData {
      * @param newNode The newly submitted node that the entrant has arrived at.
      * @param time The inputted time of the entrant's arrival at the CP.
      */
-    public void processNewTime(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
+    public String processNewTime(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
 
         //Obtain the current progress of the entrant (i.e. the index of the array).
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
+        String result = null;
 
         //Check that the entrant has not already finished, or been excluded.
-        if (selectedEntrant.getCurrentProgress() < courseNodes.size() && !selectedEntrant.getIsExcluded()) {
+        if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
+            
+            result = "ENTRANT FINISHED!!";
+            
+        } else if (selectedEntrant.getIsExcluded()) {
+            
+            result = "ENTRANT EXCLUDED!!";
+            
+        } else {
 
             /*
              * Check whether the next node in the array (i.e. the next node that the 
@@ -256,7 +265,7 @@ public class ProcessData {
              */
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
-                System.out.println("ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
+                result = "ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
 
                 /*
                  * If they do not match, the entrant has gone the wrong way.
@@ -267,7 +276,7 @@ public class ProcessData {
 
             } else {
 
-                System.out.println("ENTRANT HAS GONE THE RIGHT WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
+                result = "ENTRANT HAS GONE THE RIGHT WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
 
                 /*
                  * Otherwise if they do  match, the entrant has gone the right way.
@@ -277,11 +286,10 @@ public class ProcessData {
                 fileIO.writeFile(new File("../files/times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
             }
 
-        } else {
-            System.out.println("ENTRANT FINISHED!!");
-
         }
-
+            
+        return result;
+        
     }
 
     /**
@@ -296,16 +304,27 @@ public class ProcessData {
      * @param mcType Whether the entrant was arriving or departing from the MC.
      * @param time The inputted time of the entrant's arrival at the CP.
      */
-    public void processNextNode(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
+    public String processNewTime(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
 
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
+        String result = null;
 
-        if (selectedEntrant.getCurrentProgress() < courseNodes.size() && !selectedEntrant.getIsExcluded()) {
+        //Check that the entrant has not already finished, or been excluded.
+        if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
+            
+            result = "ENTRANT FINISHED!!";
+            
+        } else if (selectedEntrant.getIsExcluded()) {
+            
+            result = "ENTRANT EXCLUDED!!";
+            
+        } else {
 
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
                 fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
-                System.out.println("ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode);
+                
+                result = "ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
                 fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
             } else {
@@ -328,11 +347,9 @@ public class ProcessData {
                 }
             }
 
-        } else {
-
-            System.out.println("ENTRANT FINISHED!!");
-
         }
+        
+        return result;
 
     }
 
@@ -340,20 +357,31 @@ public class ProcessData {
      * Obtains all the times from the time log file ("times.txt") before
      * processing each time log.
      */
-    public void getTimes() {
+    public boolean getTimes() {
 
         //Obtain a collection of ALL the time logs read in from the "times.txt" file.
-        ArrayList<String[]> times = fileIO.readIn(new File("../files/times.txt"), true);
 
-        //For every time log read in from the file...
-        for (String[] newTime : times) {
+        File timesFile = new File("../files/times.txt");
 
-            //... process this time log and update the internal record of entrants.
-            processNewTime(newTime[0], Integer.parseInt(newTime[1]), Integer.parseInt(newTime[2]));
+        if (timesFile.exists()) {
+
+            ArrayList<String[]> times = fileIO.readIn(timesFile, true);
+
+            //For every time log read in from the file...
+            for (String[] newTime : times) {
+
+                //... process this time log and update the internal record of entrants.
+                processNewTime(newTime[0], Integer.parseInt(newTime[1]), Integer.parseInt(newTime[2]));
+
+            }
+
+            //Log this activity in the log file ("log.txt");
+            fileIO.addActivityLog("Time logs file loaded successfully (times.txt)");
+
+            return true;
 
         }
 
-        //Log this activity in the log file ("log.txt");
-        fileIO.addActivityLog("Time logs file loaded successfully (times.txt)");
+        return false;
     }
 }

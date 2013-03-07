@@ -2038,3 +2038,110 @@ LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 17:55:38
 LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 17:57:01
 LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 17:57:01
 LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 17:57:01
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 19:30:46
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 19:30:46
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 19:30:46
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 19:31:36
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 19:31:36
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 19:31:36
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 19:33:22
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 19:33:22
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 19:33:22
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:12:31
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:12:31
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:12:31
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:15:31
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:15:31
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:15:31
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:21:44
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:21:44
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:21:44
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:22:38
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:22:38
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:22:38
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:23:03
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:23:03
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:23:03
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:23:16
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:23:16
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:23:16
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:23:30
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:23:30
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:23:30
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:24:25
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:24:25
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:24:25
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:24:53
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:24:53
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:24:53
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:25:09
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:25:09
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:25:09
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:25:42
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:25:42
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:25:42
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 20:59:43
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 20:59:43
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 20:59:43
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 07/03/2013 21:02:22
+LOG - CM: Entrant no: 3 successfully excluded. - 07/03/2013 21:02:22
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:02:22
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 21:08:53
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 21:08:53
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 21:08:53
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 07/03/2013 21:08:57
+LOG - CM: Entrant no: 3 successfully excluded. - 07/03/2013 21:08:57
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:08:57
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 21:09:15
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 21:09:15
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 21:09:15
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 07/03/2013 21:09:20
+LOG - CM: Entrant no: 3 successfully excluded. - 07/03/2013 21:09:20
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:09:20
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 21:36:40
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 21:36:40
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 21:36:40
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:37:05
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 07/03/2013 21:37:11
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:37:11
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:37:14
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:37:23
+LOG - CM: Entrant no: 3 successfully excluded. - 07/03/2013 21:48:06
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:48:06
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 21:52:16
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 21:52:16
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 21:52:16
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:52:23
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 21:52:58
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 21:52:58
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 21:52:58
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:03
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 07/03/2013 21:53:06
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:06
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:17
+LOG - CM: Entrant no: 3 successfully excluded. - 07/03/2013 21:53:26
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:26
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:33
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:39
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:53:53
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:54:09
+LOG - CM: Submitted checkpoint incorrect for course. (Entrant No: 74) - 07/03/2013 21:54:09
+LOG - CM: Entrant no: 74 successfully excluded. - 07/03/2013 21:54:14
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:54:14
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 21:57:53
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 21:57:53
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 21:57:53
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:58:19
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 07/03/2013 21:58:42
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:58:42
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:58:49
+LOG - CM: Entrant no: 3 successfully excluded. - 07/03/2013 21:58:51
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:58:51
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:58:55
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:58:57
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:59:01
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:59:26
+LOG - CM: Submitted checkpoint incorrect for course. (Entrant No: 56) - 07/03/2013 21:59:26
+LOG - CM: Entrant no: 56 successfully excluded. - 07/03/2013 21:59:40
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:59:40
+LOG - CM: Time logs file loaded successfully (times.txt) - 07/03/2013 21:59:43

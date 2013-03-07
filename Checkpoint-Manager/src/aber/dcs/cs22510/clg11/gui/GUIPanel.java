@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 /**
  * Contains the GUI elements accessed by the user to interact with the
@@ -30,6 +31,7 @@ public class GUIPanel extends JPanel implements ActionListener {
      * Buttons that represent system-wide operations.
      */
     private JButton submitTime, setCurrentTime;
+    private JLabel nodeTitle, entrantTitle, mcTypeTitle, timeTitle, statusBar;
     /**
      * The layout manager used by the panel.
      */
@@ -42,12 +44,12 @@ public class GUIPanel extends JPanel implements ActionListener {
     /**
      * Determines whether an entrant is arriving or leaving medical checkpoint.
      */
-    private JComboBox<String> mcType;
+    private JComboBox<String> mcTypeList;
     private String[] mcArriveDepart = {"Arriving", "Departing"};
     /**
      * Spinner used to allow the user to select a time value.
      */
-    private JSpinner spinner;
+    private JSpinner timeSpinner;
     private SpinnerDateModel sm;
     private Datastore data;
     private LoadData load;
@@ -73,14 +75,14 @@ public class GUIPanel extends JPanel implements ActionListener {
 
 
         //Set the size of the panel
-        this.setPreferredSize(new Dimension(500, 400));
-        
+        this.setPreferredSize(new Dimension(500, 300));
+
         //Set the bespoke layout manager.
         this.setLayout(layout);
 
         //Initialise and add all of the panel GUI components.
         initComponents();
-        
+
         setUpLayout();
 
     }
@@ -99,6 +101,16 @@ public class GUIPanel extends JPanel implements ActionListener {
          */
         proc = new ProcessData(data, fileIO);
 
+        //Create new instance of JLabel with specified display text
+        entrantTitle = new JLabel("Entrant List:");
+        nodeTitle = new JLabel("Checkpoint List:");
+        mcTypeTitle = new JLabel("Medical CP Type:");
+        timeTitle = new JLabel("Log Time:");
+
+        statusBar = new JLabel("Welcome to the Checkpoint Manager.");
+        statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        statusBar.setPreferredSize(new Dimension(500, 20));
+
         //Load all entrant names into entrant drop-down GUI box component.
         comboValues = Arrays.copyOf(getAllEntrants().toArray(), getAllEntrants().toArray().length, String[].class);
 
@@ -115,9 +127,9 @@ public class GUIPanel extends JPanel implements ActionListener {
         nodeList.addActionListener(this);
 
         //Load the MC "arrive/depart" options into drop-down GUI box.
-        mcType = new JComboBox<>(mcArriveDepart);
-        mcType.setSelectedIndex(0);
-        mcType.setEnabled(false);
+        mcTypeList = new JComboBox<>(mcArriveDepart);
+        mcTypeList.setSelectedIndex(0);
+        mcTypeList.setEnabled(false);
 
 
         //Create new instance of JButton with specified button text
@@ -133,18 +145,23 @@ public class GUIPanel extends JPanel implements ActionListener {
         sm.setCalendarField(Calendar.MINUTE);
 
         //Create a new Spinner object and set the above model to it.
-        spinner = new JSpinner();
-        spinner.setModel(sm);
+        timeSpinner = new JSpinner();
+        timeSpinner.setModel(sm);
 
         //Set the time format to be diplayed in the JSpinner.
-        JSpinner.DateEditor de = new JSpinner.DateEditor(spinner, "HH:mm");
-        spinner.setEditor(de);
+        JSpinner.DateEditor de = new JSpinner.DateEditor(timeSpinner, "HH:mm");
+        timeSpinner.setEditor(de);
 
         //Add all the components to the GUI panel.
-        this.add(spinner);
+        this.add(nodeTitle);
+        this.add(entrantTitle);
+        this.add(mcTypeTitle);
+        this.add(timeTitle);
+        this.add(statusBar);
+        this.add(timeSpinner);
         this.add(entrantList);
         this.add(nodeList);
-        this.add(mcType);
+        this.add(mcTypeList);
         this.add(submitTime);
         this.add(setCurrentTime);
 
@@ -155,15 +172,48 @@ public class GUIPanel extends JPanel implements ActionListener {
      * the panel.
      */
     public void setUpLayout() {
-        
 
-         //Set the NORTH edge of the button to be 5 pixels down from the NORTH edge of the panel
-         layout.putConstraint(SpringLayout.NORTH,this.spinner,30,SpringLayout.NORTH,this);
 
-         //Set the WEST edge of the button to be 80 pixels to the right of the WEST edge of the panel
+        //Set the NORTH edge of the button to be 5 pixels down from the NORTH edge of the panel
+        layout.putConstraint(SpringLayout.NORTH, nodeTitle, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, nodeTitle, 10, SpringLayout.WEST, this);
+
+        layout.putConstraint(SpringLayout.NORTH, nodeList, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, nodeList, 10, SpringLayout.EAST, nodeTitle);
+
+        layout.putConstraint(SpringLayout.NORTH, entrantTitle, 10, SpringLayout.SOUTH, nodeTitle);
+        layout.putConstraint(SpringLayout.WEST, entrantTitle, 10, SpringLayout.WEST, this);
+
+        layout.putConstraint(SpringLayout.NORTH, entrantList, 10, SpringLayout.SOUTH, nodeTitle);
+        layout.putConstraint(SpringLayout.WEST, entrantList, 10, SpringLayout.EAST, entrantTitle);
+
+        layout.putConstraint(SpringLayout.NORTH, mcTypeTitle, 10, SpringLayout.SOUTH, entrantTitle);
+        layout.putConstraint(SpringLayout.WEST, mcTypeTitle, 10, SpringLayout.WEST, this);
+
+        layout.putConstraint(SpringLayout.NORTH, mcTypeList, 10, SpringLayout.SOUTH, entrantTitle);
+        layout.putConstraint(SpringLayout.WEST, mcTypeList, 10, SpringLayout.EAST, mcTypeTitle);
+
+        layout.putConstraint(SpringLayout.NORTH, timeTitle, 10, SpringLayout.SOUTH, mcTypeTitle);
+        layout.putConstraint(SpringLayout.WEST, timeTitle, 10, SpringLayout.WEST, this);
+
+        layout.putConstraint(SpringLayout.NORTH, timeSpinner, 10, SpringLayout.SOUTH, mcTypeTitle);
+        layout.putConstraint(SpringLayout.WEST, timeSpinner, 10, SpringLayout.EAST, timeTitle);
+
+        layout.putConstraint(SpringLayout.NORTH, setCurrentTime, 10, SpringLayout.SOUTH, timeTitle);
+        layout.putConstraint(SpringLayout.WEST, setCurrentTime, 10, SpringLayout.WEST, this);
+
+        layout.putConstraint(SpringLayout.NORTH, submitTime, 10, SpringLayout.SOUTH, setCurrentTime);
+        layout.putConstraint(SpringLayout.WEST, submitTime, 10, SpringLayout.WEST, this);
+
+        layout.putConstraint(SpringLayout.SOUTH, statusBar, 0, SpringLayout.SOUTH, this);
+
+
+
+
+        //Set the WEST edge of the button to be 80 pixels to the right of the WEST edge of the panel
         // layout.putConstraint(SpringLayout.WEST,newOrder,80,SpringLayout.WEST,this);
 
-         
+
     }
 
     /**
@@ -242,55 +292,87 @@ public class GUIPanel extends JPanel implements ActionListener {
      */
     public void submitCheckpoint() {
 
-        /*
-         * Re-read in the "times" file to allow any new times logged by other 
-         * running versions of the checkpoint manager to update the information 
-         * contained within this version of the CM. 
-         */
-        proc.getTimes();
+        //Display question dialog
+        int shouldProcess = JOptionPane.YES_OPTION;
 
-        //Obtain the selected entrant from the arraylist of entrants.
-        Entrant currentEntrant = data.getEntrants().get(entrantList.getSelectedIndex());
+        String result = null;
 
-        //Obtain the arraylist of course nodes that make up the course that entrant is registered for.
-        ArrayList<Node> entrantNodes = proc.obtainEntrantCourseNodes(currentEntrant);
+        shouldProcess = JOptionPane.showConfirmDialog(null, "Are you sure you wish to submit this time log?",
+                "CM Manager | Submit Time Log", JOptionPane.YES_NO_OPTION);
 
-        //Create a formatter for the time value entered by the user.
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-
-        //Obtain the number of the node selected by the user.
-        int nodeNumber = Integer.parseInt((String) nodeList.getSelectedItem());
-
-        //Format the time value entered by the user.
-        String timeValue = sdf.format(spinner.getValue());
-
-        //Check to see if the node selected was a MC.
-        if (mcType.isEnabled()) {
-
-            //If so determine whether they were arriving or departing.
-            String mcSelection = (String) mcType.getSelectedItem();
+        //If user selects "yes"
+        if (shouldProcess == JOptionPane.YES_OPTION) {
 
             /*
-             * Check if the user is attempting to log an entrant arriving
-             * at a MC while the entrant is currently at an MC.
+             * Re-read in the "times" file to allow any new times logged by other 
+             * running versions of the checkpoint manager to update the information 
+             * contained within this version of the CM. 
              */
-            if (currentEntrant.getAtMC() && mcSelection.equals("Arriving")) {
+            if (proc.getTimes()) {
 
-                System.out.println("CANNOT DO THIS! ENTRANT ALREADY AT CP!!");
+                updateStatus(" Times file loaded successfully.");
+
+                //Obtain the selected entrant from the arraylist of entrants.
+                Entrant currentEntrant = data.getEntrants().get(entrantList.getSelectedIndex());
+
+                //Obtain the arraylist of course nodes that make up the course that entrant is registered for.
+                ArrayList<Node> entrantNodes = proc.obtainEntrantCourseNodes(currentEntrant);
+
+                //Create a formatter for the time value entered by the user.
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+                //Obtain the number of the node selected by the user.
+                int nodeNumber = Integer.parseInt((String) nodeList.getSelectedItem());
+
+                //Format the time value entered by the user.
+                String timeValue = sdf.format(timeSpinner.getValue());
+
+                //Check to see if the node selected was a MC.
+                if (mcTypeList.isEnabled()) {
+
+                    //If so determine whether they were arriving or departing.
+                    String mcSelection = (String) mcTypeList.getSelectedItem();
+
+                    /*
+                     * Check if the user is attempting to log an entrant arriving
+                     * at a MC while the entrant is currently at an MC.
+                     */
+                    if (currentEntrant.getAtMC() && mcSelection.equals("Arriving")) {
+
+                        updateStatus(" ERROR: Entrant " + currentEntrant.getNumber() + " already at medical checkpoint.");
+
+                    } else if (!(currentEntrant.getAtMC()) && mcSelection.equals("Departing")) {
+                        
+                        updateStatus(" ERROR: Entrant must be at MC before they can depart." );
+                        
+                    } else {
+
+                        //Process this new logged time.
+                        result = proc.processNewTime(entrantNodes, currentEntrant, nodeNumber, mcSelection, timeValue);
+
+                    }
+
+                } else {
+
+                    //The checkpoint is not a MC, and so just process the new logged time.
+                    result = proc.processNewTime(entrantNodes, currentEntrant, nodeNumber, timeValue);
+
+                }
+
+                updateStatus(result);
 
             } else {
 
-                //Process this new logged time.
-                proc.processNextNode(entrantNodes, currentEntrant, nodeNumber, mcSelection, timeValue);
-
+                updateStatus(" ERROR: Cannot load/parse times file.");
             }
 
-        } else {
-
-            //The checkpoint is not a MC, and so just process the new logged time.
-            proc.processNewTime(entrantNodes, currentEntrant, nodeNumber, timeValue);
-
         }
+    }
+
+    public void updateStatus(String updateMessage) {
+
+        statusBar.setText(updateMessage);
+
     }
 
     /**
@@ -323,7 +405,9 @@ public class GUIPanel extends JPanel implements ActionListener {
                 Calendar currentTime = Calendar.getInstance();
 
                 //Update the value of the time spinner to the current time.
-                spinner.setValue(currentTime.getTime());
+                timeSpinner.setValue(currentTime.getTime());
+
+                updateStatus(" Current time updated successfully.");
                 break;
 
         }
@@ -339,11 +423,11 @@ public class GUIPanel extends JPanel implements ActionListener {
             if (n.getType().equals("MC")) {
 
                 //If it is, allow the "arrive/depart" selection box to be used.
-                this.mcType.setEnabled(true);
+                this.mcTypeList.setEnabled(true);
 
             } else {
 
-                this.mcType.setEnabled(false);
+                this.mcTypeList.setEnabled(false);
             }
         }
     }
