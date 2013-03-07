@@ -118,7 +118,6 @@ void Process::addEntrant(void) {
 
                         //Loop through all the entrants. 
                         for (std::vector<Entrant*>::iterator it = allEntrants.begin(); it != allEntrants.end(); ++it) {
-                            cout << "ENTRANT : " << (*it)->getEntrantNo() << endl;
 
                             //Check to see if another entrant already has the entered value
                             if ((*it)->getEntrantNo() == entrantNo) {
@@ -268,7 +267,7 @@ void Process::createNewCourse(void) {
             std::vector<Course*> allCourses = data->getCourseList();
 
             //Loop through all the stored courses. 
-            for (std::vector<Course*>::iterator it = allCourses.begin(); it != allCourses.end(); ++it) {
+            for (vector<Course*>::iterator it = allCourses.begin(); it != allCourses.end(); ++it) {
 
                 //Check to see if another course already has the entered value.
                 if ((*it)->getCourseID() == cid) {

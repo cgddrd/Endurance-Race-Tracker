@@ -1,46 +1,49 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package aber.dcs.cs22510.clg11.util;
 
-import aber.dcs.cs22510.clg11.model.Entrant;
-import aber.dcs.cs22510.clg11.model.Datatype;
-import aber.dcs.cs22510.clg11.model.Datastore;
-import aber.dcs.cs22510.clg11.model.Course;
-import aber.dcs.cs22510.clg11.model.Node;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import aber.dcs.cs22510.clg11.model.*;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.channels.FileLock;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author connor
+ * Responsible for loading crucial, preliminary data files into the system using
+ * a textual interface before the GUI is loaded. 
+ * 
+ * @author Connor Luke Goddard (clg11)
+ * Copyright: Aberystwyth University, Aberystwyth.
  */
 public class LoadData {
 
-    private Datastore comp;
+    private Datastore data;
     private FileIO fileIO = new FileIO();
 
+    /**
+     * Constructor to instantiate a new LoadData. Takes the shared data store
+     * object created in {@link aber.dcs.cs22510.clg11.driver.CMDriver} as a
+     * parameter to allow accessed to the lists of nodes/entrants/courses loaded in.
+     * 
+     * @param newData Datastore object created in CMDriver.
+     */
     public LoadData(Datastore comp) {
 
-        this.comp = comp;
+        this.data = comp;
 
     }
 
+    /**
+     * Prompts user for the file path of a specified file before attempting to
+     * load the data into it's respective data collection. 
+     * @param type ENUM denoting the type of data file (Node, Course or Entrant).
+     */
     public void loadFiles(Datatype type) {
 
+        //Create new scanner object to allow keyboard input.
         Scanner scan = new Scanner(System.in);
+        
         File f;
         ArrayList<String[]> readValues;
 
+        //Determine the kind of file to be loaded and display appropiate prompt.
         if (type.equals(Datatype.NODE)) {
             System.out.println("Please enter a node filename:");
         } else if (type.equals(Datatype.COURSE)) {
@@ -49,26 +52,34 @@ public class LoadData {
             System.out.println("Please enter an entrants filename:");
         }
 
+        //Obtain the file path from keyboard input.
         f = new File(scan.next());
 
+        //Check if the file entered by the user exists.
         while (!f.exists()) {
 
+            //If it does not exist, prompt for another file.
             System.out.println("File does not exist. Please try again:");
             f = new File(scan.next());
 
         }
 
+        //If the file does exist, read in the data from the file.
         readValues = fileIO.readIn(f);
 
+        //Determine the type of data being loaded.
         if (type.equals(Datatype.NODE)) {
 
             for (String[] newItem : readValues) {
 
+                //Load all the nodes from the read-in data.
                 loadNodes(newItem);
 
             }
 
             displayNodes();
+            
+            //Log this activity in the log file ("log.txt");
             fileIO.addActivityLog("Nodes file loaded successfully (nodes.txt)");
 
         } else if (type.equals(Datatype.COURSE)) {
@@ -96,22 +107,44 @@ public class LoadData {
     }
 
     
-    public void loadCourses(String[] newLine) {
+    /**
+     * Parses the data read-in from the "courses.txt" file and creates a new 
+     * {@link aber.dcs.cs22510.clg11.model.Course} object populated with the 
+     * read-in characteristics. This new Course object is then added to the 
+     * internal collection of Courses.
+     * 
+     * @param courseData Collection of all course characteristics data read in
+     * from "courses.txt".
+     */
+    public void loadCourses(String[] courseData) {
         
         try {
 
+        //Create a new empty Course object.
         Course newCourse = new Course();
 
-        newCourse.setCourseID(newLine[0].charAt(0));
-        newCourse.setCourseLength(Integer.parseInt(newLine[1]));
+        //Set the course ID to the first element in the course data array.
+        newCourse.setCourseID(courseData[0].charAt(0));
+        
+        //Set the course length to the second element in the course data array.
+        newCourse.setCourseLength(Integer.parseInt(courseData[1]));
 
-        for (int i = 2; i < (newLine.length); i++) {
+        //Loop through the REST (i=2) of the "read-in" course data array..
+        for (int i = 2; i < (courseData.length); i++) {
 
-            for (Node n : comp.getNodes()) {
+            //Loop through all the course nodes stored internally.
+            for (Node n : data.getNodes()) {
 
                 int origNodeNo = n.getNumber();
-                int courseNodeNo = Integer.parseInt(newLine[i]);
+                
+                //Obtain the node number currently being parsed from the read in data.
+                int courseNodeNo = Integer.parseInt(courseData[i]);
 
+                /*
+                 * If the node number read-in from file matches the current node,
+                 * and the node is NOT a junction, add this node to the collection
+                 * of nodes within the new Course object. 
+                 */
                 if (origNodeNo == courseNodeNo && (n.getType().equals("CP") || n.getType().equals("MC"))) {
 
                     newCourse.addNewNode(n);
@@ -120,62 +153,90 @@ public class LoadData {
 
         }
 
-        comp.getCourses().add(newCourse);
+        /*
+         * Once the new Course object has been populated with data,
+         * add it to the collection of courses in Datastore.
+         */
+        data.getCourses().add(newCourse);
         
+        //If an error occurs...
         } catch (Exception e) {
             
-           fileIO.addActivityLog("ERROR - Cannot create new course object (" + newLine[0] +")"); 
+           //... log the error in the "log.txt" file.
+           fileIO.addActivityLog("ERROR - Cannot create new course object (" + courseData[0] +")"); 
         }
 
     }
 
-    public void loadNodes(String[] newLine) {
+     /**
+     * Parses the data read-in from the "nodes.txt" file and creates a new 
+     * {@link aber.dcs.cs22510.clg11.model.Node} object populated with the 
+     * read-in characteristics. This new Node object is then added to the 
+     * internal collection of Nodes.
+     * 
+     * @param nodeData Collection of all node characteristics data read in
+     * from "nodes.txt".
+     */
+    public void loadNodes(String[] nodeData) {
 
         try {
 
             Node newNode = new Node();
 
-            newNode.setNumber(Integer.parseInt(newLine[0]));
-            newNode.setType(newLine[1]);
+            newNode.setNumber(Integer.parseInt(nodeData[0]));
+            newNode.setType(nodeData[1]);
 
-            comp.getNodes().add(newNode);
+            data.getNodes().add(newNode);
 
         } catch (Exception e) {
 
-            fileIO.addActivityLog("ERROR - Cannot create new node object (" + Integer.parseInt(newLine[0]) + " / " + newLine[1] + ")");
+            fileIO.addActivityLog("ERROR - Cannot create new node object (" + Integer.parseInt(nodeData[0]) + " / " + nodeData[1] + ")");
         }
 
     }
 
-    public void loadEntrants(String[] newLine) {
+    /**
+     * Parses the data read-in from the "entrants.txt" file and creates a new 
+     * {@link aber.dcs.cs22510.clg11.model.Entrant} object populated with the 
+     * read-in characteristics. This new Entrant object is then added to the 
+     * internal collection of Entrants.
+     * 
+     * @param entrantData Collection of all node characteristics data read in
+     * from "nodes.txt".
+     */
+    public void loadEntrants(String[] entrantData) {
 
         try {
 
             Entrant newEntrant = new Entrant();
 
-            newEntrant.setNumber(Integer.parseInt(newLine[0]));
-            newEntrant.setCourseID(newLine[1].charAt(0));
-            newEntrant.setFirstName(newLine[2]);
-            newEntrant.setLastName(newLine[3]);
+            newEntrant.setNumber(Integer.parseInt(entrantData[0]));
+            newEntrant.setCourseID(entrantData[1].charAt(0));
+            newEntrant.setFirstName(entrantData[2]);
+            newEntrant.setLastName(entrantData[3]);
 
-            comp.getEntrants().add(newEntrant);
+            data.getEntrants().add(newEntrant);
 
         } catch (Exception e) {
 
-            fileIO.addActivityLog("ERROR - Cannot create new entrant object (" + Integer.parseInt(newLine[0]) + " / " + newLine[1] + " / " + newLine[2] + " " + newLine[3] + ")");
+            fileIO.addActivityLog("ERROR - Cannot create new entrant object (" + Integer.parseInt(entrantData[0]) + " / " + entrantData[1] + " / " + entrantData[2] + " " + entrantData[3] + ")");
         }
 
     }
 
+    /**
+     * Displays all {@link aber.dcs.cs22510.clg11.model.Courses} objects loaded
+     * into the internal collection of courses to screen.
+     */
     public void displayCourses() {
 
-        for (int i = 0; i < comp.getCourses().size(); i++) {
+        for (int i = 0; i < data.getCourses().size(); i++) {
 
-            System.out.println(comp.getCourses().get(i).getCourseID());
-            System.out.println(comp.getCourses().get(i).getCourseLength());
+            System.out.println(data.getCourses().get(i).getCourseID());
+            System.out.println(data.getCourses().get(i).getCourseLength());
             System.out.println("Course Nodes:");
 
-            for (Node n : comp.getCourses().get(i).getCourseNodes()) {
+            for (Node n : data.getCourses().get(i).getCourseNodes()) {
 
                 System.out.println(n.getNumber() + " - " + n.getType());
 
@@ -185,20 +246,28 @@ public class LoadData {
         }
     }
 
+    /**
+     * Displays all {@link aber.dcs.cs22510.clg11.model.Entrants} objects loaded
+     * into the internal collection of courses to screen.
+     */
     public void displayNodes() {
 
-        for (int i = 0; i < comp.getNodes().size(); i++) {
+        for (int i = 0; i < data.getNodes().size(); i++) {
 
-            System.out.println(comp.getNodes().get(i).getNumber() + " - " + comp.getNodes().get(i).getType());
+            System.out.println(data.getNodes().get(i).getNumber() + " - " + data.getNodes().get(i).getType());
             System.out.println("******************\n");
         }
     }
 
+    /**
+     * Displays all {@link aber.dcs.cs22510.clg11.model.Entrants} objects loaded
+     * into the internal collection of courses to screen.
+     */
     public void displayEntrants() {
 
-        for (int i = 0; i < comp.getEntrants().size(); i++) {
+        for (int i = 0; i < data.getEntrants().size(); i++) {
 
-            System.out.println(comp.getEntrants().get(i).getNumber() + " - " + comp.getEntrants().get(i).getCourseID() + " - " + comp.getEntrants().get(i).getFullName());
+            System.out.println(data.getEntrants().get(i).getNumber() + " - " + data.getEntrants().get(i).getCourseID() + " - " + data.getEntrants().get(i).getFullName());
             System.out.println("******************\n");
         }
     }
