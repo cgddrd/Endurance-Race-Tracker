@@ -3,14 +3,13 @@ package aber.dcs.cs22510.clg11.util;
 import aber.dcs.cs22510.clg11.model.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Responsible for loading crucial, preliminary data files into the system using
- * a textual interface before the GUI is loaded. 
- * 
- * @author Connor Luke Goddard (clg11)
- * Copyright: Aberystwyth University, Aberystwyth.
+ * a textual interface before the GUI is loaded.
+ *
+ * @author Connor Luke Goddard (clg11) Copyright: Aberystwyth University,
+ * Aberystwyth.
  */
 public class LoadData {
 
@@ -20,8 +19,9 @@ public class LoadData {
     /**
      * Constructor to instantiate a new LoadData. Takes the shared data store
      * object created in {@link aber.dcs.cs22510.clg11.driver.CMDriver} as a
-     * parameter to allow accessed to the lists of nodes/entrants/courses loaded in.
-     * 
+     * parameter to allow accessed to the lists of nodes/entrants/courses loaded
+     * in.
+     *
      * @param newData Datastore object created in CMDriver.
      */
     public LoadData(Datastore comp) {
@@ -32,37 +32,39 @@ public class LoadData {
 
     /**
      * Prompts user for the file path of a specified file before attempting to
-     * load the data into it's respective data collection. 
-     * @param type ENUM denoting the type of data file (Node, Course or Entrant).
+     * load the data into it's respective data collection.
+     *
+     * @param type ENUM denoting the type of data file (Node, Course or
+     * Entrant).
+     * @param fileName The path of the file to be loaded.
      */
-    public void loadFiles(Datatype type) {
+    public void loadFiles(Datatype type, String fileName) {
 
-        //Create new scanner object to allow keyboard input.
-        Scanner scan = new Scanner(System.in);
-        
-        File f;
+        File f = new File(fileName);
         ArrayList<String[]> readValues;
 
-        //Determine the kind of file to be loaded and display appropiate prompt.
-        if (type.equals(Datatype.NODE)) {
-            System.out.println("Please enter a node filename:");
-        } else if (type.equals(Datatype.COURSE)) {
-            System.out.println("Please enter a course filename:");
-        } else if (type.equals(Datatype.ENTRANT)) {
-            System.out.println("Please enter an entrants filename:");
+        //Check if the file exists.
+        if (!f.exists()) {
+
+            //If it does not exist, inform the user.
+            if (type == Datatype.NODE) {
+
+                System.out.println("ERROR: Nodes file <" + fileName + "> does not exist.");
+
+            } else if (type == Datatype.COURSE) {
+
+                System.out.println("ERROR: Courses file <" + fileName + "> does not exist.");
+
+            } else {
+                
+                System.out.println("ERROR: Entrants file <" + fileName + "> does not exist.");
+                
+            }
+
+            System.out.println("Parameter format = <node path> <courses path> <entrants path>");
+            System.exit(0);
         }
-
-        //Obtain the file path from keyboard input.
-        f = new File(scan.next());
-
-        //Check if the file entered by the user exists.
-        while (!f.exists()) {
-
-            //If it does not exist, prompt for another file.
-            System.out.println("File does not exist. Please try again:");
-            f = new File(scan.next());
-
-        }
+        
 
         //If the file does exist, read in the data from the file.
         readValues = fileIO.readIn(f);
@@ -78,7 +80,7 @@ public class LoadData {
             }
 
             displayNodes();
-            
+
             //Log this activity in the log file ("log.txt");
             fileIO.addActivityLog("Nodes file loaded successfully (nodes.txt)");
 
@@ -106,76 +108,75 @@ public class LoadData {
         }
     }
 
-    
     /**
-     * Parses the data read-in from the "courses.txt" file and creates a new 
-     * {@link aber.dcs.cs22510.clg11.model.Course} object populated with the 
-     * read-in characteristics. This new Course object is then added to the 
+     * Parses the data read-in from the "courses.txt" file and creates a new
+     * {@link aber.dcs.cs22510.clg11.model.Course} object populated with the
+     * read-in characteristics. This new Course object is then added to the
      * internal collection of Courses.
-     * 
+     *
      * @param courseData Collection of all course characteristics data read in
      * from "courses.txt".
      */
     public void loadCourses(String[] courseData) {
-        
+
         try {
 
-        //Create a new empty Course object.
-        Course newCourse = new Course();
+            //Create a new empty Course object.
+            Course newCourse = new Course();
 
-        //Set the course ID to the first element in the course data array.
-        newCourse.setCourseID(courseData[0].charAt(0));
-        
-        //Set the course length to the second element in the course data array.
-        newCourse.setCourseLength(Integer.parseInt(courseData[1]));
+            //Set the course ID to the first element in the course data array.
+            newCourse.setCourseID(courseData[0].charAt(0));
 
-        //Loop through the REST (i=2) of the "read-in" course data array..
-        for (int i = 2; i < (courseData.length); i++) {
+            //Set the course length to the second element in the course data array.
+            newCourse.setCourseLength(Integer.parseInt(courseData[1]));
 
-            //Loop through all the course nodes stored internally.
-            for (Node n : data.getNodes()) {
+            //Loop through the REST (i=2) of the "read-in" course data array..
+            for (int i = 2; i < (courseData.length); i++) {
 
-                int origNodeNo = n.getNumber();
-                
-                //Obtain the node number currently being parsed from the read in data.
-                int courseNodeNo = Integer.parseInt(courseData[i]);
+                //Loop through all the course nodes stored internally.
+                for (Node n : data.getNodes()) {
 
-                /*
-                 * If the node number read-in from file matches the current node,
-                 * and the node is NOT a junction, add this node to the collection
-                 * of nodes within the new Course object. 
-                 */
-                if (origNodeNo == courseNodeNo && (n.getType().equals("CP") || n.getType().equals("MC"))) {
+                    int origNodeNo = n.getNumber();
 
-                    newCourse.addNewNode(n);
+                    //Obtain the node number currently being parsed from the read in data.
+                    int courseNodeNo = Integer.parseInt(courseData[i]);
+
+                    /*
+                     * If the node number read-in from file matches the current node,
+                     * and the node is NOT a junction, add this node to the collection
+                     * of nodes within the new Course object. 
+                     */
+                    if (origNodeNo == courseNodeNo && (n.getType().equals("CP") || n.getType().equals("MC"))) {
+
+                        newCourse.addNewNode(n);
+                    }
                 }
+
             }
 
-        }
+            /*
+             * Once the new Course object has been populated with data,
+             * add it to the collection of courses in Datastore.
+             */
+            data.getCourses().add(newCourse);
 
-        /*
-         * Once the new Course object has been populated with data,
-         * add it to the collection of courses in Datastore.
-         */
-        data.getCourses().add(newCourse);
-        
-        //If an error occurs...
+            //If an error occurs...
         } catch (Exception e) {
-            
-           //... log the error in the "log.txt" file.
-           fileIO.addActivityLog("ERROR - Cannot create new course object (" + courseData[0] +")"); 
+
+            //... log the error in the "log.txt" file.
+            fileIO.addActivityLog("ERROR - Cannot create new course object (" + courseData[0] + ")");
         }
 
     }
 
-     /**
-     * Parses the data read-in from the "nodes.txt" file and creates a new 
-     * {@link aber.dcs.cs22510.clg11.model.Node} object populated with the 
-     * read-in characteristics. This new Node object is then added to the 
+    /**
+     * Parses the data read-in from the "nodes.txt" file and creates a new
+     * {@link aber.dcs.cs22510.clg11.model.Node} object populated with the
+     * read-in characteristics. This new Node object is then added to the
      * internal collection of Nodes.
-     * 
-     * @param nodeData Collection of all node characteristics data read in
-     * from "nodes.txt".
+     *
+     * @param nodeData Collection of all node characteristics data read in from
+     * "nodes.txt".
      */
     public void loadNodes(String[] nodeData) {
 
@@ -196,11 +197,11 @@ public class LoadData {
     }
 
     /**
-     * Parses the data read-in from the "entrants.txt" file and creates a new 
-     * {@link aber.dcs.cs22510.clg11.model.Entrant} object populated with the 
-     * read-in characteristics. This new Entrant object is then added to the 
+     * Parses the data read-in from the "entrants.txt" file and creates a new
+     * {@link aber.dcs.cs22510.clg11.model.Entrant} object populated with the
+     * read-in characteristics. This new Entrant object is then added to the
      * internal collection of Entrants.
-     * 
+     *
      * @param entrantData Collection of all node characteristics data read in
      * from "nodes.txt".
      */

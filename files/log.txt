@@ -1895,3 +1895,16 @@ LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 15:06:39
 LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 15:42:26
 LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 15:42:31
 LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 15:42:34
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 15:49:02
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 15:49:02
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 15:49:02
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 15:54:06
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:04:02
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:04:49
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:04:57
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:05:01
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:05:06
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:05:49
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 07/03/2013 16:06:00
+LOG - CM: Courses file loaded successfully (courses.txt) - 07/03/2013 16:06:01
+LOG - CM: Entrants file loaded successfully (courses.txt) - 07/03/2013 16:06:01

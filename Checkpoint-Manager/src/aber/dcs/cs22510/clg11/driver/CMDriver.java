@@ -16,7 +16,7 @@ public class CMDriver {
     /**
      * The main method used to initialise the main application.
      *
-     * @param args The arguments passed on initialisation.
+     * @param args The file names for the data files.
      */
     public static void main(String[] args) {
 
@@ -27,9 +27,9 @@ public class CMDriver {
         LoadData load = new LoadData(comp);
         
         //Load input files into Datastore class (nodes, tracks and courses).
-        load.loadFiles(Datatype.NODE);
-        load.loadFiles(Datatype.COURSE);
-        load.loadFiles(Datatype.ENTRANT);
+        load.loadFiles(Datatype.NODE, args[0]);
+        load.loadFiles(Datatype.COURSE, args[1]);
+        load.loadFiles(Datatype.ENTRANT, args[2]);
 
         //Once loading via textual interface is complete, display GUI.
         new GUIFrame(comp, load);
