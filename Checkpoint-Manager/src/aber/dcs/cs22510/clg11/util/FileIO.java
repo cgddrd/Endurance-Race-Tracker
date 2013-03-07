@@ -51,6 +51,14 @@ public class FileIO {
             //Initialise the File IO objects, passing in the selected file path
             fileReader = new FileReader(fileName);
             bufferedReader = new BufferedReader(fileReader);
+            
+            
+            if (isTimesFile && this.timesFilePosition > 0) {
+                
+                for(int i = 0; i < this.timesFilePosition; i++) {
+                    bufferedReader.readLine();
+                }
+            }
 
             //Initialise local variable used to store the current line being read in
             String line;

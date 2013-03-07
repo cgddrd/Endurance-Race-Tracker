@@ -250,7 +250,7 @@ public class GUIPanel extends JPanel implements ActionListener {
          * to be re-read into the system to track any updates made by other
          * versions of the checkpoint manager running.
          */
-        proc.resetEntrantProgress();
+       // proc.resetEntrantProgress();
 
         /*
          * Re-read in the "times" file to allow any new times logged by other 
