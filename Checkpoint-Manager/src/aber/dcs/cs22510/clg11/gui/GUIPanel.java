@@ -53,6 +53,9 @@ public class GUIPanel extends JPanel implements ActionListener {
     private SpinnerDateModel sm;
     private Datastore data;
     private LoadData load;
+    
+    
+    private JCheckBox mcExclude;
     /**
      * Enables the GUI to access the methods used for processing times.
      */
@@ -150,6 +153,10 @@ public class GUIPanel extends JPanel implements ActionListener {
         //Set the time format to be diplayed in the JSpinner.
         JSpinner.DateEditor de = new JSpinner.DateEditor(timeSpinner, "HH:mm");
         timeSpinner.setEditor(de);
+        
+         mcExclude = new JCheckBox("Exclude Entrant");
+         mcExclude.setSelected(false);
+         mcExclude.setEnabled(false);
 
         //Add all the components to the GUI panel.
         this.add(nodeTitle);
@@ -158,6 +165,7 @@ public class GUIPanel extends JPanel implements ActionListener {
         this.add(timeTitle);
         this.add(statusBar);
         this.add(timeSpinner);
+        this.add(mcExclude);
         this.add(entrantList);
         this.add(nodeList);
         this.add(mcTypeList);
@@ -190,11 +198,14 @@ public class GUIPanel extends JPanel implements ActionListener {
 
         layout.putConstraint(SpringLayout.NORTH, mcTypeList, 10, SpringLayout.SOUTH, entrantTitle);
         layout.putConstraint(SpringLayout.WEST, mcTypeList, 10, SpringLayout.EAST, mcTypeTitle);
+        
+        layout.putConstraint(SpringLayout.NORTH, mcExclude, 10, SpringLayout.SOUTH, mcTypeTitle);
+        layout.putConstraint(SpringLayout.WEST, mcExclude, 10, SpringLayout.WEST, this);
 
-        layout.putConstraint(SpringLayout.NORTH, timeTitle, 10, SpringLayout.SOUTH, mcTypeTitle);
+        layout.putConstraint(SpringLayout.NORTH, timeTitle, 10, SpringLayout.SOUTH, mcExclude);
         layout.putConstraint(SpringLayout.WEST, timeTitle, 10, SpringLayout.WEST, this);
 
-        layout.putConstraint(SpringLayout.NORTH, timeSpinner, 10, SpringLayout.SOUTH, mcTypeTitle);
+        layout.putConstraint(SpringLayout.NORTH, timeSpinner, 10, SpringLayout.SOUTH, mcExclude);
         layout.putConstraint(SpringLayout.WEST, timeSpinner, 10, SpringLayout.EAST, timeTitle);
 
         layout.putConstraint(SpringLayout.NORTH, setCurrentTime, 10, SpringLayout.SOUTH, timeTitle);
@@ -369,21 +380,18 @@ public class GUIPanel extends JPanel implements ActionListener {
                 updateStatus(" ERROR: Entrant must be at MC before they can depart.");
 
             } else {
+                        
+                result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue, mcExclude.isSelected());       
 
-                //Process this new logged time.
-                result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue);
-
+                updateStatus(result);
             }
 
         } else {
 
             //The checkpoint is not a MC, and so just process the new logged time.
             result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, newTimeValue);
-
+            updateStatus(result);
         }
-
-        updateStatus(result);
-
     }
 
     public void updateStatus(String updateMessage) {
@@ -440,11 +448,13 @@ public class GUIPanel extends JPanel implements ActionListener {
             if (n.getType().equals("MC")) {
 
                 //If it is, allow the "arrive/depart" selection box to be used.
-                this.mcTypeList.setEnabled(true);
+                mcTypeList.setEnabled(true);
+                mcExclude.setEnabled(true);
 
             } else {
 
-                this.mcTypeList.setEnabled(false);
+                mcTypeList.setEnabled(false);
+                mcExclude.setEnabled(false);
             }
         }
     }

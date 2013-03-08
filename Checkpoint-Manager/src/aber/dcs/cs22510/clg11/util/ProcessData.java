@@ -126,7 +126,7 @@ public class ProcessData {
         Entrant currentEntrant = obtainEntrant(entrantNo);
 
         //Check if the time log dictates that the entrant should be excluded.
-        if (timeDelimiter.equals("I")) {
+        if (timeDelimiter.equals("I") || timeDelimiter.equals("E")) {
 
             //If so exclude the entrant.
             excludeEntrant(entrantNo);
@@ -163,7 +163,7 @@ public class ProcessData {
                         //Just prevent this particular time log being processed any further.
                         currentEntrant.setAtMC(true);
                         isUpdated = true;
-                        
+
                         /*
                          * Otherwise, if they are DEPARTING from a MC or they
                          * have just arrived at a normal checkpoint, then their
@@ -236,16 +236,20 @@ public class ProcessData {
         //Obtain the current progress of the entrant (i.e. the index of the array).
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
         String result = null;
+        boolean notLocked = false;
 
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " successfully completed their course.";
+            notLocked = true;
 
         } else if (selectedEntrant.getIsExcluded()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " has been excluded from their course.";
+            notLocked = true;
 
+            
         } else {
 
             /*
@@ -254,28 +258,34 @@ public class ProcessData {
              */
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
-                result = "Entrant " + selectedEntrant.getNumber() + 
-                        " has gone the INCORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
-
                 /*
                  * If they do not match, the entrant has gone the wrong way.
                  * Append this new time log with the 'I' time delimter to the 
                  * times file ("times.txt").
                  */
-                fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                notLocked = fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                result = "Entrant " + selectedEntrant.getNumber()
+                        + " has gone the INCORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
 
             } else {
-                
-                result = "Entrant " + selectedEntrant.getNumber() + 
-                        " has gone the CORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
 
                 /*
                  * Otherwise if they do  match, the entrant has gone the right way.
                  * Append this new time log with the 'T' time delimter to the 
                  * times file ("times.txt").
                  */
-                fileIO.writeFile(new File("../files/times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                notLocked = fileIO.writeFile(new File("../files/times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                result = "Entrant " + selectedEntrant.getNumber()
+                        + " has gone the CORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
             }
+
+        }
+
+        if (!notLocked) {
+
+            result = " ERROR: Times log file locked - Cannot write to file. Please try again.";
 
         }
 
@@ -286,7 +296,8 @@ public class ProcessData {
     /**
      * Processes a new time log submitted by the user by determining whether the
      * entrant is on the correct path or not and updates the "times.txt" file
-     * with the resulting time log (Processes medical checkpoints).
+     * with the resulting time log (Overloaded method for processing medical
+     * checkpoints).
      *
      * @param courseNodes The collection of nodes that make up the course the
      * current entrant is registered for.
@@ -295,31 +306,43 @@ public class ProcessData {
      * @param mcType Whether the entrant was arriving or departing from the MC.
      * @param time The inputted time of the entrant's arrival at the CP.
      */
-    public String processTimeLog(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
+    public String processTimeLog(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time, boolean isExcluded) {
 
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
         String result = null;
+        boolean notLocked = false;
 
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " successfully completed their course.";
+            notLocked = true;
 
         } else if (selectedEntrant.getIsExcluded()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " has been excluded from their course.";
+            notLocked = true;
 
         } else {
 
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
                 fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
-                
-                result = "Entrant " + selectedEntrant.getNumber() + 
-                        " has gone the wrong way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
-                        
-                fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
+                notLocked = fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                result = "Entrant " + selectedEntrant.getNumber()
+                        + " has gone the wrong way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
+
+            } else if (isExcluded) {
+                
+                fileIO.addActivityLog("Entrant excluded for medical reasons. (Entrant No: " + selectedEntrant.getNumber() + ")");
+
+                notLocked = fileIO.writeFile(new File("../files/times.txt"), "E " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                result = "Entrant " + selectedEntrant.getNumber()
+                        + " has been excluded for medical reasons.";
+                
             } else {
 
                 /*
@@ -331,14 +354,27 @@ public class ProcessData {
                 if (mcType.equals("Arriving")) {
 
                     fileIO.addActivityLog("New MC arrival time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")");
-                    fileIO.writeFile(new File("../files/times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                    notLocked = fileIO.writeFile(new File("../files/times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                    result = "Entrant " + selectedEntrant.getNumber()
+                            + " has successfully arrived at MC " + courseNodes.get(nextNodeIndex).getNumber() + ".";
 
                 } else {
 
                     fileIO.addActivityLog("New MC departure time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")");
-                    fileIO.writeFile(new File("../files/times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                    notLocked = fileIO.writeFile(new File("../files/times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                    result = "Entrant " + selectedEntrant.getNumber()
+                            + " has successfully departed from MC " + courseNodes.get(nextNodeIndex).getNumber() + ".";
                 }
             }
+
+        }
+
+        if (!notLocked) {
+
+            result = " ERROR: Times log file locked - Cannot write to file. Please try again.";
 
         }
 
@@ -404,10 +440,10 @@ public class ProcessData {
             if (df.format(lastRecordedTime).compareTo(df.format(newTime)) > 0) {
 
                 //If so, then this cannot be allowed.
-                
+
                 //Log this activity in the log file ("log.txt");
                 fileIO.addActivityLog("User attempted to enter new time value in the past. (New time: " + df.format(newTime) + ")");
-                
+
                 return true;
             }
 

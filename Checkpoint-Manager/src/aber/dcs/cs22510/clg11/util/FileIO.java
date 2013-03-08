@@ -113,7 +113,7 @@ public class FileIO {
      * @param writeFile The file that is to be written to.
      * @param output The output data string.
      */
-    public void writeFile(File writeFile, String output) {
+    public boolean writeFile(File writeFile, String output) {
 
         try {
 
@@ -139,15 +139,15 @@ public class FileIO {
                     fl.release();
                 }
 
-            } else {
+                return true;
                 
-                //Otherwise if the file was already locked, inform the user.
-                System.out.println("Already locked by another process... bad luck\n");
             }
-
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        return false;
     }
     
     /**
