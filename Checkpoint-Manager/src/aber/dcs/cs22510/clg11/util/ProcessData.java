@@ -51,125 +51,12 @@ public class ProcessData {
     }
 
     /**
-     * Resets the current progress of every stored entrant to allow the entire
-     * tracking record of entrants to be updated when "times.txt" is re-read in.
-     */
-    public void resetEntrantProgress() {
-
-        //Loop through every stored entrant.
-        for (Entrant e : data.getEntrants()) {
-
-            //Reset their progress.
-            e.setCurrentProgress(0);
-        }
-
-        //Log this activity in the log file ("log.txt");
-        fileIO.addActivityLog("All entrant details successfully reset.");
-    }
-
-    /**
-     * Processes each line read in from the "times.txt" file to update the
-     * internal record of entrant's progress. This method is crucial to ensure
-     * that any time log updates created by any other running versions of the
-     * checkpoint manager are recorded in the internal entrant record within
-     * this application.
+     * Returns the time value of the last read-in time log.
      *
-     * @param timeDelimiter The character symbol used to represent the status of
-     * the particular time log.
-     * @param nodeNo The number of the node the time log was recorded at.
-     * @param entrantNo The number of the entrant that was recorded.
+     * @return The last time value of the "times.txt" file.
      */
-    public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) {
-
-        //Boolean used to determine whether this particular time log has been processed.
-        boolean isUpdated = false;
-
-        //Obtain the required entrant from the internal collection of entrants.
-        Entrant currentEntrant = obtainEntrant(entrantNo);
-
-        //Check if the time log dictates that the entrant should be excluded.
-        if (timeDelimiter.equals("I")) {
-
-            //If so exclude the entrant.
-            excludeEntrant(entrantNo);
-            System.out.println("ENTRANT EXCLUDED - " + entrantNo);
-
-            //Log this activity in the log file ("log.txt");
-            fileIO.addActivityLog("Entrant no: " + entrantNo + " successfully excluded.");
-
-            /*
-             * Otherwise if they shouldn't be excluded,
-             * check to see if the entrant has already been excluded.
-             */
-        } else if (!currentEntrant.getIsExcluded()) {
-
-            ArrayList<Node> courseNodes = obtainEntrantCourseNodes(currentEntrant);
-
-            //Loop through all the nodes that make up the course the entrant is on.
-            for (int i = 0; i < courseNodes.size(); i++) {
-
-                /*
-                 * Check that the current progress of the entrant < the index of 
-                 * the current node in the array (to prevent nodes the entrant has 
-                 * already passed being used again), and the current node equals
-                 * the node number of the current time log.
-                 */
-                if (i > (currentEntrant.getCurrentProgress() - 1) && courseNodes.get(i).getNumber() == nodeNo && !isUpdated) {
-
-                    /*
-                     * If the entrant has ARRIVED at a medical checkpoint, 
-                     * their progress should not be incrememted as they are 
-                     * now waiting at the MC
-                     */
-                    if (timeDelimiter.equals("A")) {
-
-                        //Just prevent this particular time log being processed any further.
-                        isUpdated = true;
-                        currentEntrant.setAtMC(true);
-                        System.out.println("ENTRANT PARTIALLY UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + currentEntrant.getCurrentProgress());
-                        // fileIO.addActivityLog("Entrant no: " + entrantNo + " has arrived at medical checkpoint " + nodeNo + "."); 
-
-
-                        /*
-                         * Otherwise, if they are DEPARTING from a MC or they
-                         * have just arrived at a normal checkpoint, then their
-                         * progress needs to be recorded and incremented.
-                         */
-                    } else {
-
-                        /*
-                         * If the read in node from time file is further along 
-                         * the course than the current progress,
-                         * update the current progress. 
-                         */
-                        currentEntrant.setCurrentProgress((i + 1));
-                        currentEntrant.setAtMC(false);
-
-
-                        /*
-                         * Check to see if the entrant has now completed
-                         * their course.
-                         */
-                        if (currentEntrant.getCurrentProgress() >= courseNodes.size()) {
-
-                            System.out.println("CURRENT PROGRESS = " + currentEntrant.getCurrentProgress() + ", COURSE NODES SIZE = " + courseNodes.size());
-
-                            //Log that they have finished.
-                            currentEntrant.setIsFinished(true);
-
-                            //Log this activity in the log file ("log.txt");
-                            fileIO.addActivityLog("Entrant no: " + currentEntrant.getNumber() + " has sucessfully finished the course.");
-                        }
-
-                        isUpdated = true;
-
-                        System.out.println("ENTRANT UPDATED: Entrant No: " + entrantNo + ", Node: " + nodeNo + " Progress: " + currentEntrant.getCurrentProgress());
-                        // fileIO.addActivityLog("Entrant no: " + entrantNo + " has been updated to checkpoint " + nodeNo + "."); 
-
-                    }
-                }
-            }
-        }
+    public String getLastLoggedTime() {
+        return lastLoggedTime;
     }
 
     /**
@@ -219,6 +106,102 @@ public class ProcessData {
     }
 
     /**
+     * Processes each line read in from the "times.txt" file to update the
+     * internal record of entrant's progress. This method is crucial to ensure
+     * that any time log updates created by any other running versions of the
+     * checkpoint manager are recorded in the internal entrant record within
+     * this application.
+     *
+     * @param timeDelimiter The character symbol used to represent the status of
+     * the particular time log.
+     * @param nodeNo The number of the node the time log was recorded at.
+     * @param entrantNo The number of the entrant that was recorded.
+     */
+    public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) {
+
+        //Boolean used to determine whether this particular time log has been processed.
+        boolean isUpdated = false;
+
+        //Obtain the required entrant from the internal collection of entrants.
+        Entrant currentEntrant = obtainEntrant(entrantNo);
+
+        //Check if the time log dictates that the entrant should be excluded.
+        if (timeDelimiter.equals("I")) {
+
+            //If so exclude the entrant.
+            excludeEntrant(entrantNo);
+
+            //Log this activity in the log file ("log.txt");
+            fileIO.addActivityLog("Entrant no: " + entrantNo + " successfully excluded.");
+
+            /*
+             * Otherwise if they shouldn't be excluded,
+             * check to see if the entrant has already been excluded.
+             */
+        } else if (!currentEntrant.getIsExcluded()) {
+
+            ArrayList<Node> courseNodes = obtainEntrantCourseNodes(currentEntrant);
+
+            //Loop through all the nodes that make up the course the entrant is on.
+            for (int i = 0; i < courseNodes.size(); i++) {
+
+                /*
+                 * Check that the current progress of the entrant < the index of 
+                 * the current node in the array (to prevent nodes the entrant has 
+                 * already passed being used again), and the current node equals
+                 * the node number of the current time log.
+                 */
+                if (i > (currentEntrant.getCurrentProgress() - 1) && courseNodes.get(i).getNumber() == nodeNo && !isUpdated) {
+
+                    /*
+                     * If the entrant has ARRIVED at a medical checkpoint, 
+                     * their progress should not be incrememted as they are 
+                     * now waiting at the MC
+                     */
+                    if (timeDelimiter.equals("A")) {
+
+                        //Just prevent this particular time log being processed any further.
+                        currentEntrant.setAtMC(true);
+                        isUpdated = true;
+                        
+                        /*
+                         * Otherwise, if they are DEPARTING from a MC or they
+                         * have just arrived at a normal checkpoint, then their
+                         * progress needs to be recorded and incremented.
+                         */
+                    } else {
+
+                        /*
+                         * If the read in node from time file is further along 
+                         * the course than the current progress,
+                         * update the current progress. 
+                         */
+                        currentEntrant.setCurrentProgress((i + 1));
+                        currentEntrant.setAtMC(false);
+
+
+                        /*
+                         * Check to see if the entrant has now completed
+                         * their course.
+                         */
+                        if (currentEntrant.getCurrentProgress() >= courseNodes.size()) {
+
+                            //Log that they have finished.
+                            currentEntrant.setIsFinished(true);
+
+                            //Log this activity in the log file ("log.txt");
+                            fileIO.addActivityLog("Entrant no: " + currentEntrant.getNumber() + " has sucessfully finished the course.");
+                        }
+
+                        isUpdated = true;
+
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Updates a particular Entrant object to log the fact that they have been
      * excluded from their race.
      *
@@ -257,11 +240,11 @@ public class ProcessData {
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
 
-            result = "ENTRANT FINISHED!!";
+            result = " Entrant " + selectedEntrant.getNumber() + " successfully completed their course.";
 
         } else if (selectedEntrant.getIsExcluded()) {
 
-            result = "ENTRANT EXCLUDED!!";
+            result = " Entrant " + selectedEntrant.getNumber() + " has been excluded from their course.";
 
         } else {
 
@@ -271,7 +254,8 @@ public class ProcessData {
              */
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
-                result = "ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
+                result = "Entrant " + selectedEntrant.getNumber() + 
+                        " has gone the INCORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
 
                 /*
                  * If they do not match, the entrant has gone the wrong way.
@@ -281,8 +265,9 @@ public class ProcessData {
                 fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
             } else {
-
-                result = "ENTRANT HAS GONE THE RIGHT WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
+                
+                result = "Entrant " + selectedEntrant.getNumber() + 
+                        " has gone the CORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
 
                 /*
                  * Otherwise if they do  match, the entrant has gone the right way.
@@ -318,19 +303,21 @@ public class ProcessData {
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
 
-            result = "ENTRANT FINISHED!!";
+            result = " Entrant " + selectedEntrant.getNumber() + " successfully completed their course.";
 
         } else if (selectedEntrant.getIsExcluded()) {
 
-            result = "ENTRANT EXCLUDED!!";
+            result = " Entrant " + selectedEntrant.getNumber() + " has been excluded from their course.";
 
         } else {
 
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
                 fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
-
-                result = "ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
+                
+                result = "Entrant " + selectedEntrant.getNumber() + 
+                        " has gone the wrong way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
+                        
                 fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
             } else {
@@ -366,7 +353,6 @@ public class ProcessData {
     public boolean getTimes() {
 
         //Obtain a collection of ALL the time logs read in from the "times.txt" file.
-
         File timesFile = new File("../files/times.txt");
 
         if (timesFile.exists()) {
@@ -378,7 +364,7 @@ public class ProcessData {
 
                 //... process this time log and update the internal record of entrants.
                 processNewTime(newTime[0], Integer.parseInt(newTime[1]), Integer.parseInt(newTime[2]));
-                
+
                 this.lastLoggedTime = newTime[3];
 
             }
@@ -393,38 +379,42 @@ public class ProcessData {
         return false;
     }
 
+    /**
+     * Compares the time of the last read-in time log, with the new time being
+     * submitted to check that the user is not entering a time in the past.
+     *
+     * @param oldTimeString The last time value read-in from "times.txt".
+     * @param newTimeString The new time value being submitted by the user.
+     * @return A boolean determining if the new time value is in the past.
+     */
     public boolean compareTimes(String oldTimeString, String newTimeString) {
 
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
 
         Date lastRecordedTime;
         Date newTime;
-        
+
         try {
 
+            //Create new Date objects using the last logged, and new time values.
             lastRecordedTime = df.parse(oldTimeString);
             newTime = df.parse(newTimeString);
 
-            System.out.println(df.format(lastRecordedTime));
-            System.out.println(df.format(newTime));
-
+            //Check if the new time entered is before the last read-in time.
             if (df.format(lastRecordedTime).compareTo(df.format(newTime)) > 0) {
-                System.out.println("date1 is before date2");
+
+                //If so, then this cannot be allowed.
+                
+                //Log this activity in the log file ("log.txt");
+                fileIO.addActivityLog("User attempted to enter new time value in the past. (New time: " + df.format(newTime) + ")");
+                
                 return true;
             }
 
         } catch (ParseException ex) {
             Logger.getLogger(ProcessData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
-
-    }
-
-    /**
-     * @return the lastLoggedTime
-     */
-    public String getLastLoggedTime() {
-        return lastLoggedTime;
     }
 }

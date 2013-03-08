@@ -72,8 +72,7 @@ public class GUIPanel extends JPanel implements ActionListener {
         this.data = newData;
         this.load = newLoad;
         this.fileIO = newFileIO;
-
-
+        
         //Set the size of the panel
         this.setPreferredSize(new Dimension(500, 300));
 
@@ -173,7 +172,6 @@ public class GUIPanel extends JPanel implements ActionListener {
      */
     public void setUpLayout() {
 
-
         //Set the NORTH edge of the button to be 5 pixels down from the NORTH edge of the panel
         layout.putConstraint(SpringLayout.NORTH, nodeTitle, 10, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST, nodeTitle, 10, SpringLayout.WEST, this);
@@ -206,14 +204,6 @@ public class GUIPanel extends JPanel implements ActionListener {
         layout.putConstraint(SpringLayout.WEST, submitTime, 10, SpringLayout.WEST, this);
 
         layout.putConstraint(SpringLayout.SOUTH, statusBar, 0, SpringLayout.SOUTH, this);
-
-
-
-
-        //Set the WEST edge of the button to be 80 pixels to the right of the WEST edge of the panel
-        // layout.putConstraint(SpringLayout.WEST,newOrder,80,SpringLayout.WEST,this);
-
-
     }
 
     /**
@@ -287,15 +277,14 @@ public class GUIPanel extends JPanel implements ActionListener {
     }
 
     /**
-     * Submits a new time log based on user input within the GUI to allow it to
-     * then be processed by the system and logged accordingly.
+     * Submits a new time log based on user input within the GUI and determines
+     * if an time file currently exists, or if a new one has to be created.
      */
     public void submitCheckpoint() {
 
+
         //Display question dialog
         int shouldProcess = JOptionPane.YES_OPTION;
-
-        String result = null;
 
         shouldProcess = JOptionPane.showConfirmDialog(null, "Are you sure you wish to submit this time log?",
                 "CM Manager | Submit Time Log", JOptionPane.YES_NO_OPTION);
@@ -303,78 +292,98 @@ public class GUIPanel extends JPanel implements ActionListener {
         //If user selects "yes"
         if (shouldProcess == JOptionPane.YES_OPTION) {
 
-            /*
-             * Re-read in the "times" file to allow any new times logged by other 
-             * running versions of the checkpoint manager to update the information 
-             * contained within this version of the CM. 
-             */
+            //Create a formatter for the time value entered by the user.
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+            String newTimeValue = sdf.format(timeSpinner.getValue());
+
+            //Check if a times file currently exists.
             if (proc.getTimes()) {
 
                 updateStatus(" Times file loaded successfully.");
 
-                //Obtain the selected entrant from the arraylist of entrants.
-                Entrant currentEntrant = data.getEntrants().get(entrantList.getSelectedIndex());
-
-                //Obtain the arraylist of course nodes that make up the course that entrant is registered for.
-                ArrayList<Node> entrantNodes = proc.obtainEntrantCourseNodes(currentEntrant);
-
-                //Create a formatter for the time value entered by the user.
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-
-                //Obtain the number of the node selected by the user.
-                int nodeNumber = Integer.parseInt((String) nodeList.getSelectedItem());
-
-                //Format the time value entered by the user.
-                String newTimeValue = sdf.format(timeSpinner.getValue());
-                
+                //Check to see if the time entered by the user is in the past.
                 if (proc.compareTimes(proc.getLastLoggedTime(), newTimeValue)) {
-                    
+
                     updateStatus(" ERROR: Time entered is before the latest time log value");
-                    
-                } else  {
-
-                //Check to see if the node selected was a MC.
-                if (mcTypeList.isEnabled()) {
-
-                    //If so determine whether they were arriving or departing.
-                    String mcSelection = (String) mcTypeList.getSelectedItem();
-
-                    /*
-                     * Check if the user is attempting to log an entrant arriving
-                     * at a MC while the entrant is currently at an MC.
-                     */
-                    if (currentEntrant.getAtMC() && mcSelection.equals("Arriving")) {
-
-                        updateStatus(" ERROR: Entrant " + currentEntrant.getNumber() + " already at medical checkpoint.");
-
-                    } else if (!(currentEntrant.getAtMC()) && mcSelection.equals("Departing")) {
-                        
-                        updateStatus(" ERROR: Entrant must be at MC before they can depart." );
-                        
-                    } else {
-
-                        //Process this new logged time.
-                        result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue);
-
-                    }
 
                 } else {
 
-                    //The checkpoint is not a MC, and so just process the new logged time.
-                    result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, newTimeValue);
-
+                    /*
+                     * Re-read in the "times" file to allow any new times logged by other 
+                     * running versions of the checkpoint manager to update the information 
+                     * contained within this version of the CM. 
+                     */
+                    updateTimeLog();
                 }
 
-                updateStatus(result);
-                
-                }
-
+            //If a time file does not currently exist, create a new one.
             } else {
 
-                updateStatus(" ERROR: Cannot load/parse times file.");
+                updateStatus(" ALERT: Times file (times.txt) not found. Creating new time log file.");
+                updateTimeLog();
             }
 
         }
+    }
+
+    /**
+     * Takes the user input and processes the new time log entry before adding
+     * it to the times log file.
+     */
+    public void updateTimeLog() {
+
+        String result = null;
+
+        //Obtain the selected entrant from the arraylist of entrants.
+        Entrant currentEntrant = data.getEntrants().get(entrantList.getSelectedIndex());
+
+        //Obtain the arraylist of course nodes that make up the course that entrant is registered for.
+        ArrayList<Node> entrantNodes = proc.obtainEntrantCourseNodes(currentEntrant);
+
+        //Create a formatter for the time value entered by the user.
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+        //Obtain the number of the node selected by the user.
+        int nodeNumber = Integer.parseInt((String) nodeList.getSelectedItem());
+
+        //Format the time value entered by the user.
+        String newTimeValue = sdf.format(timeSpinner.getValue());
+
+        //Check to see if the node selected was a MC.
+        if (mcTypeList.isEnabled()) {
+
+            //If so determine whether they were arriving or departing.
+            String mcSelection = (String) mcTypeList.getSelectedItem();
+
+            /*
+             * Check if the user is attempting to log an entrant arriving
+             * at a MC while the entrant is currently at an MC.
+             */
+            if (currentEntrant.getAtMC() && mcSelection.equals("Arriving")) {
+
+                updateStatus(" ERROR: Entrant " + currentEntrant.getNumber() + " already at medical checkpoint.");
+
+            } else if (!(currentEntrant.getAtMC()) && mcSelection.equals("Departing")) {
+
+                updateStatus(" ERROR: Entrant must be at MC before they can depart.");
+
+            } else {
+
+                //Process this new logged time.
+                result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue);
+
+            }
+
+        } else {
+
+            //The checkpoint is not a MC, and so just process the new logged time.
+            result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, newTimeValue);
+
+        }
+
+        updateStatus(result);
+
     }
 
     public void updateStatus(String updateMessage) {

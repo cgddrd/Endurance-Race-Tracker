@@ -2195,3 +2195,53 @@ LOG - CM: Entrant no: 1 has sucessfully finished the course. - 08/03/2013 10:25:
 LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 10:25:15
 LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 10:25:28
 LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 10:26:27
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 10:43:47
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 10:43:47
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 10:43:47
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 10:47:19
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 10:47:19
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 10:47:19
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 10:48:38
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 11:06:15
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 11:06:15
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 11:06:15
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 11:15:09
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 11:15:09
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 11:15:09
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:15:52
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:16:03
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:16:28
+LOG - CM: Entrant no: 3 successfully excluded. - 08/03/2013 11:16:37
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:16:37
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 11:17:18
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 11:17:18
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 11:17:18
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:17:23
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:17:31
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 08/03/2013 11:17:38
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:17:38
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 11:57:58
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 11:57:58
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 11:57:58
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:58:16
+LOG - CM: User attempted to enter new time value in the past. (New time: 11:57) - 08/03/2013 11:58:16
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:58:31
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:59:50
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 11:59:54
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:00:02
+LOG - CM: New MC departure time submitted. (Entrant No: 3) - 08/03/2013 12:00:02
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:00:56
+LOG - CM: Entrant no: 3 successfully excluded. - 08/03/2013 12:01:10
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:01:10
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:01:15
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 08/03/2013 12:01:24
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:01:24
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 08/03/2013 12:02:59
+LOG - CM: Courses file loaded successfully (courses.txt) - 08/03/2013 12:02:59
+LOG - CM: Entrants file loaded successfully (courses.txt) - 08/03/2013 12:02:59
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:03:05
+LOG - CM: User attempted to enter new time value in the past. (New time: 12:03) - 08/03/2013 12:03:05
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:03:13
+LOG - CM: Submitted checkpoint incorrect for course. (Entrant No: 1) - 08/03/2013 12:03:13
+LOG - CM: Entrant no: 1 successfully excluded. - 08/03/2013 12:03:23
+LOG - CM: Time logs file loaded successfully (times.txt) - 08/03/2013 12:03:23
