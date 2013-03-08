@@ -76,12 +76,15 @@ FILE * openFile(char *prompt) {
 
 }
 
+/* 
+ * Appends a specified message to a specified file incorporating
+ * file locking to prevent corruption of file data.
+ */
 void writeFile(char *file_name, char *message) {
-
-
 
     FILE * file = fopen(file_name, "a+");
 
+    /*Has implicit declaration warning because fileNo is part of POSIX, not ISO C. */
     flock(fileno(file), LOCK_EX); /*lock log file*/
 
     printf("\n%s", message);
@@ -89,12 +92,15 @@ void writeFile(char *file_name, char *message) {
     fclose(file); /*done!*/
 
     flock(fileno(file), LOCK_UN); /*unlock log file*/
-    printf("\nFile unlocked.");
-
-    printf("\nText written to file.");
+    
+    printf("\nFile unlocked successfully.");
 
 }
 
+/* 
+ * Appends a new system activity log message to the 
+ * end of the "log.txt" file.
+ */
 void logActivity(char *activity) {
 
     char message[2000];
@@ -110,7 +116,7 @@ void logActivity(char *activity) {
     strcat(message, activity);
     strcat(message, " - ");
     strcat(message, asctime(timeinfo));
-    
+
     writeFile("../files/log.txt", message);
 
 }
