@@ -5,7 +5,12 @@ import aber.dcs.cs22510.clg11.model.Datastore;
 import aber.dcs.cs22510.clg11.model.Entrant;
 import aber.dcs.cs22510.clg11.model.Node;
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Responsible for updating the internal record of entrant progress (based on
@@ -21,6 +26,7 @@ public class ProcessData {
 
     private Datastore data;
     private FileIO fileIO;
+    private String lastLoggedTime = null;
 
     /**
      * Allows access to the file read/write facilities.
@@ -242,7 +248,7 @@ public class ProcessData {
      * @param newNode The newly submitted node that the entrant has arrived at.
      * @param time The inputted time of the entrant's arrival at the CP.
      */
-    public String processNewTime(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
+    public String processTimeLog(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
 
         //Obtain the current progress of the entrant (i.e. the index of the array).
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
@@ -250,13 +256,13 @@ public class ProcessData {
 
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
-            
+
             result = "ENTRANT FINISHED!!";
-            
+
         } else if (selectedEntrant.getIsExcluded()) {
-            
+
             result = "ENTRANT EXCLUDED!!";
-            
+
         } else {
 
             /*
@@ -287,9 +293,9 @@ public class ProcessData {
             }
 
         }
-            
+
         return result;
-        
+
     }
 
     /**
@@ -304,26 +310,26 @@ public class ProcessData {
      * @param mcType Whether the entrant was arriving or departing from the MC.
      * @param time The inputted time of the entrant's arrival at the CP.
      */
-    public String processNewTime(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
+    public String processTimeLog(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time) {
 
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
         String result = null;
 
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
-            
+
             result = "ENTRANT FINISHED!!";
-            
+
         } else if (selectedEntrant.getIsExcluded()) {
-            
+
             result = "ENTRANT EXCLUDED!!";
-            
+
         } else {
 
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
                 fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
-                
+
                 result = "ENTRANT HAS GONE THE WRONG WAY - " + courseNodes.get(nextNodeIndex).getNumber() + " / " + newNode;
                 fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
@@ -348,7 +354,7 @@ public class ProcessData {
             }
 
         }
-        
+
         return result;
 
     }
@@ -372,6 +378,8 @@ public class ProcessData {
 
                 //... process this time log and update the internal record of entrants.
                 processNewTime(newTime[0], Integer.parseInt(newTime[1]), Integer.parseInt(newTime[2]));
+                
+                this.lastLoggedTime = newTime[3];
 
             }
 
@@ -383,5 +391,40 @@ public class ProcessData {
         }
 
         return false;
+    }
+
+    public boolean compareTimes(String oldTimeString, String newTimeString) {
+
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+
+        Date lastRecordedTime;
+        Date newTime;
+        
+        try {
+
+            lastRecordedTime = df.parse(oldTimeString);
+            newTime = df.parse(newTimeString);
+
+            System.out.println(df.format(lastRecordedTime));
+            System.out.println(df.format(newTime));
+
+            if (df.format(lastRecordedTime).compareTo(df.format(newTime)) > 0) {
+                System.out.println("date1 is before date2");
+                return true;
+            }
+
+        } catch (ParseException ex) {
+            Logger.getLogger(ProcessData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+
+    }
+
+    /**
+     * @return the lastLoggedTime
+     */
+    public String getLastLoggedTime() {
+        return lastLoggedTime;
     }
 }

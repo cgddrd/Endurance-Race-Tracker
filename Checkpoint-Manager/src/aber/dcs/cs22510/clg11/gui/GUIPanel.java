@@ -325,7 +325,13 @@ public class GUIPanel extends JPanel implements ActionListener {
                 int nodeNumber = Integer.parseInt((String) nodeList.getSelectedItem());
 
                 //Format the time value entered by the user.
-                String timeValue = sdf.format(timeSpinner.getValue());
+                String newTimeValue = sdf.format(timeSpinner.getValue());
+                
+                if (proc.compareTimes(proc.getLastLoggedTime(), newTimeValue)) {
+                    
+                    updateStatus(" ERROR: Time entered is before the latest time log value");
+                    
+                } else  {
 
                 //Check to see if the node selected was a MC.
                 if (mcTypeList.isEnabled()) {
@@ -348,18 +354,20 @@ public class GUIPanel extends JPanel implements ActionListener {
                     } else {
 
                         //Process this new logged time.
-                        result = proc.processNewTime(entrantNodes, currentEntrant, nodeNumber, mcSelection, timeValue);
+                        result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue);
 
                     }
 
                 } else {
 
                     //The checkpoint is not a MC, and so just process the new logged time.
-                    result = proc.processNewTime(entrantNodes, currentEntrant, nodeNumber, timeValue);
+                    result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, newTimeValue);
 
                 }
 
                 updateStatus(result);
+                
+                }
 
             } else {
 

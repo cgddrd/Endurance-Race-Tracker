@@ -9,8 +9,8 @@ import aber.dcs.cs22510.clg11.util.FileIO;
 /**
  * Bootstrap class - Initialises the application.
  *
- * @author Connor Goddard (clg11) 
- * Copyright: Aberystwyth University, Aberystwyth.
+ * @author Connor Goddard (clg11) Copyright: Aberystwyth University,
+ * Aberystwyth.
  */
 public class CMDriver {
 
@@ -23,21 +23,29 @@ public class CMDriver {
 
         //Instantiate new Datastore object that will be shared by other classes.
         Datastore comp = new Datastore();
-        
+
         //Instantiate new FileIO object to allow shared file I/O facilities.
         FileIO fileIO = new FileIO();
-        
+
         //Instantiate new Datastore object that will be shared by other classes.
         LoadData load = new LoadData(comp, fileIO);
-        
 
-        //Load input files into Datastore class (nodes, tracks and courses).
-        load.loadFiles(Datatype.NODE, args[0]);
-        load.loadFiles(Datatype.COURSE, args[1]);
-        load.loadFiles(Datatype.ENTRANT, args[2]);
 
-        //Once loading via textual interface is complete, display GUI.
-        new GUIFrame(comp, load, fileIO);
+        //Load input files into Datastore class (nodes, tracks and courses).     
+       try {
+
+            load.loadFiles(Datatype.NODE, args[0]);
+            load.loadFiles(Datatype.COURSE, args[1]);
+            load.loadFiles(Datatype.ENTRANT, args[2]);
+
+            //Once loading via textual interface is complete, display GUI.
+            new GUIFrame(comp, load, fileIO);
+
+       } catch (IndexOutOfBoundsException eX) {
+           
+            System.out.println("ERROR: File parameters missing.");
+            System.out.println("Parameter format = <node path> <courses path> <entrants path>");
+       }
 
     }
 }
