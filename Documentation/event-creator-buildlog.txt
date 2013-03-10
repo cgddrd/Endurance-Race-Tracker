@@ -1,0 +1,48 @@
+"/usr/bin/make" -f nbproject/Makefile-Debug.mk QMAKE= SUBPROJECTS= .clean-conf
+make[1]: Entering directory `/home/connor/Git/Endurance-Race-Tracker/Event-Creator'
+rm -f -r build/Debug
+rm -f dist/Debug/GNU-Linux-x86/event-creator
+make[1]: Leaving directory `/home/connor/Git/Endurance-Race-Tracker/Event-Creator'
+
+
+CLEAN SUCCESSFUL (total time: 57ms)
+
+"/usr/bin/make" -f nbproject/Makefile-Debug.mk QMAKE= SUBPROJECTS= .build-conf
+make[1]: Entering directory `/home/connor/Git/Endurance-Race-Tracker/Event-Creator'
+"/usr/bin/make"  -f nbproject/Makefile-Debug.mk dist/Debug/GNU-Linux-x86/event-creator
+make[2]: Entering directory `/home/connor/Git/Endurance-Race-Tracker/Event-Creator'
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Course.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Course.o.d -o build/Debug/GNU-Linux-x86/Course.o Course.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Datastore.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Datastore.o.d -o build/Debug/GNU-Linux-x86/Datastore.o Datastore.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Entrant.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Entrant.o.d -o build/Debug/GNU-Linux-x86/Entrant.o Entrant.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Event.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Event.o.d -o build/Debug/GNU-Linux-x86/Event.o Event.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/FileIO.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/FileIO.o.d -o build/Debug/GNU-Linux-x86/FileIO.o FileIO.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Menu.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Menu.o.d -o build/Debug/GNU-Linux-x86/Menu.o Menu.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Node.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Node.o.d -o build/Debug/GNU-Linux-x86/Node.o Node.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/Process.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/Process.o.d -o build/Debug/GNU-Linux-x86/Process.o Process.cpp
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/main.o.d
+g++    -c -g -Wall -MMD -MP -MF build/Debug/GNU-Linux-x86/main.o.d -o build/Debug/GNU-Linux-x86/main.o main.cpp
+mkdir -p dist/Debug/GNU-Linux-x86
+g++     -o dist/Debug/GNU-Linux-x86/event-creator build/Debug/GNU-Linux-x86/Course.o build/Debug/GNU-Linux-x86/Datastore.o build/Debug/GNU-Linux-x86/Entrant.o build/Debug/GNU-Linux-x86/Event.o build/Debug/GNU-Linux-x86/FileIO.o build/Debug/GNU-Linux-x86/Menu.o build/Debug/GNU-Linux-x86/Node.o build/Debug/GNU-Linux-x86/Process.o build/Debug/GNU-Linux-x86/main.o 
+make[2]: Leaving directory `/home/connor/Git/Endurance-Race-Tracker/Event-Creator'
+make[1]: Leaving directory `/home/connor/Git/Endurance-Race-Tracker/Event-Creator'
+
+
+BUILD SUCCESSFUL (total time: 3s)
+

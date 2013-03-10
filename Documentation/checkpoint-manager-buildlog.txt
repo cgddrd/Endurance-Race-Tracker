@@ -1,0 +1,23 @@
+ant -f /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager clean jar
+init:
+deps-clean:
+Updating property file: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build/built-clean.properties
+Deleting directory /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build
+clean:
+init:
+deps-jar:
+Created dir: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build
+Updating property file: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build/built-jar.properties
+Created dir: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build/classes
+Created dir: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build/empty
+Created dir: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build/generated-sources/ap-source-output
+Compiling 11 source files to /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build/classes
+compile:
+Created dir: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/dist
+Copying 1 file to /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/build
+Nothing to copy.
+Building jar: /home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/dist/Checkpoint-Manager.jar
+To run this application from the command line without Ant, try:
+java -jar "/home/connor/Git/Endurance-Race-Tracker/Checkpoint-Manager/dist/Checkpoint-Manager.jar"
+jar:
+BUILD SUCCESSFUL (total time: 0 seconds)

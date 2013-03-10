@@ -1,5 +1,5 @@
 /* 
- * File: Course.h
+ * File: Menu.h
  * Description: Defines all variables/methods for the Course class.
  * Author: Connor Luke Goddard (clg11)
  * Date: March 2013

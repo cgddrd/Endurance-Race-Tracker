@@ -384,7 +384,7 @@ Course* Process::getSelectedCourse(void) {
     while (!isalpha(selectedID)) {
 
         //Prompt user for a course ID.
-        cout << "Please enter a new course ID: ";
+        cout << "Please enter an existing course ID: ";
         cin >> selectedID;
 
         if (!isalpha(selectedID)) {
@@ -396,7 +396,7 @@ Course* Process::getSelectedCourse(void) {
     }
 
     //Return the matching course fetched from the course vector in Datastore.
-    data->getInCourse(selectedID);
+    return data->getInCourse(selectedID);
 
 }
 

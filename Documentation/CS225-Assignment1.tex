@@ -1,0 +1,265 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{\textit{C, C++ \& Java Paradigms / Connor Goddard}}
+\fancyhead[LO,RE]{\slshape}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyfoot[LE,RO]{Page \thepage\ of \pageref{LastPage}}
+\cfoot{}
+
+
+\lstdefinestyle{customc++}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  language=C++,
+  showstringspaces=false,
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\bfseries\color{OliveGreen},
+  commentstyle=\itshape\color{black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  numbers=left
+}
+
+\lstdefinestyle{customjava}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  language=Java,
+  showstringspaces=false,
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\bfseries\color{OliveGreen},
+  commentstyle=\itshape\color{black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  numbers=left
+}
+
+\lstdefinestyle{buildlog}{
+  basicstyle=\scriptsize\ttfamily,
+  breaklines=true,
+  frame=L,
+  showstringspaces=false,
+  numbers=left
+}
+
+\lstdefinestyle{output}{
+  basicstyle=\scriptsize\ttfamily,
+  breaklines=true,
+  frame=single,
+  showstringspaces=false
+}
+
+\setlength{\parindent}{0pt}
+
+\title{\textbf{CS22510 - C, C++ \& Java Paradigms} \\ Assignment 1 - Runners \& Riders \\ 2012-2013}	
+\author{\textbf{Connor Luke Goddard}\\clg11@aber.ac.uk}		
+\date{March 2013}	
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+
+\subsection{Purpose of this Document}
+The purpose of this document is to provide a description and supporting evidence of my implemented solution to the CS22510 Assignment 1. 
+
+\subsection{Scope}
+This document describes the final state of the implemented solution and contains  evidence demonstrating the functionality, compilation, and source code of all three applications that form to produce the final system.
+
+\subsection{Objectives}
+
+The objectives of this document are:
+
+\begin{itemize}
+
+\item To provide the complete source code for the ``event creator" application, and evidence of it's compilation and functionality.
+\item To provide the complete source code for the ``checkpoint manager" application, and evidence of it's compilation and functionality.
+\item To provide evidence of the compilation and functionality of the ``event manager" applicaiton.
+\item To briefly describe the structure and programming language choice of each of the three applications.
+
+\end{itemize}
+
+\clearpage
+
+\section{Event Creator - Source Code}
+
+This section contains the complete source code for the ``event creator" program written in C++.
+
+\subsection{Header Files}
+
+\subsubsection{Menu.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Menu.h}
+
+\clearpage
+\subsubsection{Process.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Process.h}
+
+\clearpage
+\subsubsection{Datastore.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Datastore.h}
+
+\clearpage
+\subsubsection{FileIO.h}
+\lstinputlisting[style=customc++]{../Event-Creator/FileIO.h}
+
+\clearpage
+\subsubsection{Event.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Event.h}
+
+\clearpage
+\subsubsection{Entrant.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Entrant.h}
+
+\clearpage
+\subsubsection{Node.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Node.h}
+
+\clearpage
+\subsubsection{Course.h}
+\lstinputlisting[style=customc++]{../Event-Creator/Course.h}
+
+\clearpage
+\subsection{Class Files}
+
+\subsubsection{Main.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/main.cpp}
+
+\clearpage
+\subsubsection{Menu.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Menu.cpp}
+
+\clearpage
+\subsubsection{Process.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Process.cpp}
+
+\clearpage
+\subsubsection{Datastore.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Datastore.cpp}
+
+\clearpage
+\subsubsection{FileIO.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/FileIO.cpp}
+
+\clearpage
+\subsubsection{Event.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Event.cpp}
+
+\clearpage
+\subsubsection{Entrant.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Entrant.cpp}
+
+\clearpage
+\subsubsection{Node.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Node.cpp}
+
+\clearpage
+\subsubsection{Course.cpp}
+\lstinputlisting[style=customc++]{../Event-Creator/Course.cpp}
+
+\clearpage
+\section{Event Creator - Build/Compilation Log}
+
+The listing below contains the build/compilation log for the ``event creator" application. Extra warning flags have been used with the C++ compiler (g++) to ensure that no errors/warnings occur when compiling the application.
+
+\lstinputlisting[style=buildlog, caption=Compilation log built within Netbeans IDE 7.3 on Ubuntu 12.04]{event-creator-buildlog.txt}
+
+\clearpage
+\section{Event Creator - Example Usage}
+This section demonstrates the ``event creator" application running using test input data to ensure that expected functionality and suitable error checking is taking place correctly.
+
+\lstinputlisting[style=output, caption=Example output of functionality testing of the event creator application.]{event-creator-output.txt}
+
+\clearpage
+\section{Event Creator - File Output}
+
+This section lists the contents of the three external files that the event creator application has produced from the user input provided from the previous test run. 
+
+\lstinputlisting[style=output, basicstyle=\footnotesize\ttfamily, caption=Output of `event.txt' file produced by the ``event creator" application.]{../files/exampleevent.txt}
+
+\lstinputlisting[style=output, basicstyle=\footnotesize\ttfamily, caption=Output of `courses.txt' file produced by the ``event creator" application.]{../files/examplecourses.txt}
+
+\lstinputlisting[style=output, basicstyle=\footnotesize\ttfamily, caption=Output of `entrants.txt' file produced by the ``event creator" application.]{../files/exampleentrants.txt}
+
+\clearpage
+\section{Checkpoint Manager - Source Code}
+This section contains the complete source code for the ``checkpoint manager" program written in Java (JVM 7).
+
+\subsection{`Driver' Package}
+
+\subsubsection{CMDriver.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/driver/CMDriver.java}
+
+\subsection{`Util' Package}
+
+\subsubsection{ProcessData.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/ProcessData.java}
+
+\subsubsection{FileIO.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/FileIO.java}
+
+\subsubsection{LoadData.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/LoadData.java}
+
+\clearpage
+\subsection{`Model' Package}
+
+\subsubsection{Datastore.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Datastore.java}
+
+\clearpage
+\subsubsection{Entrant.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Entrant.java}
+
+\clearpage
+\subsubsection{Course.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Course.java}
+
+\clearpage
+\subsubsection{Node.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Node.java}
+
+\subsubsection{Datatype.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Datatype.java}
+
+\clearpage
+\subsection{`GUI' Package}
+
+\subsubsection{GUIFrame.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIFrame.java}
+
+\subsubsection{GUIPanel.java}
+\lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIPanel.java}
+
+\clearpage
+\section{Checkpoint Manager - Build/Compilation Log}
+
+The listing below contains the build/compilation log for the ``checkpoint manager" application. Extra warning flags (\verb+-Xlint:unchecked+) have been used with the JVM compiler to ensure that no errors/warnings occur when compiling the application. \\
+
+\lstinputlisting[style=buildlog, caption=Compilation log built within Netbeans IDE 7.3 on Ubuntu 12.04]{checkpoint-manager-buildlog.txt}
+
+\clearpage
+\section{Checkpoint Manager - Example Usage}
+This section demonstrates the ``event creator" application running using test input data to ensure that expected functionality and suitable error checking is taking place correctly.\\
+
+\subsection{Loading External Data Files}
+\lstinputlisting[style=output, caption=Example output of functionality testing of the event creator application.]{event-creator-output.txt}
+
+\end{document}

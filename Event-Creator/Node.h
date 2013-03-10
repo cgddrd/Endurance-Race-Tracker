@@ -1,5 +1,5 @@
 /* 
- * File: Course.h
+ * File: Node.h
  * Description: Defines all variables/methods for the Node class.
  * Author: Connor Luke Goddard (clg11)
  * Date: March 2013

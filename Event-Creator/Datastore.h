@@ -1,5 +1,5 @@
 /* 
- * File: Course.h
+ * File: Datastore.h
  * Description: Defines all variables/methods for the Datastore class.
  * Author: Connor Luke Goddard (clg11)
  * Date: March 2013
