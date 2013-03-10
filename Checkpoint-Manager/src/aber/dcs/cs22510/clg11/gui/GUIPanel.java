@@ -77,7 +77,7 @@ public class GUIPanel extends JPanel implements ActionListener {
         this.fileIO = newFileIO;
         
         //Set the size of the panel
-        this.setPreferredSize(new Dimension(500, 300));
+        this.setPreferredSize(new Dimension(500, 250));
 
         //Set the bespoke layout manager.
         this.setLayout(layout);
@@ -316,7 +316,7 @@ public class GUIPanel extends JPanel implements ActionListener {
                 //Check to see if the time entered by the user is in the past.
                 if (proc.compareTimes(proc.getLastLoggedTime(), newTimeValue)) {
 
-                    updateStatus(" ERROR: Time entered is before the latest time log value");
+                    updateStatus(" ERROR: Time entered is before last recorded time. Please try again.");
 
                 } else {
 

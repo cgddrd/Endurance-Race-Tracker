@@ -236,20 +236,18 @@ public class ProcessData {
         //Obtain the current progress of the entrant (i.e. the index of the array).
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
         String result = null;
-        boolean notLocked = false;
+        boolean timesNotLocked = true;
+        boolean logNotLocked = true;
 
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " successfully completed their course.";
-            notLocked = true;
 
         } else if (selectedEntrant.getIsExcluded()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " has been excluded from their course.";
-            notLocked = true;
 
-            
         } else {
 
             /*
@@ -263,7 +261,9 @@ public class ProcessData {
                  * Append this new time log with the 'I' time delimter to the 
                  * times file ("times.txt").
                  */
-                notLocked = fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                timesNotLocked = fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+
+                logNotLocked = fileIO.addActivityLog("Submitted checkpoint " + newNode + " incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
 
                 result = "Entrant " + selectedEntrant.getNumber()
                         + " has gone the INCORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
@@ -275,18 +275,31 @@ public class ProcessData {
                  * Append this new time log with the 'T' time delimter to the 
                  * times file ("times.txt").
                  */
-                notLocked = fileIO.writeFile(new File("../files/times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                timesNotLocked = fileIO.writeFile(new File("../files/times.txt"), "T " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
+                logNotLocked = fileIO.addActivityLog("Submitted checkpoint " + newNode + " incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
+                 
                 result = "Entrant " + selectedEntrant.getNumber()
                         + " has gone the CORRECT way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
             }
 
+        } 
+        
+        if (!logNotLocked) {
+
+            result = " ERROR: System log file locked - Cannot write to file.";
+
         }
 
-        if (!notLocked) {
+        if (!timesNotLocked) {
 
             result = " ERROR: Times log file locked - Cannot write to file. Please try again.";
 
+        }
+        
+        if (!timesNotLocked && !logNotLocked) {
+            
+           result = " ERROR: Cannot write to time log or log file. - Both files locked."; 
         }
 
         return result;
@@ -310,39 +323,38 @@ public class ProcessData {
 
         int nextNodeIndex = selectedEntrant.getCurrentProgress();
         String result = null;
-        boolean notLocked = false;
+        boolean timesNotLocked = true;
+        boolean logNotLocked = true;
 
         //Check that the entrant has not already finished, or been excluded.
         if (selectedEntrant.getCurrentProgress() >= courseNodes.size()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " successfully completed their course.";
-            notLocked = true;
 
         } else if (selectedEntrant.getIsExcluded()) {
 
             result = " Entrant " + selectedEntrant.getNumber() + " has been excluded from their course.";
-            notLocked = true;
 
         } else {
 
             if (courseNodes.get(nextNodeIndex).getNumber() != newNode) {
 
-                fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
+                logNotLocked = fileIO.addActivityLog("Submitted checkpoint incorrect for course. (Entrant No: " + selectedEntrant.getNumber() + ")");
 
-                notLocked = fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                timesNotLocked = fileIO.writeFile(new File("../files/times.txt"), "I " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
                 result = "Entrant " + selectedEntrant.getNumber()
                         + " has gone the wrong way. (Expected node: " + courseNodes.get(nextNodeIndex).getNumber() + ")";
 
             } else if (isExcluded) {
-                
-                fileIO.addActivityLog("Entrant excluded for medical reasons. (Entrant No: " + selectedEntrant.getNumber() + ")");
 
-                notLocked = fileIO.writeFile(new File("../files/times.txt"), "E " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                logNotLocked = fileIO.addActivityLog("Entrant excluded for medical reasons. (Entrant No: " + selectedEntrant.getNumber() + ")");
+
+                timesNotLocked = fileIO.writeFile(new File("../files/times.txt"), "E " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
                 result = "Entrant " + selectedEntrant.getNumber()
                         + " has been excluded for medical reasons.";
-                
+
             } else {
 
                 /*
@@ -353,17 +365,17 @@ public class ProcessData {
                  */
                 if (mcType.equals("Arriving")) {
 
-                    fileIO.addActivityLog("New MC arrival time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")");
+                    logNotLocked = fileIO.addActivityLog("New MC arrival time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")");
 
-                    notLocked = fileIO.writeFile(new File("../files/times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                    timesNotLocked = fileIO.writeFile(new File("../files/times.txt"), "A " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
                     result = "Entrant " + selectedEntrant.getNumber()
                             + " has successfully arrived at MC " + courseNodes.get(nextNodeIndex).getNumber() + ".";
 
                 } else {
 
-                    fileIO.addActivityLog("New MC departure time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")");
-                    notLocked = fileIO.writeFile(new File("../files/times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
+                    logNotLocked = fileIO.addActivityLog("New MC departure time submitted. (Entrant No: " + selectedEntrant.getNumber() + ")");
+                    timesNotLocked = fileIO.writeFile(new File("../files/times.txt"), "D " + newNode + " " + selectedEntrant.getNumber() + " " + time + "\n");
 
                     result = "Entrant " + selectedEntrant.getNumber()
                             + " has successfully departed from MC " + courseNodes.get(nextNodeIndex).getNumber() + ".";
@@ -372,10 +384,22 @@ public class ProcessData {
 
         }
 
-        if (!notLocked) {
+        if (!timesNotLocked) {
 
             result = " ERROR: Times log file locked - Cannot write to file. Please try again.";
 
+        }
+
+        if (!logNotLocked) {
+
+            result = " ERROR: System log file locked - Cannot write to file. Please try again.";
+
+        }
+        
+         if (!timesNotLocked && !logNotLocked) {
+            
+           result = " ERROR: Cannot write to time log file or system log file. - Both files locked."; 
+           
         }
 
         return result;

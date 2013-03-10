@@ -107,6 +107,7 @@ public class LoadData {
             displayEntrants();
             fileIO.addActivityLog("Entrants file loaded successfully (courses.txt)");
         }
+        
     }
 
     /**
