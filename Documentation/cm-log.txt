@@ -1,0 +1,26 @@
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 11/03/2013 10:24:42
+LOG - CM: Courses file loaded successfully (courses.txt) - 11/03/2013 10:24:42
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 11/03/2013 10:24:42
+LOG - CM: Entrant no: 3 successfully excluded. - 11/03/2013 10:24:46
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 11/03/2013 10:24:46
+LOG - CM: Entrant no: 7 successfully excluded. - 11/03/2013 10:24:46
+LOG - CM: Entrant no: 64 has sucessfully finished the course. - 11/03/2013 10:24:46
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 11/03/2013 10:28:05
+LOG - CM: Courses file loaded successfully (courses.txt) - 11/03/2013 10:28:05
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 11/03/2013 10:28:05
+LOG - CM: Entrant no: 3 successfully excluded. - 11/03/2013 10:28:09
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 11/03/2013 10:28:09
+LOG - CM: Entrant no: 7 successfully excluded. - 11/03/2013 10:28:09
+LOG - CM: Entrant no: 64 has sucessfully finished the course. - 11/03/2013 10:28:09
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 11/03/2013 10:37:41
+LOG - CM: Courses file loaded successfully (courses.txt) - 11/03/2013 10:37:41
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 11/03/2013 10:37:41
+LOG - CM: Entrant no: 3 successfully excluded. - 11/03/2013 10:37:53
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 11/03/2013 10:37:53
+LOG - CM: Entrant no: 7 successfully excluded. - 11/03/2013 10:37:53
+LOG - CM: Entrant no: 64 has sucessfully finished the course. - 11/03/2013 10:37:53
+LOG - CM: Time logs file loaded successfully (times.txt) - 11/03/2013 10:37:53
+LOG - CM: User attempted to enter new time value in the past. (New time: 10:37) - 11/03/2013 10:37:53
+LOG - CM: Time logs file loaded successfully (times.txt) - 11/03/2013 10:37:59
+LOG - CM: User attempted to enter new time value in the past. (New time: 11:37) - 11/03/2013 10:37:59
+LOG - CM: Time logs file loaded successfully (times.txt) - 11/03/2013 10:38:08

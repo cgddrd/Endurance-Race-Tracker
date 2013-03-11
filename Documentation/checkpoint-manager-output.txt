@@ -1,0 +1,4 @@
+run:
+Nodes file loaded successfully (nodes.txt)
+Courses file loaded successfully (courses.txt)
+Entrants file loaded successfully (entrants.txt)

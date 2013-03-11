@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper, 10pt]{article}
 \usepackage{a4wide}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -99,7 +99,7 @@ The objectives of this document are:
 
 \clearpage
 
-\section{Event Creator - Source Code}
+\section{Event Creator (C++) - Source Code}
 
 This section contains the complete source code for the ``event creator" program written in C++.
 
@@ -177,7 +177,7 @@ This section contains the complete source code for the ``event creator" program 
 \clearpage
 \section{Event Creator - Build/Compilation Log}
 
-The listing below contains the build/compilation log for the ``event creator" application. Extra warning flags have been used with the C++ compiler (g++) to ensure that no errors/warnings occur when compiling the application.
+The listing below contains the build/compilation log for the ``event creator" application. Extra warning flags have been used with the C++ compiler (\textbf{g++}) to ensure that no errors/warnings occur when compiling the application.
 
 \lstinputlisting[style=buildlog, caption=Compilation log built within Netbeans IDE 7.3 on Ubuntu 12.04]{event-creator-buildlog.txt}
 
@@ -199,7 +199,7 @@ This section lists the contents of the three external files that the event creat
 \lstinputlisting[style=output, basicstyle=\footnotesize\ttfamily, caption=Output of `entrants.txt' file produced by the ``event creator" application.]{../files/exampleentrants.txt}
 
 \clearpage
-\section{Checkpoint Manager - Source Code}
+\section{Checkpoint Manager (Java) - Source Code}
 This section contains the complete source code for the ``checkpoint manager" program written in Java (JVM 7).
 
 \subsection{`Driver' Package}
@@ -207,6 +207,7 @@ This section contains the complete source code for the ``checkpoint manager" pro
 \subsubsection{CMDriver.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/driver/CMDriver.java}
 
+\clearpage
 \subsection{`Util' Package}
 
 \subsubsection{ProcessData.java}
@@ -257,9 +258,232 @@ The listing below contains the build/compilation log for the ``checkpoint manage
 
 \clearpage
 \section{Checkpoint Manager - Example Usage}
-This section demonstrates the ``event creator" application running using test input data to ensure that expected functionality and suitable error checking is taking place correctly.\\
+This section demonstrates the ``checkpoint manager" application running using test input data to ensure that expected functionality and suitable error checking is taking place correctly.\\
 
 \subsection{Loading External Data Files}
-\lstinputlisting[style=output, caption=Example output of functionality testing of the event creator application.]{event-creator-output.txt}
+
+\subsubsection{Correct File Parameters}
+
+Parameter Input: \verb+"../files/nodes.txt" "../files/courses.txt" "../files/entrants.txt"+ \\\\
+Output:
+\lstinputlisting[style=output, caption=Textual output produced when correct file names are supplied.]{checkpoint-manager-output.txt}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.3]{cm-loadsuccess.png}
+\caption{Screenshot displaying the GUI display after successfully loading the external data files.}
+\end{figure}
+
+\clearpage
+\subsubsection{Incorrect File Parameters}
+
+Parameter Input: \verb+"../files/nodes.txt" "../files/idontknow.txt" "../files/entrants.txt""+ \\\\
+Output:
+\lstinputlisting[style=output, caption=Textual warning output produced when incorrect file names parameters are supplied.]{checkpoint-manager-output-failure.txt}
+
+\subsection{Submit Correct Time Entry}
+
+Input: \verb+Entrant 1 - Checkpoint 1 (Starting checkpoint for course).+ \\
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.25]{cm-submit.png}
+\caption{Screenshot displaying attempt to submit a correct time entry for an entrant.}
+\end{figure}
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{cm-submitsuccess.png}
+\caption{Checkpoint Manager GUI confirming successful submission of time entry.}
+\end{figure}
+
+\subsection{Submit Incorrect Time Entry}
+
+Input: \verb+Entrant 3 - Checkpoint 4 (Incorrect - should be CP 1).+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-submitincorrect.png}
+\caption{Checkpoint Manager GUI informing user that entrant has been logged at an incorrect checkpoint.}
+\end{figure}
+
+\subsection{Entrant Exclusion (Incorrect Node)}
+
+Input: \verb+Entrant 3 - Checkpoint 1.+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-submitexclude.png}
+\caption{Checkpoint Manager GUI informing user that entrant 3 has already been excluded from the event.}
+\end{figure}
+
+\clearpage
+\subsection{Entrant Course Completion}
+
+Input: \verb+Entrant 1 - Checkpoint 1 (After entrant has finished course).+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-finished.png}
+\caption{Checkpoint Manager GUI informing user that entrant 1 has successfully completed their course.}
+\end{figure}
+
+\subsection{Medical Checkpoint - Successful Arrival}
+
+Input: \verb+Entrant 7 - MC 14 (Arriving).+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-mcarrivesuccess.png}
+\caption{Checkpoint Manager GUI informing user that entrant 7 has successfully arrived (correctly) at medical checkpoint 14.}
+\end{figure}
+
+\clearpage
+\subsection{Medical Checkpoint - Successful Departure}
+
+Input: \verb+Entrant 64 - MC 14 (Departing).+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-mcdepartsuccess.png}
+\caption{Checkpoint Manager GUI informing user that entrant 64 has successfully departed (correctly) from medical checkpoint 14.}
+\end{figure}
+
+\subsection{Medical Checkpoint - Incorrect Arrival}
+
+Input: \verb+Entrant 7 - MC 14 (Arriving - Already at MC 14).+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-mcarrivefailure.png}
+\caption{Checkpoint Manager GUI informing user that entrant 7 is already logged at MC 14 and so cannot have arrived again.}
+\end{figure}
+
+\clearpage
+\subsection{Medical Checkpoint - Incorrect Departure}
+
+Input: \verb+Entrant 98 - MC 14 (Departing - Entrant yet to begin course).+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-mcdepartfailure.png}
+\caption{Checkpoint Manager GUI informing user that entrant 98 must have arrived at a MC before they can depart.}
+\end{figure}
+
+\subsection{Entrant Exclusion (Medical Reasons)}
+
+Input: \verb+Entrant 7 - MC 14.+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-mcexclude.png}
+\caption{Checkpoint Manager GUI informing user that entrant 7 has been successfully excluded for medical reasons.}
+\end{figure}
+
+\clearpage
+\subsection{Submission of Invalid Time Value}
+
+Input: \verb+Submitted Time: 08:46. Latest Logged Time: 09:37.+ \\
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{cm-timesubmitfailure.png}
+\caption{Checkpoint Manager GUI informing user that submitted time cannot be before the latest logged time (\textbf{Ensures time log file remains sequential}).}
+\end{figure}
+
+\subsection{System Activity Logging}
+
+Input:\\\\
+\verb+Variety of system activity. (Correct/incorrect node submissions,+\\
+\verb+automatic loading of data files etc...)+\\
+
+Output:
+\lstinputlisting[style=output, caption=Example of log file produced by CM application of activity detailed above.]{cm-log.txt}
+
+\clearpage
+\subsection{File Lock Access Prevention}
+
+Input:\\\\
+\verb+Two instances of the Checkpoint Manager application deployed.+ \\\\
+\verb+One application modified to prevent the release of the file lock.+\\
+
+\begin{lstlisting}[style=customjava, caption=File export code modified to prevent a file lock being released once accessed.]
+  //Check if the lock was successfull.
+            if (fl != null) {
+
+                try (FileWriter fw = new FileWriter(fos.getFD())) {
+
+                    fw.write(output);
+
+                    //Once the data has been successfully written, release the lock.
+                    
+                    //FILE LOCK RELEASE PREVENTED.
+                    //fl.release();
+                }
+
+                return true;
+
+            }
+
+\end{lstlisting}
+
+Output:
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.65]{cm-filelock.png}
+\caption{Screenshot demonstrating modified CM application (top-left) preventing original CM application (bottom-right) from accessing log file ``log.txt".}
+\end{figure}
+
+\clearpage
+\subsection{Entrant Times File Generation}
+
+This sub-section contains the times file (``times.txt") generated by the checkpoint manager application from the example functionality testing detailed above.
+
+\lstinputlisting[style=output, caption=Example of times file produced by CM application from the activity detailed above.]{cm-times.txt}
+
+\clearpage
+\section{Event Manager (C) - Build/Compilation Log}
+
+The listing below contains the build/compilation log for the ``event manager" application. Extra warning flags (\verb+-wall, -ansi, -std=c89+) have been used with the C compiler (\textbf{gcc}) to ensure that any possible errors/warnings are detected during compilation. \\
+
+\lstinputlisting[style=buildlog, caption=Event manager compilation log built within Netbeans IDE 7.3 on Ubuntu 12.04]{event-manager-buildlog.txt}
+
+\clearpage
+\section{Event Manager - Example Usage}
+This section demonstrates the ``event manager" application running using test data generated from the ``event creator" and ``checkpoint manager" applications to ensure that expected functionality and suitable error checking is taking place correctly.\\\\
+\textbf{Please note:} The output below has been modified to reduce the amount of paper used, however no values/results have been changed.
+
+\lstinputlisting[style=output, caption=Example output of functionality testing of the event manager application.]{event-manager-output.txt}
+
+\clearpage
+\section{Event Manager - Results Output}
+This section contains the final results table produced by the ``event manager" application using time log data generated by the ``checkpoint manager" application. \textbf{Please find the attached printout of the results table which has been printed in landscape to ensure it can be read easily}.\\\\
+\textbf{Please note:} The output has also been modified to reduce the amount of paper used, however no values/results have been changed.
+
+\clearpage
+\section{Event Manager - System Activity Log}
+This section contains the contents of the log file (``log.txt") produced by the ``event manager" application detailing the activity described in the above usage example.
+
+\lstinputlisting[style=output, caption=Contents of the log file produced by the event manager application.]{em-log.txt}
+
+\clearpage
+\section{System Description}
+
+This section provides a general description of the structure and implementation of the three separate applications that form the ``runners and riders" system.
+
+\subsection{Event Creator (C++)}
+
+\subsection{Checkpoint Manager (Java)}
+
+\subsection{Event Manager (C)}
 
 \end{document}

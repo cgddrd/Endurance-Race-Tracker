@@ -1,0 +1,5 @@
+run:
+Nodes file loaded successfully (nodes.txt)
+ERROR: Courses file <../files/idontknow.txt> does not exist.
+Parameter format = <node path> <courses path> <entrants path>
+BUILD SUCCESSFUL (total time: 0 seconds)

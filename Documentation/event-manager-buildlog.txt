@@ -1,0 +1,48 @@
+"/usr/bin/make" -f nbproject/Makefile-Debug.mk QMAKE= SUBPROJECTS= .clean-conf
+make[1]: Entering directory `/home/connor/Git/Endurance-Race-Tracker/Event-Manager'
+rm -f -r build/Debug
+rm -f dist/Debug/GNU-Linux-x86/event-manager
+make[1]: Leaving directory `/home/connor/Git/Endurance-Race-Tracker/Event-Manager'
+
+
+CLEAN SUCCESSFUL (total time: 59ms)
+
+"/usr/bin/make" -f nbproject/Makefile-Debug.mk QMAKE= SUBPROJECTS= .build-conf
+make[1]: Entering directory `/home/connor/Git/Endurance-Race-Tracker/Event-Manager'
+"/usr/bin/make"  -f nbproject/Makefile-Debug.mk dist/Debug/GNU-Linux-x86/event-manager
+make[2]: Entering directory `/home/connor/Git/Endurance-Race-Tracker/Event-Manager'
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/course.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/course.o.d -o build/Debug/GNU-Linux-x86/course.o course.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/display.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/display.o.d -o build/Debug/GNU-Linux-x86/display.o display.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/entrant.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/entrant.o.d -o build/Debug/GNU-Linux-x86/entrant.o entrant.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/event.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/event.o.d -o build/Debug/GNU-Linux-x86/event.o event.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/fileIO.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/fileIO.o.d -o build/Debug/GNU-Linux-x86/fileIO.o fileIO.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/main.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/main.o.d -o build/Debug/GNU-Linux-x86/main.o main.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/node.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/node.o.d -o build/Debug/GNU-Linux-x86/node.o node.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/process.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/process.o.d -o build/Debug/GNU-Linux-x86/process.o process.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f build/Debug/GNU-Linux-x86/track.o.d
+gcc -ansi   -c -g -Wall -std=c89 -ansi -MMD -MP -MF build/Debug/GNU-Linux-x86/track.o.d -o build/Debug/GNU-Linux-x86/track.o track.c
+mkdir -p dist/Debug/GNU-Linux-x86
+gcc -ansi    -o dist/Debug/GNU-Linux-x86/event-manager build/Debug/GNU-Linux-x86/course.o build/Debug/GNU-Linux-x86/display.o build/Debug/GNU-Linux-x86/entrant.o build/Debug/GNU-Linux-x86/event.o build/Debug/GNU-Linux-x86/fileIO.o build/Debug/GNU-Linux-x86/main.o build/Debug/GNU-Linux-x86/node.o build/Debug/GNU-Linux-x86/process.o build/Debug/GNU-Linux-x86/track.o 
+make[2]: Leaving directory `/home/connor/Git/Endurance-Race-Tracker/Event-Manager'
+make[1]: Leaving directory `/home/connor/Git/Endurance-Race-Tracker/Event-Manager'
+
+
+BUILD SUCCESSFUL (total time: 527ms)
+

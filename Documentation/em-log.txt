@@ -1,0 +1,29 @@
+LOG - EM: System queried for all entrants yet to start. - Mon Mar 11 14:46:13 2013
+LOG - EM: System queried for all entrants that have started. - Mon Mar 11 14:46:16 2013
+LOG - EM: System queried for all entrants that have finished. - Mon Mar 11 14:46:19 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 14:46:25 2013
+LOG - EM: Entrant 1 status queried successfully. - Mon Mar 11 14:46:36 2013
+LOG - EM: System queried for all entrants that have been excluded. - Mon Mar 11 14:46:42 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 14:46:55 2013
+LOG - EM: System queried for all entrants that have started. - Mon Mar 11 14:47:30 2013
+LOG - EM: System queried for all entrants that have finished. - Mon Mar 11 14:47:41 2013
+LOG - EM: System queried for all entrants that have been excluded. - Mon Mar 11 14:47:50 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 14:48:38 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 14:51:06 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 14:54:55 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 14:54:59 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 14:56:10 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 14:56:16 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 15:00:08 2013
+LOG - EM: Entrant 89 status queried successfully. - Mon Mar 11 15:00:23 2013
+LOG - EM: Entrant 1 status queried successfully. - Mon Mar 11 15:00:32 2013
+LOG - EM: Entrant 3 status queried successfully. - Mon Mar 11 15:00:36 2013
+LOG - EM: System queried for all entrants that have finished. - Mon Mar 11 15:00:45 2013
+LOG - EM: System queried for all entrants that have been excluded. - Mon Mar 11 15:00:49 2013
+LOG - EM: System exiting. - Mon Mar 11 15:00:51 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 15:40:37 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 15:40:40 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 15:42:10 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 15:42:28 2013
+LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 15:43:22 2013
+LOG - EM: Event results list compiled and displayed. - Mon Mar 11 15:43:27 2013

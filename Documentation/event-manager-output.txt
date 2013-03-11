@@ -1,0 +1,313 @@
+Enter event description file name: ../files/exampleevent.txt
+
+the test horse event
+08 Jul 2013
+09:45
+
+Enter node file name: ../files/nods.txt
+
+File could not be opened.
+Would you like to try again? (1 = Yes, 2 = No):
+1
+
+Enter node file name: ../files/nodes.txt
+
+Enter track file name: ../files/tracks.txt
+
+Enter courses file name: ../files/courses.txt
+
+Enter entrants file name: ../files/entrants.txt
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+1
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+|        1         |   Ace Abbey                                            |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        3         |   Ace Fudge                                            |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        4         |   Amber Abbey                                          |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        5         |   Amber Fudge                                          |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        6         |   April Abbey                                          |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        7         |   April Fudge                                          |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        8         |   Ash Abbey                                            |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|        9         |   Ash Fudge                                            |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|       10         |   Asti Abbey                                           |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+
+... /* LIST SHORTENED TO REDUCE PAPER REQUIREMENTS */
+
+|------------------|--------------------------------------------------------|-------------------|
+|      126         |   Zizou Abbey                                          |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+|      127         |   Zizou Fudge                                          |    Not Started    |
+|------------------|--------------------------------------------------------|-------------------|
+
+Total competitors yet to start: 102
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+2
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+
+No competitors are currently on the course
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+3
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+No competitors have currently finished.
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+6
+Enter required competitor number:
+1
+
+Competitor 1 (Ace Abbey) -> Current Status: Not Started, Current Progress: 0, Start Time: N/A, End Time: N/A
+
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+7
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+No competitors have currently been excluded.
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+4
+
+Enter time file name: ../files/times.txt /* TIMES FILE LOADED INTO SYSTEM */
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+2
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+|       89         |   Prince Abbey                                         |    Checkpoint 1   |
+|------------------|--------------------------------------------------------|-------------------|
+|      103         |   sienna Abbey                                         |    Checkpoint 1   |
+|------------------|--------------------------------------------------------|-------------------|
+|      111         |   Snowy Abbey                                          |    Checkpoint 1   |
+|------------------|--------------------------------------------------------|-------------------|
+
+Total competitors out on course: 3
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+3
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+|        1         |   Ace Abbey                                            |    Finished       |
+|------------------|--------------------------------------------------------|-------------------|
+|       64         |   Lady Fudge                                           |    Finished       |
+|------------------|--------------------------------------------------------|-------------------|
+Total competitors finished: 2
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+7
+
+|  Competitor No   |                      Competitor Name                   |   Current Status  |
+|==================|========================================================|===================|
+|        3         |   Ace Fudge                                            |    Excluded-IR    |
+|------------------|--------------------------------------------------------|-------------------|
+|        7         |   April Fudge                                          |    Excluded-MC    |
+|------------------|--------------------------------------------------------|-------------------|
+Total competitors excluded: 2
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+6
+Enter required competitor number:
+89
+
+Competitor 89 (Prince Abbey) -> Current Status: Checkpoint, Current Progress: 4, Start Time: 12:30, End Time: N/A
+
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+6
+Enter required competitor number:
+1
+
+Competitor 1 (Ace Abbey) -> Current Status: Finished, Current Progress: 11, Start Time: 09:22, End Time: 10:23
+
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+6
+Enter required competitor number:
+3
+
+Competitor 3 (Ace Fudge) -> Current Status: Excluded - IR, Current Progress: 0, Start Time: N/A, End Time: DNF
+
+
+*****************************************
+Welcome, please select an option:
+
+*****************************************
+  1. Display competitors yet to start
+  2. Display competitors out of courses
+  3. Display finished competitors
+  4. Load time log file into system
+  5. Display event results list
+  6. Display specific competitor status
+  7. Display excluded competitors
+  8. Exit Program
+*****************************************
+8
+
+Exiting program..
+
+RUN FINISHED; exit value 0; real time: 1m 18s; user: 0ms; system: 0ms
+
+
