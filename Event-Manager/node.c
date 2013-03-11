@@ -18,17 +18,18 @@
 int loadNodes() {
 
     /* Obtain node FILE pointer returned by openFile (fileIO.c). */
-/*    FILE * file_two = openFile("Enter node file name:"); */
-FILE * file_two = fopen("../files/nodes.txt", "r");
+    
+    FILE * nodes_file = openFile("Enter node file name:"); 
+    
     /* Allocate memory for course  node linked-list data structure (fileIO.c). */
     initialise(&node_list);
 
     int status = 0;
 
     /* Read file until EOF is reached. */
-    if (file_two != NULL) {
+    if (nodes_file != NULL) {
 
-        while (!feof(file_two)) {
+        while (!feof(nodes_file)) {
 
             /* Create new linked-list item. */
             linked_node = malloc(sizeof (linked_item));
@@ -37,7 +38,7 @@ FILE * file_two = fopen("../files/nodes.txt", "r");
             /* Create new course node structure and allocate required memory. */
             course_node * new_node = malloc(sizeof (course_node));
 
-            status = fscanf(file_two, " %d %[a-zA-Z]s", 
+            status = fscanf(nodes_file, " %d %[a-zA-Z]s", 
                     &new_node->number, 
                     new_node->type);
             
@@ -65,7 +66,7 @@ FILE * file_two = fopen("../files/nodes.txt", "r");
         }
 
         /* Once all lines have been read in, close the file. */
-        fclose(file_two);
+        fclose(nodes_file);
         return 1;
 
     } else {

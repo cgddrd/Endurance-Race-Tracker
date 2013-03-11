@@ -267,13 +267,13 @@ void displayResultsList() {
 
     linked_item * temp = entrant_list->head;
 
-    printf("\n| Comp. No |                     Competitor Name                    |"
+    printf("\n| Comp. No |           Competitor Name          |"
             "    Current Status    |"
             "   Start Time  |"
             "   End Time  |"
             "   Delay  |");
     
-    printf("\n|==========|========================================================|"
+    printf("\n|==========|====================================|"
             "======================|"
             "===============|"
             "=============|"
@@ -319,7 +319,7 @@ void displayResultsList() {
 
         sprintf(delay, "%d mins", current_competitor->medical_cp_log.total_delay);
 
-        printf("\n|   %-4d   |   %-50s   |    %-15s   |      %-5s    |    %-5s    |  %-6s  |",
+        printf("\n|   %-4d   |   %-30s   |    %-15s   |      %-5s    |    %-5s    |  %-6s  |",
 
                 current_competitor->competitor_number,
                 current_competitor->name,
@@ -329,7 +329,7 @@ void displayResultsList() {
                 delay);
 
         printf("\n|----------|"
-                "--------------------------------------------------------|"
+                "------------------------------------|"
                 "----------------------|"
                 "---------------|-------------|----------|");
         temp = temp->next;

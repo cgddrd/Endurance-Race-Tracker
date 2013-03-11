@@ -18,8 +18,7 @@
 int loadTracks() {
 
     /* Obtain track FILE pointer returned by openFile (fileIO.c). */
-    /* FILE * track_file = openFile("Enter track file name:"); */
-    FILE * track_file = fopen("../files/tracks.txt", "r");
+     FILE * track_file = openFile("Enter track file name:"); 
 
     /* Allocate memory for track linked-list data structure (fileIO.c). */
     initialise(&track_list);

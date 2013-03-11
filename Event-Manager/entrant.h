@@ -16,6 +16,7 @@ extern "C" {
 #include "course.h"
 #include "track.h"
 #include "linked_list.h"
+#include "fileIO.h"
 
     /* Defines last logged time used 
      * for predicting entrant location */

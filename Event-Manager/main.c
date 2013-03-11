@@ -94,7 +94,7 @@ void displayMenu() {
 
     int option = 0, status = 0;
 
-    while (option != 9) {
+    while (option != 8) {
 
         printf("\n*****************************************");
         printf("\nWelcome, please select an option:\n");
@@ -102,12 +102,11 @@ void displayMenu() {
         printf("\n  1. Display competitors yet to start");
         printf("\n  2. Display competitors out of courses");
         printf("\n  3. Display finished competitors");
-        printf("\n  4. Enter competitor checkpoint time");
-        printf("\n  5. Load time log file into system");
-        printf("\n  6. Display event results list");
-        printf("\n  7. Display specific competitor status");
-        printf("\n  8. Display excluded competitors");
-        printf("\n  9. Exit Program");
+        printf("\n  4. Load time log file into system");
+        printf("\n  5. Display event results list");
+        printf("\n  6. Display specific competitor status");
+        printf("\n  7. Display excluded competitors");
+        printf("\n  8. Exit Program");
         printf("\n*****************************************\n");
 
         status = scanf(" %d", &option);
@@ -129,31 +128,26 @@ void displayMenu() {
             case 3:
                 checkFinished();
                 logActivity("System queried for all entrants that have finished.");
-                break;
+                break;  
             case 4:
-        
-                break;
-            
-            case 5:
                 resetAll(entrant_list->head);
                 loadTimes();
-                logActivity("Entrant times file loaded into system.");
+                logActivity("Entrant times file successfully loaded into system.");
+                break;
+            case 5:
+                displayResultsList();
+                logActivity("Event results list compiled and displayed.");
                 break;
             case 6:
-                displayResultsList();
-                logActivity("System results list .");
-                break;
-            case 7:
                 getSpecificEntrantStatus();
                 break;
-            case 8:
+            case 7:
                 checkExcluded();
+                logActivity("System queried for all entrants that have been excluded.");
                 break;
-            case 9:
+            case 8:
+                logActivity("System exiting.");
                 printf("\nExiting program..\n");
-                break;
-            case 10:
-                logActivity("This is test activity");
                 break;
             default:
                 printf("\nInput not valid. Please try again.\n");

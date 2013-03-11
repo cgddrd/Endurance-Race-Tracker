@@ -7,6 +7,13 @@
  * Date: November 2012
  */
 
+/* Instruct compiler to use POSIX extensions for file locking.*/
+#if __STDC_VERSION__ >= 199901L
+#define _XOPEN_SOURCE 600
+#else
+#define _XOPEN_SOURCE 500
+#endif /* __STDC_VERSION__ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -82,19 +89,21 @@ FILE * openFile(char *prompt) {
  */
 void writeFile(char *file_name, char *message) {
 
+    /* Create new file stream (append). */
     FILE * file = fopen(file_name, "a+");
 
-    /*Has implicit declaration warning because fileNo is part of POSIX, not ISO C. */
-    flock(fileno(file), LOCK_EX); /*lock log file*/
+    /* Attempt to lock the file. */
+    flock(fileno(file), LOCK_EX); 
 
-    printf("\n%s", message);
-    fprintf(file, "%s", message); /*writes*/
+    /* Write the message to the file. */
+    fprintf(file, "%s", message); 
+    
+    /* Close the output stream to the file. */
     fclose(file); /*done!*/
 
-    flock(fileno(file), LOCK_UN); /*unlock log file*/
+    /* Release lock from the file. */
+    flock(fileno(file), LOCK_UN);
     
-    printf("\nFile unlocked successfully.");
-
 }
 
 /* 
@@ -107,16 +116,19 @@ void logActivity(char *activity) {
     time_t rawtime;
     struct tm * timeinfo;
 
+    /* Obtain the current system time. */
     time(&rawtime);
     timeinfo = localtime(&rawtime);
 
     message[0] = '\0';
 
+    /* Create the log message. */
     strcat(message, "LOG - EM: ");
     strcat(message, activity);
     strcat(message, " - ");
     strcat(message, asctime(timeinfo));
 
+    /* Write the log message to the log file (log.txt). */
     writeFile("../files/log.txt", message);
 
 }

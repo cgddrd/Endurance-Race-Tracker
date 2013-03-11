@@ -19,8 +19,7 @@
 int loadEntrants() {
 
     /* Obtain entrant FILE pointer returned by openFile (fileIO.c). */
-   /* FILE * entrant_file = openFile("Enter entrants file name:");*/
-    FILE * entrant_file = fopen("../files/entrants.txt", "r");
+    FILE * entrant_file = openFile("Enter entrants file name:");
 
     /* Allocate memory for entrant linked-list data structure (fileIO.c). */
     initialise(&entrant_list);
@@ -173,6 +172,8 @@ void getAllEntrantStatuses() {
  * user via input prompt.
  */
 void getSpecificEntrantStatus() {
+    
+    char status[30];
 
     int entrant;
     int entrantFound = 0;
@@ -190,6 +191,12 @@ void getSpecificEntrantStatus() {
 
             getEntrantStatus(temp);
             entrantFound = 1;
+            
+            sprintf(status, "Entrant %d status queried successfully.", 
+                    current_competitor->competitor_number);
+            
+            /* Add this activity to the log file.*/
+            logActivity(status);
         }
 
         temp = temp->next;

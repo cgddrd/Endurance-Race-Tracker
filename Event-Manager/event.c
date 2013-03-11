@@ -21,8 +21,7 @@ int loadEventDes() {
     event = calloc(1, sizeof (event_description));
 
     /* Obtain course FILE pointer returned by openFile (fileIO.c). */
-   /* FILE * event_file = openFile("Enter event description file name:");*/
-    FILE * event_file = fopen("../files/name.txt", "r");
+    FILE * event_file = openFile("Enter event description file name:");
 
     if (event_file != NULL) {
         
