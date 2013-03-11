@@ -18,7 +18,6 @@ class Event {
     
 public:
     Event();
-    Event(const Event& orig);
     Event(std::string newEventName, std::string newEventDate, std::string newEventTime);
     virtual ~Event();
     void setEventTime(std::string eventTime);

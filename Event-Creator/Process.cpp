@@ -104,7 +104,7 @@ void Process::addEntrant(void) {
                 bool notExists = false;
 
                 //Flush the input buffer to prevent input skipping.
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
                 if (data->getEntrantList().size() > 0) {
 
@@ -114,10 +114,10 @@ void Process::addEntrant(void) {
                         cin >> entrantNo;
 
                         //Obtain a vector of ALL the entrants stored in Datastore node vector.
-                        std::vector<Entrant*> allEntrants = data->getEntrantList();
+                        vector<Entrant*> allEntrants = data->getEntrantList();
 
                         //Loop through all the entrants. 
-                        for (std::vector<Entrant*>::iterator it = allEntrants.begin(); it != allEntrants.end(); ++it) {
+                        for (vector<Entrant*>::iterator it = allEntrants.begin(); it != allEntrants.end(); ++it) {
 
                             //Check to see if another entrant already has the entered value
                             if ((*it)->getEntrantNo() == entrantNo) {
@@ -176,7 +176,7 @@ void Process::addEntrant(void) {
 
     }
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     //Create a new Entrant object on the heap using the inputted information.
     Entrant *emp = new Entrant(entrantName, entrantNo, courseID);
@@ -264,7 +264,7 @@ void Process::createNewCourse(void) {
             }
 
             //Obtain a vector of ALL the courses stored in Datastore node vector.
-            std::vector<Course*> allCourses = data->getCourseList();
+            vector<Course*> allCourses = data->getCourseList();
 
             //Loop through all the stored courses. 
             for (vector<Course*>::iterator it = allCourses.begin(); it != allCourses.end(); ++it) {
@@ -326,10 +326,10 @@ void Process::addCourseNode(Course *currentCourse) {
     cout << "Please select a node to add: \n";
 
     //Obtain a vector of ALL the course nodes stored in Datastore node vector.
-    std::vector<Node*> allNodes = data->getNodeList();
+    vector<Node*> allNodes = data->getNodeList();
 
     //Print all the nodes to screen to provide user with a list to select from.
-    for (std::vector<Node*>::iterator it = allNodes.begin(); it != allNodes.end(); ++it) {
+    for (vector<Node*>::iterator it = allNodes.begin(); it != allNodes.end(); ++it) {
         cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << "), ";
     }
 
@@ -353,12 +353,12 @@ void Process::addCourseNode(Course *currentCourse) {
 
 
         //Obtain the vector of all nodes contained within the course.
-        std::vector<Node*> currentCourseNodes = currentCourse->getCourseNodes();
+        vector<Node*> currentCourseNodes = currentCourse->getCourseNodes();
 
         //Display a list of all the nodes that make up the course on screen.
         cout << "\nCurrent nodes contained in Course (" << currentCourse->getCourseID() << "):\n";
 
-        for (std::vector<Node*>::iterator it = currentCourseNodes.begin(); it != currentCourseNodes.end(); ++it) {
+        for (vector<Node*>::iterator it = currentCourseNodes.begin(); it != currentCourseNodes.end(); ++it) {
             cout << (*it)->getNodeNo() << " (" << (*it)->getNodeType() << ")\n";
         }
 

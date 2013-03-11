@@ -9,6 +9,8 @@
 
 #include "Datastore.h"
 
+using namespace std;
+
 /**
  * Default constructor for Datastore.
  * Sets the initial value of the 'event' pointer to NULL for
@@ -30,7 +32,7 @@ Datastore::~Datastore() {
  * Fetches the vector of all the courses created for an event.
  * @return A vector that contains pointers to all the Course objects created.
  */
-std::vector<Course*> Datastore::getCourseList(void){
+vector<Course*> Datastore::getCourseList(void){
     return courseList;
 }
 
@@ -38,7 +40,7 @@ std::vector<Course*> Datastore::getCourseList(void){
  * Fetches the vector of all the nodes read in from "nodes.txt".
  * @return A vector that contains pointers to all the Node objects.
  */
-std::vector<Node*> Datastore::getNodeList(void) {
+vector<Node*> Datastore::getNodeList(void) {
     return nodeList;
 }
 
@@ -46,7 +48,7 @@ std::vector<Node*> Datastore::getNodeList(void) {
  * Fetches the vector of all the entrants created for an event.
  * @return A vector that contains pointers to all the Entrant objects created.
  */
-std::vector<Entrant*> Datastore::getEntrantList(void){
+vector<Entrant*> Datastore::getEntrantList(void){
     return entrantList;
 }
 
@@ -72,7 +74,7 @@ void Datastore::addNewCourse (Course *newCourse) {
  * Adds a new Node object to the end of the 'nodeList' vector.
  * @param newNode Pointer to the new Node object to be added to the vector.
  */
-void Datastore::addNewNode (Node  *newNode) {
+void Datastore::addNewNode (Node *newNode) {
     
     nodeList.push_back(newNode);
     
@@ -107,7 +109,7 @@ void Datastore::setNewEvent(Event *newEvent) {
 Course* Datastore::getInCourse (char selectedID) {
     
     //Loop through the entire vector of courses.
-    for (std::vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
+    for (vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
 
         //If the ID of the current course matches the inputted ID...
         if ((*it)->getCourseID() == selectedID) {
@@ -130,7 +132,7 @@ Course* Datastore::getInCourse (char selectedID) {
 Node* Datastore::obtainNode (int nodeNo) {
     
     //Loop through the entire vector of courses.
-    for (std::vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
+    for (vector<Node*>::iterator it = nodeList.begin(); it != nodeList.end(); ++it) {
 
         //If the number of the current node matches the inputted number...
         if ((*it)->getNodeNo() == nodeNo) {

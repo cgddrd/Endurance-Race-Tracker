@@ -22,7 +22,8 @@ public class LoadData {
      * parameter to allow accessed to the lists of nodes/entrants/courses loaded
      * in.
      *
-     * @param newData Datastore object created in CMDriver.
+     * @param comp Shared Datastore object created within CMDriver.
+     * @param newFileIO Shared FileIO object created within CMDriver.
      */
     public LoadData(Datastore comp, FileIO newFileIO) {
 
@@ -80,7 +81,7 @@ public class LoadData {
 
             }
 
-            displayNodes();
+            System.out.println("Nodes file loaded successfully (nodes.txt)");
 
             //Log this activity in the log file ("log.txt");
             fileIO.addActivityLog("Nodes file loaded successfully (nodes.txt)");
@@ -93,7 +94,7 @@ public class LoadData {
 
             }
 
-            displayCourses();
+            System.out.println("Courses file loaded successfully (courses.txt)");
             fileIO.addActivityLog("Courses file loaded successfully (courses.txt)");
 
         } else {
@@ -104,8 +105,8 @@ public class LoadData {
 
             }
 
-            displayEntrants();
-            fileIO.addActivityLog("Entrants file loaded successfully (courses.txt)");
+            System.out.println("Entrants file loaded successfully (entrants.txt)");
+            fileIO.addActivityLog("Entrants file loaded successfully (entrants.txt)");
         }
         
     }
@@ -225,53 +226,5 @@ public class LoadData {
             fileIO.addActivityLog("ERROR - Cannot create new entrant object (" + Integer.parseInt(entrantData[0]) + " / " + entrantData[1] + " / " + entrantData[2] + " " + entrantData[3] + ")");
         }
 
-    }
-
-    /**
-     * Displays all {@link aber.dcs.cs22510.clg11.model.Courses} objects loaded
-     * into the internal collection of courses to screen.
-     */
-    public void displayCourses() {
-
-        for (int i = 0; i < data.getCourses().size(); i++) {
-
-            System.out.println(data.getCourses().get(i).getCourseID());
-            System.out.println(data.getCourses().get(i).getCourseLength());
-            System.out.println("Course Nodes:");
-
-            for (Node n : data.getCourses().get(i).getCourseNodes()) {
-
-                System.out.println(n.getNumber() + " - " + n.getType());
-
-            }
-
-            System.out.println("******************\n");
-        }
-    }
-
-    /**
-     * Displays all {@link aber.dcs.cs22510.clg11.model.Entrants} objects loaded
-     * into the internal collection of courses to screen.
-     */
-    public void displayNodes() {
-
-        for (int i = 0; i < data.getNodes().size(); i++) {
-
-            System.out.println(data.getNodes().get(i).getNumber() + " - " + data.getNodes().get(i).getType());
-            System.out.println("******************\n");
-        }
-    }
-
-    /**
-     * Displays all {@link aber.dcs.cs22510.clg11.model.Entrants} objects loaded
-     * into the internal collection of courses to screen.
-     */
-    public void displayEntrants() {
-
-        for (int i = 0; i < data.getEntrants().size(); i++) {
-
-            System.out.println(data.getEntrants().get(i).getNumber() + " - " + data.getEntrants().get(i).getCourseID() + " - " + data.getEntrants().get(i).getFullName());
-            System.out.println("******************\n");
-        }
     }
 }

@@ -19,9 +19,9 @@ using namespace std;
  * @param theEnNo The inputted unique entrant number.
  * @param theCourseID The new course ID value to be set.
  */
-Entrant::Entrant(const std::string &theName, const int theEnNo, char theCourseID) : entrant_name(theName), entrant_no(theEnNo){
+Entrant::Entrant(const string &theName, const int theEnNo, char theCourseID) : entrantName(theName), entrantNo(theEnNo){
     
-    course_id = theCourseID;
+    courseID = theCourseID;
 }
 
 /**
@@ -36,7 +36,7 @@ Entrant::~Entrant() {
  * @return A string containing the name of the entrant.
  */
 string Entrant::getEntrantName(void) {
-    return entrant_name;
+    return entrantName;
 }
 
 /**
@@ -44,7 +44,7 @@ string Entrant::getEntrantName(void) {
  * @return An integer containing the entrant number.
  */
 int Entrant::getEntrantNo(void) {
-    return entrant_no;
+    return entrantNo;
 }
 
 /**
@@ -52,5 +52,5 @@ int Entrant::getEntrantNo(void) {
  * @return An char containing the course ID.
  */
 char Entrant::getCourseID(void) {
-    return course_id;
+    return courseID;
 }

@@ -6,6 +6,7 @@ import aber.dcs.cs22510.clg11.model.Node;
 import aber.dcs.cs22510.clg11.util.FileIO;
 import aber.dcs.cs22510.clg11.util.LoadData;
 import aber.dcs.cs22510.clg11.util.ProcessData;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,8 @@ import javax.swing.border.BevelBorder;
  * (or use system time) and then submit this new time to the log file. Any
  * problems that occur will be displayed to the user.
  *
- * @author Connor Goddard (clg11) Copyright: Aberystwyth University,
+ * @author Connor Goddard (clg11) 
+ * Copyright: Aberystwyth University,
  * Aberystwyth.
  */
 public class GUIPanel extends JPanel implements ActionListener {
@@ -53,8 +55,6 @@ public class GUIPanel extends JPanel implements ActionListener {
     private SpinnerDateModel sm;
     private Datastore data;
     private LoadData load;
-    
-    
     private JCheckBox mcExclude;
     /**
      * Enables the GUI to access the methods used for processing times.
@@ -69,13 +69,14 @@ public class GUIPanel extends JPanel implements ActionListener {
      *
      * @param newData Datastore object passed down from GUIFrame.
      * @param newLoad LoadData object passed down from GUIFrame.
+     * @param newFileIO FileIO object passed down from GUIFrame. 
      */
     public GUIPanel(Datastore newData, LoadData newLoad, FileIO newFileIO) {
 
         this.data = newData;
         this.load = newLoad;
         this.fileIO = newFileIO;
-        
+
         //Set the size of the panel
         this.setPreferredSize(new Dimension(500, 250));
 
@@ -153,10 +154,10 @@ public class GUIPanel extends JPanel implements ActionListener {
         //Set the time format to be diplayed in the JSpinner.
         JSpinner.DateEditor de = new JSpinner.DateEditor(timeSpinner, "HH:mm");
         timeSpinner.setEditor(de);
-        
-         mcExclude = new JCheckBox("Exclude Entrant");
-         mcExclude.setSelected(false);
-         mcExclude.setEnabled(false);
+
+        mcExclude = new JCheckBox("Exclude Entrant");
+        mcExclude.setSelected(false);
+        mcExclude.setEnabled(false);
 
         //Add all the components to the GUI panel.
         this.add(nodeTitle);
@@ -180,8 +181,10 @@ public class GUIPanel extends JPanel implements ActionListener {
      */
     public void setUpLayout() {
 
-        //Set the NORTH edge of the button to be 5 pixels down from the NORTH edge of the panel
+        //Set the NORTH edge of the label to be 10 pixels down from the NORTH edge of the panel.
         layout.putConstraint(SpringLayout.NORTH, nodeTitle, 10, SpringLayout.NORTH, this);
+        
+        //Set the WEST edge of the label to be 10 pixels left of the WEST edge of the panel.
         layout.putConstraint(SpringLayout.WEST, nodeTitle, 10, SpringLayout.WEST, this);
 
         layout.putConstraint(SpringLayout.NORTH, nodeList, 10, SpringLayout.NORTH, this);
@@ -198,7 +201,7 @@ public class GUIPanel extends JPanel implements ActionListener {
 
         layout.putConstraint(SpringLayout.NORTH, mcTypeList, 10, SpringLayout.SOUTH, entrantTitle);
         layout.putConstraint(SpringLayout.WEST, mcTypeList, 10, SpringLayout.EAST, mcTypeTitle);
-        
+
         layout.putConstraint(SpringLayout.NORTH, mcExclude, 10, SpringLayout.SOUTH, mcTypeTitle);
         layout.putConstraint(SpringLayout.WEST, mcExclude, 10, SpringLayout.WEST, this);
 
@@ -293,47 +296,55 @@ public class GUIPanel extends JPanel implements ActionListener {
      */
     public void submitCheckpoint() {
 
+        try {
 
-        //Display question dialog
-        int shouldProcess = JOptionPane.YES_OPTION;
 
-        shouldProcess = JOptionPane.showConfirmDialog(null, "Are you sure you wish to submit this time log?",
-                "CM Manager | Submit Time Log", JOptionPane.YES_NO_OPTION);
+            //Display question dialog
+            int shouldProcess = JOptionPane.YES_OPTION;
 
-        //If user selects "yes"
-        if (shouldProcess == JOptionPane.YES_OPTION) {
+            shouldProcess = JOptionPane.showConfirmDialog(null, "Are you sure you wish to submit this time log?",
+                    "CM Manager | Submit Time Log", JOptionPane.YES_NO_OPTION);
 
-            //Create a formatter for the time value entered by the user.
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            //If user selects "yes"
+            if (shouldProcess == JOptionPane.YES_OPTION) {
 
-            String newTimeValue = sdf.format(timeSpinner.getValue());
+                //Create a formatter for the time value entered by the user.
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
-            //Check if a times file currently exists.
-            if (proc.getTimes()) {
+                String newTimeValue = sdf.format(timeSpinner.getValue());
 
-                updateStatus(" Times file loaded successfully.");
+                //Check if a times file currently exists.
+                if (proc.getTimes()) {
 
-                //Check to see if the time entered by the user is in the past.
-                if (proc.compareTimes(proc.getLastLoggedTime(), newTimeValue)) {
+                    updateStatus(" Times file loaded successfully.", false);
 
-                    updateStatus(" ERROR: Time entered is before last recorded time. Please try again.");
+                    //Check to see if the time entered by the user is in the past.
+                    if (proc.compareTimes(proc.getLastLoggedTime(), newTimeValue)) {
 
+                        updateStatus(" ERROR: Time entered is before last recorded time. Please try again.", true);
+
+                    } else {
+
+                        /*
+                         * Re-read in the "times" file to allow any new times logged by other 
+                         * running versions of the checkpoint manager to update the information 
+                         * contained within this version of the CM. 
+                         */
+                        updateTimeLog();
+                    }
+
+                    //If a time file does not currently exist, create a new one.
                 } else {
 
-                    /*
-                     * Re-read in the "times" file to allow any new times logged by other 
-                     * running versions of the checkpoint manager to update the information 
-                     * contained within this version of the CM. 
-                     */
+                    updateStatus(" ALERT: Times file (times.txt) not found. Creating new time log file.", true);
                     updateTimeLog();
                 }
 
-            //If a time file does not currently exist, create a new one.
-            } else {
-
-                updateStatus(" ALERT: Times file (times.txt) not found. Creating new time log file.");
-                updateTimeLog();
             }
+
+        } catch (IndexOutOfBoundsException iOB) {
+
+            updateStatus(" ERROR: Cannot parse times file. Problem reading file.", true);
 
         }
     }
@@ -373,30 +384,44 @@ public class GUIPanel extends JPanel implements ActionListener {
              */
             if (currentEntrant.getAtMC() && mcSelection.equals("Arriving")) {
 
-                updateStatus(" ERROR: Entrant " + currentEntrant.getNumber() + " already at medical checkpoint.");
+                updateStatus(" ERROR: Entrant " + currentEntrant.getNumber() + " already at medical checkpoint.", true);
 
             } else if (!(currentEntrant.getAtMC()) && mcSelection.equals("Departing")) {
 
-                updateStatus(" ERROR: Entrant must be at MC before they can depart.");
+                updateStatus(" ERROR: Entrant must be at MC before they can depart.", true);
 
             } else {
-                        
-                result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue, mcExclude.isSelected());       
 
-                updateStatus(result);
+                result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, mcSelection, newTimeValue, mcExclude.isSelected());
+
+                updateStatus(result, false);
             }
 
         } else {
 
             //The checkpoint is not a MC, and so just process the new logged time.
             result = proc.processTimeLog(entrantNodes, currentEntrant, nodeNumber, newTimeValue);
-            updateStatus(result);
+            updateStatus(result, false);
         }
     }
 
-    public void updateStatus(String updateMessage) {
+    /**
+     * Displays system status/error messages to the user via the GUI.
+     * @param updateMessage The message to be displayed.
+     * @param isError Determines whether the message is an error or not.
+     */
+    public void updateStatus(String updateMessage, boolean isError) {
 
         statusBar.setText(updateMessage);
+
+        if (isError) {
+
+            statusBar.setForeground(Color.RED);
+
+        } else {
+
+            statusBar.setForeground(Color.BLACK);
+        }
 
     }
 
@@ -404,8 +429,7 @@ public class GUIPanel extends JPanel implements ActionListener {
      * Listener for actions from sub-panel components, to allow operations to be
      * run when components are interacted with.
      *
-     * @see
-     * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      * @param evt - ActionEvent called from components in the panels that
      * require an action to be performed.
      */
@@ -432,7 +456,7 @@ public class GUIPanel extends JPanel implements ActionListener {
                 //Update the value of the time spinner to the current time.
                 timeSpinner.setValue(currentTime.getTime());
 
-                updateStatus(" Current time updated successfully.");
+                updateStatus(" Current time updated successfully.", false);
                 break;
 
         }

@@ -5,6 +5,7 @@ import aber.dcs.cs22510.clg11.model.Datastore;
 import aber.dcs.cs22510.clg11.model.Entrant;
 import aber.dcs.cs22510.clg11.model.Node;
 import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class ProcessData {
      * in.
      *
      * @param newData Datastore object created in CMDriver.
+     * @param newFileIO  
      */
     public ProcessData(Datastore newData, FileIO newFileIO) {
 
@@ -116,8 +118,9 @@ public class ProcessData {
      * the particular time log.
      * @param nodeNo The number of the node the time log was recorded at.
      * @param entrantNo The number of the entrant that was recorded.
+     * @throws IndexOutOfBoundsException  
      */
-    public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) {
+    public void processNewTime(String timeDelimiter, int nodeNo, int entrantNo) throws IndexOutOfBoundsException {
 
         //Boolean used to determine whether this particular time log has been processed.
         boolean isUpdated = false;
@@ -230,6 +233,7 @@ public class ProcessData {
      * @param selectedEntrant The current entrant being processed.
      * @param newNode The newly submitted node that the entrant has arrived at.
      * @param time The inputted time of the entrant's arrival at the CP.
+     * @return  
      */
     public String processTimeLog(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String time) {
 
@@ -285,6 +289,10 @@ public class ProcessData {
 
         } 
         
+        /*
+         * If any of the output files are locked by another process/application,
+         * inform the user.
+         */
         if (!logNotLocked) {
 
             result = " ERROR: System log file locked - Cannot write to file.";
@@ -318,6 +326,8 @@ public class ProcessData {
      * @param newNode The newly submitted node that the entrant has arrived at.
      * @param mcType Whether the entrant was arriving or departing from the MC.
      * @param time The inputted time of the entrant's arrival at the CP.
+     * @param isExcluded
+     * @return String containing the result of processing the time log. 
      */
     public String processTimeLog(ArrayList<Node> courseNodes, Entrant selectedEntrant, int newNode, String mcType, String time, boolean isExcluded) {
 
@@ -384,6 +394,10 @@ public class ProcessData {
 
         }
 
+        /*
+         * If any of the output files are locked by another process/application,
+         * inform the user.
+         */
         if (!timesNotLocked) {
 
             result = " ERROR: Times log file locked - Cannot write to file. Please try again.";
@@ -409,6 +423,7 @@ public class ProcessData {
     /**
      * Obtains all the times from the time log file ("times.txt") before
      * processing each time log.
+     * @return A boolean determining if the file was successfully loaded or not.
      */
     public boolean getTimes() {
 

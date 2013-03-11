@@ -10,7 +10,16 @@ package aber.dcs.cs22510.clg11.model;
  */
 public enum Datatype {
     
+    /**
+     *
+     */
     COURSE,
+    /**
+     *
+     */
     ENTRANT,
+    /**
+     *
+     */
     NODE
 };

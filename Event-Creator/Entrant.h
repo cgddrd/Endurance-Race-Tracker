@@ -17,16 +17,17 @@
 class Entrant {
     
 public:
+    Entrant();
     Entrant(const std::string &theName, const int theEnNo, char theCourseID);
     virtual ~Entrant();
-    void print(void) const;
+    void print(void);
     std::string getEntrantName(void);
     int getEntrantNo(void);
     char getCourseID(void);
 private:
-    std::string entrant_name; /**< The name of the entrant.*/
-    const int entrant_no; /**< The unique number for the entrant.*/
-    char course_id; /**< The ID that the entrant is registered for.*/
+    std::string entrantName; /**< The name of the entrant.*/
+    const int entrantNo; /**< The unique number for the entrant.*/
+    char courseID; /**< The ID that the entrant is registered for.*/
 };
 
 #endif	/* ENTRANT_H */

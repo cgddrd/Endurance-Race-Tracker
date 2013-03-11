@@ -224,7 +224,7 @@ void Menu::showEntrantEditor(void) {
             case 1:
                 
                 //Flush the input buffer to prevent skipping on "getline()".
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 
                 //Run method to add a new entrant.
                 proc->addEntrant();
@@ -277,7 +277,7 @@ void Menu::showEventEditor(void) {
             case 1:
 
                 //Flush the input buffer to prevent skipping on "getline()".
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 
                 //Perform check to see if an event has already been created.
                 checkExistingEvent();
@@ -329,7 +329,7 @@ void Menu::checkExistingEvent(void) {
                 case 'y':
                     
                     //Flush the input buffer to prevent skipping on "getline()".
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     
                     //Prompt user for event information and create the new event.
                     proc->createEvent();

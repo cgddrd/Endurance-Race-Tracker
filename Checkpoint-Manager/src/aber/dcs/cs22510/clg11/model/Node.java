@@ -9,7 +9,7 @@ package aber.dcs.cs22510.clg11.model;
  */
 public class Node {
     
-    /** Type of the node. (CP, MX, JN) */
+    /** Type of the node. (CP, MC, JN) */
     private String type;
     
     /** The unique node number. */

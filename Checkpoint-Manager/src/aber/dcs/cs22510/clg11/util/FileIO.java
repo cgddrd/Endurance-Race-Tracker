@@ -39,6 +39,7 @@ public class FileIO {
      * data collections used by the application.
      *
      * @param fileName The directory of the file to be parsed.
+     * @param isTimesFile 
      * @return Arraylist of String arrays containing the contents of the parsed
      * file.
      */
@@ -115,6 +116,7 @@ public class FileIO {
      *
      * @param writeFile The file that is to be written to.
      * @param output The output data string.
+     * @return A boolean determining if the file was successfully written to.
      */
     public boolean writeFile(File writeFile, String output) {
 
@@ -172,6 +174,7 @@ public class FileIO {
      * activity occurs in the application.
      *
      * @param logMessage Message describing the activity.
+     * @return Boolean determining if the log was successfully written to file. 
      */
     public boolean addActivityLog(String logMessage) {
 

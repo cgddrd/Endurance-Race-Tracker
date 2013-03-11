@@ -8,6 +8,8 @@
 
 #include "Course.h"
 
+using namespace std;
+
 /**
  * Constructor that allows the constant 'courseID' variable
  * to be specified. Also defaults the size of a course to 0.

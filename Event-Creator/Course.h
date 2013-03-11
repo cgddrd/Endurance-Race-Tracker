@@ -18,6 +18,7 @@
 class Course {
     
 public:
+    Course();
     Course(const char theCourseID);
     virtual ~Course();
     void addCourseNode(Node *newNode);

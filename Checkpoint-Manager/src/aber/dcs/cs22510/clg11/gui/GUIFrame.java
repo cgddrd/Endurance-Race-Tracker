@@ -31,6 +31,7 @@ public class GUIFrame extends JFrame {
      *
      * @param newData Datastore class created in main method.
      * @param newLoad LoadData class created in main method.
+     * @param newFileIO FileIO classes created in main method. 
      */
     public GUIFrame(Datastore newData, LoadData newLoad, FileIO newFileIO) {
 

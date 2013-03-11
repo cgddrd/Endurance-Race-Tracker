@@ -23,7 +23,6 @@ class Process {
 public:
     
     Process(Datastore *newData);
-    Process(const Process& orig);
     virtual ~Process();
     void addEntrant(void);
     void createEvent(void);

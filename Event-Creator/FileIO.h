@@ -16,7 +16,6 @@
 class FileIO {
 public:
     FileIO();
-    FileIO(const FileIO& orig);
     virtual ~FileIO();
     void writeEntrants(std::vector<Entrant*> entrantList);
     void writeCourses(std::vector<Course*> courseList);

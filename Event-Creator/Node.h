@@ -12,13 +12,12 @@
 #include <string>
 
 /**
- *  Course class used to define the data model for a paritcular course node.
+ *  Course class used to define the data model for a particular course node.
  */
 class Node {
     
 public:
     Node();
-    Node(const Node& orig);
     Node(const int newNodeNo, std::string newNodeType);
     virtual ~Node();
     void setNodeType(std::string nodeType);

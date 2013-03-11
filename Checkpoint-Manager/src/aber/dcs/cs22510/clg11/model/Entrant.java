@@ -9,7 +9,6 @@ package aber.dcs.cs22510.clg11.model;
  */
 public class Entrant {
     
-    
     private String firstName;
     private String lastName;
     
@@ -187,7 +186,7 @@ public class Entrant {
 
     /**
      * Sets whether or not the entrant has finished their race or not.
-     * @param isFinshed Whether the entrant is has finished
+     * @param isFinished 
      */
     public void setIsFinished(boolean isFinished) {
         this.isFinished = isFinished;

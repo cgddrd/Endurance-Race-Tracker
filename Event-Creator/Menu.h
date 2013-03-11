@@ -22,7 +22,6 @@ class Menu {
 public:
     
     Menu(Datastore *newData, Process *newProc);
-    Menu(const Menu& orig);
     virtual ~Menu();
     void showEventEditor(void);
     void showCourseEditor(void);
