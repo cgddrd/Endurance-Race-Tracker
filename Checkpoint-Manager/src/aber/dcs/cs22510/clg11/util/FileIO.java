@@ -31,6 +31,7 @@ public class FileIO {
      * Default constructor for FileIO.
      */
     public FileIO() {
+        
     }
 
     /**
@@ -118,7 +119,7 @@ public class FileIO {
      * @param output The output data string.
      * @return A boolean determining if the file was successfully written to.
      */
-    public boolean writeFile(File writeFile, String output) {
+    public boolean writeFile(File fileName, String output) {
 
         FileOutputStream fos;
         FileLock fl = null;
@@ -126,12 +127,12 @@ public class FileIO {
         try {
 
             //If the file does not exist, create a new file.
-            if (!writeFile.exists()) {
-                writeFile.createNewFile();
+            if (!fileName.exists()) {
+                fileName.createNewFile();
             }
 
             //Create a new output stream that will append to the file.
-            fos = new FileOutputStream(writeFile.getAbsoluteFile(), true);
+            fos = new FileOutputStream(fileName.getAbsoluteFile(), true);
 
             //Attempt to lock the file to allow the data to be written.
             try {
@@ -144,7 +145,7 @@ public class FileIO {
                  * If there is already a process within the same JVM locking 
                  * the file, inform the user.
                  */
-                System.out.println("ERROR: File <" + writeFile.getName() + "> cannot be accessed. File lock still in place.");
+                System.out.println("ERROR: File <" + fileName.getName() + "> cannot be accessed. File lock still in place.");
             }
 
             //Check if the lock was successfull.

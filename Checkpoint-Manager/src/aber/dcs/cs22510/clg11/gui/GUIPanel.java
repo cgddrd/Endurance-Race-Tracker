@@ -3,8 +3,6 @@ package aber.dcs.cs22510.clg11.gui;
 import aber.dcs.cs22510.clg11.model.Datastore;
 import aber.dcs.cs22510.clg11.model.Entrant;
 import aber.dcs.cs22510.clg11.model.Node;
-import aber.dcs.cs22510.clg11.util.FileIO;
-import aber.dcs.cs22510.clg11.util.LoadData;
 import aber.dcs.cs22510.clg11.util.ProcessData;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,33 +32,39 @@ public class GUIPanel extends JPanel implements ActionListener {
      */
     private JButton submitTime, setCurrentTime;
     private JLabel nodeTitle, entrantTitle, mcTypeTitle, timeTitle, statusBar;
+    
     /**
      * The layout manager used by the panel.
      */
     private SpringLayout layout = new SpringLayout();
+    
     /**
      * Drop-down selected boxes used to select entrants and nodes.
      */
     private JComboBox<String> entrantList;
     private JComboBox<String> nodeList;
+    
     /**
      * Determines whether an entrant is arriving or leaving medical checkpoint.
      */
     private JComboBox<String> mcTypeList;
     private String[] mcArriveDepart = {"Arriving", "Departing"};
+    
     /**
      * Spinner used to allow the user to select a time value.
      */
     private JSpinner timeSpinner;
     private SpinnerDateModel sm;
-    private Datastore data;
-    private LoadData load;
+
+    
     private JCheckBox mcExclude;
+    
+    
     /**
      * Enables the GUI to access the methods used for processing times.
      */
     private ProcessData proc;
-    private FileIO fileIO;
+    private Datastore data;
 
     /**
      * Constructor to instantiate a new GUIPanel. Takes the two classes passed
@@ -68,14 +72,11 @@ public class GUIPanel extends JPanel implements ActionListener {
      * and loading facilities.
      *
      * @param newData Datastore object passed down from GUIFrame.
-     * @param newLoad LoadData object passed down from GUIFrame.
-     * @param newFileIO FileIO object passed down from GUIFrame. 
      */
-    public GUIPanel(Datastore newData, LoadData newLoad, FileIO newFileIO) {
+    public GUIPanel(Datastore newData) {
 
-        this.data = newData;
-        this.load = newLoad;
-        this.fileIO = newFileIO;
+        data = newData;
+        proc = new ProcessData(data);
 
         //Set the size of the panel
         this.setPreferredSize(new Dimension(500, 250));
@@ -94,7 +95,7 @@ public class GUIPanel extends JPanel implements ActionListener {
      * Initialises the panel components (including linking components to
      * listeners where required) before adding the components to the panel.
      */
-    public void initComponents() {
+    private void initComponents() {
 
         String[] comboValues;
 
@@ -102,7 +103,6 @@ public class GUIPanel extends JPanel implements ActionListener {
          * Instantiate new ProcessData class to allow access to data processing
          * facilties.
          */
-        proc = new ProcessData(data, fileIO);
 
         //Create new instance of JLabel with specified display text
         entrantTitle = new JLabel("Entrant List:");
@@ -179,7 +179,7 @@ public class GUIPanel extends JPanel implements ActionListener {
      * Sets up the 'SpringLayout' layout manager to organise all components on
      * the panel.
      */
-    public void setUpLayout() {
+    private void setUpLayout() {
 
         //Set the NORTH edge of the label to be 10 pixels down from the NORTH edge of the panel.
         layout.putConstraint(SpringLayout.NORTH, nodeTitle, 10, SpringLayout.NORTH, this);

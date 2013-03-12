@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class LoadData {
 
     private Datastore data;
-    private FileIO fileIO;
+    private FileIO fileIO = new FileIO();
 
     /**
      * Constructor to instantiate a new LoadData. Takes the shared data store
@@ -23,12 +23,10 @@ public class LoadData {
      * in.
      *
      * @param comp Shared Datastore object created within CMDriver.
-     * @param newFileIO Shared FileIO object created within CMDriver.
      */
-    public LoadData(Datastore comp, FileIO newFileIO) {
+    public LoadData(Datastore comp) {
 
         this.data = comp;
-        this.fileIO = newFileIO;
 
     }
 

@@ -5,7 +5,6 @@ import aber.dcs.cs22510.clg11.model.Datastore;
 import aber.dcs.cs22510.clg11.model.Entrant;
 import aber.dcs.cs22510.clg11.model.Node;
 import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,15 +25,9 @@ import java.util.logging.Logger;
 public class ProcessData {
 
     private Datastore data;
-    private FileIO fileIO;
+    private FileIO fileIO = new FileIO();
     private String lastLoggedTime = null;
 
-    /**
-     * Allows access to the file read/write facilities.
-     */
-    // private FileIO fileIO = new FileIO();
-    public ProcessData() {
-    }
 
     /**
      * Constructor to instantiate a new ProcessData. Takes the shared data store
@@ -43,12 +36,10 @@ public class ProcessData {
      * in.
      *
      * @param newData Datastore object created in CMDriver.
-     * @param newFileIO  
      */
-    public ProcessData(Datastore newData, FileIO newFileIO) {
+    public ProcessData(Datastore newData) {
 
         this.data = newData;
-        this.fileIO = newFileIO;
 
     }
 

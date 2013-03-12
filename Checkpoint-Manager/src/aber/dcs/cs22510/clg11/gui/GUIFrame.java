@@ -29,11 +29,9 @@ public class GUIFrame extends JFrame {
      * Constructor to instantiate a new GUIFrame. Takes the two classes created
      * in CMDriver as parameters to pass onto GUI sub-panel.
      *
-     * @param newData Datastore class created in main method.
-     * @param newLoad LoadData class created in main method.
-     * @param newFileIO FileIO classes created in main method. 
+     * @param newData Datastore class created in main method. 
      */
-    public GUIFrame(Datastore newData, LoadData newLoad, FileIO newFileIO) {
+    public GUIFrame(Datastore newData) {
 
         //Initialise and set up GUI frame (window).
         this.setTitle("Checkpoint Manager | Connor Goddard (clg11)");
@@ -43,7 +41,7 @@ public class GUIFrame extends JFrame {
         this.setResizable(false);
 
         //Initialise the sub-panel, passing the two shared components.
-        panel = new GUIPanel(newData, newLoad, newFileIO);
+        panel = new GUIPanel(newData);
 
         //Add this panel to the whole of the frame (No layout set).
         this.add(panel);

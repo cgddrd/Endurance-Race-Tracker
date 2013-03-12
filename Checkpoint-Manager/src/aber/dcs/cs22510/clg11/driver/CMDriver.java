@@ -22,13 +22,10 @@ public class CMDriver {
     public static void main(String[] args) {
 
         //Instantiate new Datastore object that will be shared by other classes.
-        Datastore comp = new Datastore();
-
-        //Instantiate new FileIO object to allow shared file I/O facilities.
-        FileIO fileIO = new FileIO();
+        Datastore data = new Datastore();
 
         //Instantiate new Datastore object that will be shared by other classes.
-        LoadData load = new LoadData(comp, fileIO);
+        LoadData load = new LoadData(data);
 
 
         //Load input files into Datastore class (nodes, tracks and courses).     
@@ -37,9 +34,9 @@ public class CMDriver {
             load.loadFiles(Datatype.NODE, args[0]);
             load.loadFiles(Datatype.COURSE, args[1]);
             load.loadFiles(Datatype.ENTRANT, args[2]);
-
+            
             //Once loading via textual interface is complete, display GUI.
-            new GUIFrame(comp, load, fileIO);
+            new GUIFrame(data);
 
        } catch (IndexOutOfBoundsException eX) {
            

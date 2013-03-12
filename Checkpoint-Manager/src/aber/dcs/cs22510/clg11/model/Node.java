@@ -16,7 +16,7 @@ public class Node {
     private int number;
     
     /**
-     * Default constructor for an Entrant.
+     * Default constructor for a Node.
      */
     public Node() {
         

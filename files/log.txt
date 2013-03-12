@@ -27,3 +27,20 @@ LOG - EM: Event results list compiled and displayed. - Mon Mar 11 15:42:10 2013
 LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 15:42:28 2013
 LOG - EM: Entrant times file successfully loaded into system. - Mon Mar 11 15:43:22 2013
 LOG - EM: Event results list compiled and displayed. - Mon Mar 11 15:43:27 2013
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 12/03/2013 08:46:42
+LOG - CM: Courses file loaded successfully (courses.txt) - 12/03/2013 08:46:42
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 12/03/2013 08:46:42
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 12/03/2013 11:12:35
+LOG - CM: Courses file loaded successfully (courses.txt) - 12/03/2013 11:12:35
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 12/03/2013 11:12:35
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 12/03/2013 13:31:35
+LOG - CM: Courses file loaded successfully (courses.txt) - 12/03/2013 13:31:35
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 12/03/2013 13:31:35
+LOG - CM: Entrant no: 3 successfully excluded. - 12/03/2013 13:31:40
+LOG - CM: Entrant no: 1 has sucessfully finished the course. - 12/03/2013 13:31:40
+LOG - CM: Time logs file loaded successfully (times.txt) - 12/03/2013 13:31:40
+LOG - CM: Time logs file loaded successfully (times.txt) - 12/03/2013 13:32:32
+LOG - CM: Time logs file loaded successfully (times.txt) - 12/03/2013 13:32:39
+LOG - CM: Submitted checkpoint 1 incorrect for course. (Entrant No: 69) - 12/03/2013 13:32:39
+LOG - CM: Time logs file loaded successfully (times.txt) - 12/03/2013 13:33:14
+LOG - CM: Submitted checkpoint 9 incorrect for course. (Entrant No: 69) - 12/03/2013 13:33:14
