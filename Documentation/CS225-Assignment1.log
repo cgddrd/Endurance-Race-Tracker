@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.28)  12 MAR 2013 15:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.28)  12 MAR 2013 18:27
 entering extended mode
  %&-line parsing enabled.
 **CS225-Assignment1.tex
@@ -149,6 +149,9 @@ Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
 less on input line 16.
 
 (./CS225-Assignment1.aux
+
+LaTeX Warning: Label `notes' multiply defined.
+
 
 LaTeX Warning: Label `notes' multiply defined.
 
@@ -654,17 +657,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 501--503
 <event_creator_class_diagram.jpg, id=343, 1109.14375pt x 904.37875pt>
 File: event_creator_class_diagram.jpg Graphic file (type jpg)
 
-<use event_creator_class_diagram.jpg> [100
+<use event_creator_class_diagram.jpg>
+Overfull \hbox (19.0634pt too wide) in paragraph at lines 506--507
+ [][] 
+ []
+
+[100
 
  <./event_creator_class_diagram.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 513--515
 
  []
 
-<checkpoint_manager_class_diagram.jpg, id=347, 1197.47375pt x 941.5175pt>
+<checkpoint_manager_class_diagram.jpg, id=347, 1196.47pt x 867.24pt>
 File: checkpoint_manager_class_diagram.jpg Graphic file (type jpg)
 
 <use checkpoint_manager_class_diagram.jpg>
+Overfull \hbox (30.07709pt too wide) in paragraph at lines 518--519
+ [][] 
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 524--526
 
  []
@@ -672,19 +685,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 524--526
 [101
 
  <./checkpoint_manager_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 536--537
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
 []\OT1/cmr/m/it/10 ``Demonstrates file lock-ing and sim-ple file read and write
  op-er-a-tions us-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--537
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
 \OT1/cmr/m/it/10 ing java.nio.channels.FileChannel" \OT1/cmr/m/n/10 - http://ja
 va2s.com/Code/Java/File-Input-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--537
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
 \OT1/cmr/m/n/10 Output/Demonstratesfilelockingandsimplefilereadandwriteusingjav
 aniochannelsFileChannel
  []
@@ -713,7 +726,7 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmtt8.pfb>
-Output written on CS225-Assignment1.pdf (103 pages, 2736774 bytes).
+Output written on CS225-Assignment1.pdf (103 pages, 2765661 bytes).
 PDF statistics:
  396 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
