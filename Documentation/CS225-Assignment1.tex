@@ -9,7 +9,7 @@
 \usepackage{lastpage}
 \pagestyle{fancy}
 
-\fancyhead[LE,RO]{\textit{C, C++ \& Java Paradigms / Connor Goddard}}
+\fancyhead[LE,RO]{\textit{C++, C \& Java Programming Paradigms / Connor Goddard}}
 \fancyhead[LO,RE]{\slshape}
 \renewcommand{\headrulewidth}{0pt}
 
@@ -23,7 +23,7 @@
   frame=L,
   language=C++,
   showstringspaces=false,
-  basicstyle=\scriptsize\ttfamily,
+  basicstyle=\footnotesize\ttfamily,
   keywordstyle=\bfseries\color{OliveGreen},
   commentstyle=\itshape\color{black},
   identifierstyle=\color{blue},
@@ -37,7 +37,7 @@
   frame=L,
   language=Java,
   showstringspaces=false,
-  basicstyle=\scriptsize\ttfamily,
+  basicstyle=\footnotesize\ttfamily,
   keywordstyle=\bfseries\color{OliveGreen},
   commentstyle=\itshape\color{black},
   identifierstyle=\color{blue},
@@ -62,7 +62,7 @@
 
 \setlength{\parindent}{0pt}
 
-\title{\textbf{CS22510 - C, C++ \& Java Paradigms} \\ Assignment 1 - Runners \& Riders \\ 2012-2013}	
+\title{\textbf{CS22510 - C++, C \& Java Programming Paradigms} \\ Assignment 1 - Runners \& Riders \\ 2012-2013}	
 \author{\textbf{Connor Luke Goddard}\\clg11@aber.ac.uk}		
 \date{March 2013}	
 
@@ -96,6 +96,18 @@ The objectives of this document are:
 \item To briefly describe the structure and programming language choice of each of the three applications.
 
 \end{itemize}
+
+\section{Design Assumptions}
+
+To allow a definitive design for the checkpoint manager to be established, the following assumption has had to be drawn:
+
+\begin{enumerate}
+
+\item When logging new time values for \textbf{medical checkpoints}, a user will submit arrival and departure times \textbf{separatly} (i.e. separate transactions), and not at the same time. This will allow other entrant checkpoint time values to be logged while an entrant is waiting at a medcial checkpoint.
+
+\end{enumerate}
+
+
 
 \clearpage
 
@@ -213,9 +225,11 @@ This section contains the complete source code for the ``checkpoint manager" pro
 \subsubsection{ProcessData.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/ProcessData.java}
 
+\clearpage
 \subsubsection{FileIO.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/FileIO.java}
 
+\clearpage
 \subsubsection{LoadData.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/LoadData.java}
 
@@ -237,6 +251,7 @@ This section contains the complete source code for the ``checkpoint manager" pro
 \subsubsection{Node.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Node.java}
 
+\clearpage
 \subsubsection{Datatype.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Datatype.java}
 
@@ -246,6 +261,7 @@ This section contains the complete source code for the ``checkpoint manager" pro
 \subsubsection{GUIFrame.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIFrame.java}
 
+\clearpage
 \subsubsection{GUIPanel.java}
 \lstinputlisting[style=customjava]{../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIPanel.java}
 
@@ -471,19 +487,58 @@ This section contains the final results table produced by the ``event manager" a
 
 \clearpage
 \section{Event Manager - System Activity Log}
-This section contains the contents of the log file (``log.txt") produced by the ``event manager" application detailing the activity described in the above usage example.
+This section details the contents of the log file (``log.txt") produced by the ``event manager" application detailing the activity described in the above usage example.
 
 \lstinputlisting[style=output, caption=Contents of the log file produced by the event manager application.]{em-log.txt}
 
 \clearpage
 \section{System Description}
 
-This section provides a general description of the structure and implementation of the three separate applications that form the ``runners and riders" system.
+This section provides a general description of the structure and implementation of the three separate applications that form the complete ``runners and riders" system.
 
 \subsection{Event Creator (C++)}
 
+The event creator application was built using an object-orientated design in C++. It contains a variety of class (.cpp) and header (.h) files that perform a variety of tasks to form the complete application.\\\\
+The data model for the application consists of ``container" classes (\textit{Entrant, Event, Course, Node}) that represent each of the four core datatypes respectively. Instances of these (created by the application) are stored (some as collections) in a shared \textit{Datastore} class that can accessed from the UI (\textit{Menu}), and core processing (\textit{Process}) classes. All external file input/output operations are performed by the \textit{FileIO} class which can be acessed again from the \textit{Menu} and \textit{Process} classes as required. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.35]{event_creator_class_diagram.jpg}
+\caption{UML class diagram detailing the structural design of the event creator application.}
+\end{figure}
+
+\clearpage
 \subsection{Checkpoint Manager (Java)}
 
+This application uses a structural design not too dissimilar to that of the event creator application. Three ``model" classes (\textit{Entrant, Course, Node}) and a shared \textit{Datastore} class form the data model for the application, and the \textit{ProcessData} class provides the core processing/functionality for the application. A public ENUM class (\textit{Datatype}) is used to differentiate between the data types processed by the system. \\\\
+The GUI consists of a `JFrame' \textit{GUIFrame} class (window) and a `JPanel' \textit{GUIPanel} class (content) that interacts with the \textit{Datastore}, \textit{ProcessData} and \textit{FileIO} classes to allow the user to interact with the system and add new checkpoint times. The majority of error checking and exception handling occurs within the \textit{GUIPanel} class.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.35]{checkpoint_manager_class_diagram.jpg}
+\caption{Checkpoint Manager GUI informing user that entrant 98 must have arrived at a MC before they can depart.}
+\end{figure}
+
 \subsection{Event Manager (C)}
+
+The event manager application is almost identical to that of the 'extended mission' application produced for CS23710, with the addition of file writing and file locking operations which allow the system to log user activity to an external file. \\\\
+Apart from the addition of logging functions, and the removal of the ability to manually enter in checkpoint times (now the responsibility of the checkpoint manager application) no major changes have been made to the original application. 
+
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plain}
+
+\begin{thebibliography}{1}
+
+  \bibitem{notes} N. Snooke, D. Price, F. Labrosse {\em ``CS22510 Assignment One, 2012-2013 Runners and Riders - ``Out and about"} 2013: Aberystwyth University, Aberystwyth.
+ 
+ \bibitem{notes} {\em ``How to lock files in C/C++ using fopen"}  - http://stackoverflow.com/questions/7573282/ 2011: StackOverflow, StackExchange.
+ 
+  \bibitem{notes} {\em ``Demonstrates file locking and simple file read and write operations using java.nio.channels.FileChannel"}  - http://java2s.com/Code/Java/File-Input-Output/DemonstratesfilelockingandsimplefilereadandwriteusingjavaniochannelsFileChannel .htm 2011: Java2s.com, 12 Demo Source and Support.
+ 
+  \bibitem{notes} P. Prinz, T. Crawford {\em ``C in a Nutshell"} 2008: O'Reilly Media Inc.
+  
+  \bibitem{notes} R. Lischner {\em ``C++ in a Nutshell"} 2009: O'Reilly Media Inc.
+  
+\end{thebibliography}
 
 \end{document}
