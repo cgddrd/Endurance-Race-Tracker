@@ -103,7 +103,8 @@ To allow a definitive design for the checkpoint manager to be established, the f
 
 \begin{enumerate}
 
-\item When logging new time values for \textbf{medical checkpoints}, a user will submit arrival and departure times \textbf{separatly} (i.e. separate transactions), and not at the same time. This will allow other entrant checkpoint time values to be logged while an entrant is waiting at a medcial checkpoint.
+\item When logging new time values for \textbf{medical checkpoints}, a user will submit arrival and departure times \textbf{separatly} (i.e. as separate transactions), and not at the same time. \\\\
+This will allow other entrant checkpoint time values to be logged while an entrant is waiting at a medical checkpoint, and prevents ``time being re-written" by having to insert arrival times ``in the past" within the times log file. This could however be acheived using a priority queue data structure.
 
 \end{enumerate}
 
