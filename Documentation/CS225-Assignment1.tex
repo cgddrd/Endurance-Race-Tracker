@@ -92,19 +92,21 @@ The objectives of this document are:
 
 \item To provide the complete source code for the ``event creator" application, and evidence of it's compilation and functionality.
 \item To provide the complete source code for the ``checkpoint manager" application, and evidence of it's compilation and functionality.
-\item To provide evidence of the compilation and functionality of the ``event manager" applicaiton.
+\item To provide evidence of the compilation and functionality of the ``event manager" application.
 \item To briefly describe the structure and programming language choice of each of the three applications.
 
 \end{itemize}
 
 \section{Design Assumptions}
 
-To allow a definitive design for the checkpoint manager to be established, the following assumption has had to be drawn:
+To allow a definitive design for the Checkpoint Manager application to be established, the following assumptions have had to be drawn:
 
 \begin{enumerate}
 
 \item When logging new time values for \textbf{medical checkpoints}, a user will submit arrival and departure times \textbf{separatly} (i.e. as separate transactions), and not at the same time. \\\\
-This will allow other entrant checkpoint time values to be logged while an entrant is waiting at a medical checkpoint, and prevents ``time being re-written" by having to insert arrival times ``in the past" within the times log file. This could however be acheived using a priority queue data structure.
+This will allow other entrant checkpoint time values to be logged while an entrant is waiting at a medical checkpoint, and prevents ``time being re-written" by having to insert arrival times ``in the past" within the times log file. This could however be achieved using a priority queue data structure.
+
+\item Only \textbf{one} time log file (``times.txt") will be used to log entrant checkpoint times. This file will be read-in by each running instance of the CP manager application to update its own internal record of the entrants' progress, before appending the new time to the end of the same file. File locking mechanisms will be utilized to prevent corruption of the shared data file. 
 
 \end{enumerate}
 
