@@ -71,7 +71,7 @@ string Event::getEventDate(void) const {
 
 /**
  * Updates the name/description of the event to an inputted value.
- * @param eventTime Recently inputted event name/description..
+ * @param eventTime Recently inputted event name/description.
  */
 void Event::setEventName(string eventName) {
     this->eventName = eventName;
@@ -83,4 +83,20 @@ void Event::setEventName(string eventName) {
  */
 string Event::getEventName(void) const {
     return eventName;
+}
+
+/**
+ * Updates the file directory of the event
+ * @param directory The new file system directory to be set.
+ */
+void Event::setDirectory(std::string directory) {
+    this->directory = directory;
+}
+
+/**
+ * Fetches the folder directory used for the event,
+ * @return The value of the event directory on the file system.
+ */
+std::string Event::getDirectory() const {
+    return directory;
 }

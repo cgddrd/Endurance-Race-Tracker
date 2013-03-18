@@ -17,8 +17,9 @@ class FileIO {
 public:
     FileIO();
     virtual ~FileIO();
-    void writeEntrants(std::vector<Entrant*> entrantList);
-    void writeCourses(std::vector<Course*> courseList);
+    int createDirectory(Event *event);
+    void writeEntrants(std::vector<Entrant*> entrantList, Event *event);
+    void writeCourses(std::vector<Course*> courseList, Event *event);
     void writeEvent(Event *event);
     std::vector<std::vector<std::string > > getFile(std::string fileName);
 private:

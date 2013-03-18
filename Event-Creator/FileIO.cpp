@@ -12,6 +12,8 @@
 #include <iostream>
 #include <sstream>  //for std::istringstream
 #include <iterator> //for std::istream_iterator
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "FileIO.h"
 #include "Event.h"
 
@@ -30,14 +32,41 @@ FileIO::~FileIO() {
 }
 
 /**
+ * Creates a new file directory for the event, which will be used to 
+ * store all the data files created for the event.
+ * @param event Event object created by the user.
+ * @return Integer describing if the folder was created successfully.
+ */
+int FileIO::createDirectory(Event *event) {
+
+    int status;
+
+    string folder = "../files/" + event->getEventName();
+   
+    //Set the directory of the event.
+    event->setDirectory(folder);
+
+    /*
+     * Create the directory with write/read permissions for owner/group, and 
+     * read only permissions for others.
+     */
+    return status = mkdir(folder.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+    
+}
+
+/**
  * Writes all the created entrants for a particular event to file using a
  * specified format. Entrant information is obtained from the Entrant pointers vector 
  * stored within the Datastore class.
  * @param entrantList Vector of all the Entrant pointers contained 
  * within Datastore class.
  */
-void FileIO::writeEntrants(vector<Entrant*> entrantList) {
+void FileIO::writeEntrants(vector<Entrant*> entrantList, Event *event) {
 
+    string folder = event->getDirectory();
+                
+    folder += "/entrants.txt";
+    
     //Create a new file stream.
     ofstream myfile;
 
@@ -46,7 +75,7 @@ void FileIO::writeEntrants(vector<Entrant*> entrantList) {
      * Flags: ios::out = Output to file, ios::app = Append to existing file
      * or create a new one.
      */
-    myfile.open("../files/exampleentrants.txt", ios::out | ios::app);
+    myfile.open(folder.c_str(), ios::out | ios::app);
 
     //Loop through all the created entrants.
     for (vector<Entrant*>::iterator it = entrantList.begin(); it != entrantList.end(); ++it) {
@@ -67,14 +96,18 @@ void FileIO::writeEntrants(vector<Entrant*> entrantList) {
  * @param entrantList Vector of all the Course pointers contained 
  * within Datastore class.
  */
-void FileIO::writeCourses(vector<Course*> courseList) {
+void FileIO::writeCourses(vector<Course*> courseList, Event *event) {
+    
+    string folder = event->getDirectory();
+                
+    folder += "/courses.txt";
 
     ofstream myfile;
-    myfile.open("../files/examplecourses.txt", ios::out | ios::app);
+    myfile.open(folder.c_str(), ios::out | ios::app);
 
     //Loop through all the the courses in the vector.
     for (vector<Course*>::iterator it = courseList.begin(); it != courseList.end(); ++it) {
-        
+
         //Write the current course ID and total course size to file.
         myfile << (*it)->getCourseID() << " " << (*it)->getCourseSize() << " ";
 
@@ -83,7 +116,7 @@ void FileIO::writeCourses(vector<Course*> courseList) {
 
         //Loop through all nodes that make up the current course.
         for (vector<Node*>::iterator jt = currentCourseNodes.begin(); jt != currentCourseNodes.end(); ++jt) {
-            
+
             //Write the node number to the file.
             myfile << (*jt)->getNodeNo() << " ";
         }
@@ -103,12 +136,32 @@ void FileIO::writeCourses(vector<Course*> courseList) {
  */
 void FileIO::writeEvent(Event *event) {
 
-    ofstream myfile;
-    myfile.open("../files/exampleevent.txt", ios::out | ios::trunc);
+    //Get the status of the folder directory creation. 
+    int status = createDirectory(event);
+    
+    //Check if the file was created successfully or not.
+    if (status == 0) {
 
-    myfile << (*event).getEventName() << "\n" << (*event).getEventDate() << "\n" << (*event).getEventTime() << "\n";
+        ofstream myfile;
 
-    myfile.close();
+        //Get the current event directory.
+        string folder = event->getDirectory();
+                
+        folder += "/event.txt";
+
+        //Create a file stream with that will overwrite any existing file.
+        myfile.open(folder.c_str(), ios::out | ios::trunc);
+
+        //Write to the file the event data.
+        myfile << (*event).getEventName() << "\n" << (*event).getEventDate() << "\n" << (*event).getEventTime() << "\n";
+
+        //Close the file stream. 
+        myfile.close();
+
+    } else {
+
+        cout << "ERROR: Event folder could not be created. ";
+    }
 
 }
 
@@ -121,10 +174,10 @@ void FileIO::writeEvent(Event *event) {
 vector<vector<string > > FileIO::getFile(string fileName) {
 
     string line;
-    
+
     //Create a new file stream.
     ifstream myfile(fileName.c_str());
-    
+
     //Check the file has been successfully opened.
     if (myfile.is_open()) {
 
@@ -137,12 +190,12 @@ vector<vector<string > > FileIO::getFile(string fileName) {
 
             //Place all the tokens into a new vector (For the line).
             vector<string> allStrings(begin, end);
-            
+
             //Add this vector to the parent vector for the whole file.
             arrayTokens.push_back(allStrings);
 
         }
-        
+
         myfile.close();
     }
 

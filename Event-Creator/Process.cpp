@@ -13,6 +13,7 @@
 #include <ctime>
 #include <sstream>
 #include <algorithm>
+#include <string.h>
 #include "Process.h"
 
 using namespace std;

@@ -26,11 +26,14 @@ public:
     std::string getEventDate(void) const;
     void setEventName(std::string eventName);
     std::string getEventName(void) const;
+    void setDirectory(std::string directory);
+    std::string getDirectory() const;
     
 private:
     std::string eventName; /**< The name/description of the event.*/
     std::string eventDate; /**< The date that the event is to take place.*/
     std::string eventTime; /**< The starting time of the event.*/
+    std::string directory;
 };
 
 #endif	/* EVENT_H */

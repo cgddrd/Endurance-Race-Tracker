@@ -94,7 +94,7 @@ void Menu::showMainMenu(void) {
                 //Check if an event has been created.
                 if (data->getEvent() == NULL) {
 
-                    cout << "ERROR: No event created. Nothing to export.\n";
+                    cout << "ERROR: No event created. Event has to be created first.\n";
 
                     //Check if any entrants have been created.
                 } else if (data->getEntrantList().size() <= 0) {
@@ -110,8 +110,8 @@ void Menu::showMainMenu(void) {
 
                     //If there are no problems, write all the data to file.
                     io.writeEvent(data->getEvent());
-                    io.writeEntrants(data->getEntrantList());
-                    io.writeCourses(data->getCourseList());
+                    io.writeEntrants(data->getEntrantList(), data->getEvent());
+                    io.writeCourses(data->getCourseList(), data->getEvent());
                 }
 
                 break;
@@ -182,10 +182,10 @@ void Menu::showCourseEditor(void) {
                 cout << "Exporting all courses to file.\n";
                 
                 //Check if any courses have been created. 
-                if (data->getCourseList().size() > 0) {
-                    io.writeCourses(data->getCourseList());
+                if (data->getCourseList().size() > 0 && data->getEvent() != NULL) {
+                    io.writeCourses(data->getCourseList(), data->getEvent());
                 } else {
-                    cout << "\nERROR: No courses created. Nothing to export.\n";
+                    cout << "\nERROR: No courses, or event not created.\n";
                 }
 
                 break;
@@ -235,10 +235,10 @@ void Menu::showEntrantEditor(void) {
                 cout << "Exporting all entrants to file.\n";
                 
                 //Check is any entrants have been created.
-                if (data->getEntrantList().size() > 0) {
-                    io.writeEntrants(data->getEntrantList());
+                if (data->getEntrantList().size() > 0 && data->getEvent() != NULL) {
+                    io.writeEntrants(data->getEntrantList(), data->getEvent());
                 } else {
-                    cout << "\nERROR: No entrants created. Nothing to export.\n";
+                    cout << "\nERROR: No entrants, or event not created.\n";
                 }
 
                 break;
