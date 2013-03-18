@@ -19,53 +19,53 @@
 \contentsline {subsubsection}{\numberline {3.2.3}Process.cpp}{19}
 \contentsline {subsubsection}{\numberline {3.2.4}Datastore.cpp}{26}
 \contentsline {subsubsection}{\numberline {3.2.5}FileIO.cpp}{29}
-\contentsline {subsubsection}{\numberline {3.2.6}Event.cpp}{32}
-\contentsline {subsubsection}{\numberline {3.2.7}Entrant.cpp}{34}
-\contentsline {subsubsection}{\numberline {3.2.8}Node.cpp}{35}
-\contentsline {subsubsection}{\numberline {3.2.9}Course.cpp}{36}
-\contentsline {section}{\numberline {4}Event Creator - Build/Compilation Log}{38}
-\contentsline {section}{\numberline {5}Event Creator - Example Usage}{39}
-\contentsline {section}{\numberline {6}Event Creator - File Output}{45}
-\contentsline {section}{\numberline {7}Checkpoint Manager (Java) - Source Code}{46}
-\contentsline {subsection}{\numberline {7.1}`Driver' Package}{46}
-\contentsline {subsubsection}{\numberline {7.1.1}CMDriver.java}{46}
-\contentsline {subsection}{\numberline {7.2}`Util' Package}{47}
-\contentsline {subsubsection}{\numberline {7.2.1}ProcessData.java}{47}
-\contentsline {subsubsection}{\numberline {7.2.2}FileIO.java}{56}
-\contentsline {subsubsection}{\numberline {7.2.3}LoadData.java}{59}
-\contentsline {subsection}{\numberline {7.3}`Model' Package}{63}
-\contentsline {subsubsection}{\numberline {7.3.1}Datastore.java}{63}
-\contentsline {subsubsection}{\numberline {7.3.2}Entrant.java}{64}
-\contentsline {subsubsection}{\numberline {7.3.3}Course.java}{68}
-\contentsline {subsubsection}{\numberline {7.3.4}Node.java}{70}
-\contentsline {subsubsection}{\numberline {7.3.5}Datatype.java}{72}
-\contentsline {subsection}{\numberline {7.4}`GUI' Package}{73}
-\contentsline {subsubsection}{\numberline {7.4.1}GUIFrame.java}{73}
-\contentsline {subsubsection}{\numberline {7.4.2}GUIPanel.java}{74}
-\contentsline {section}{\numberline {8}Checkpoint Manager - Build/Compilation Log}{82}
-\contentsline {section}{\numberline {9}Checkpoint Manager - Example Usage}{83}
-\contentsline {subsection}{\numberline {9.1}Loading External Data Files}{83}
-\contentsline {subsubsection}{\numberline {9.1.1}Correct File Parameters}{83}
-\contentsline {subsubsection}{\numberline {9.1.2}Incorrect File Parameters}{84}
-\contentsline {subsection}{\numberline {9.2}Submit Correct Time Entry}{84}
-\contentsline {subsection}{\numberline {9.3}Submit Incorrect Time Entry}{85}
-\contentsline {subsection}{\numberline {9.4}Entrant Exclusion (Incorrect Node)}{85}
-\contentsline {subsection}{\numberline {9.5}Entrant Course Completion}{86}
-\contentsline {subsection}{\numberline {9.6}Medical Checkpoint - Successful Arrival}{86}
-\contentsline {subsection}{\numberline {9.7}Medical Checkpoint - Successful Departure}{87}
-\contentsline {subsection}{\numberline {9.8}Medical Checkpoint - Incorrect Arrival}{87}
-\contentsline {subsection}{\numberline {9.9}Medical Checkpoint - Incorrect Departure}{88}
-\contentsline {subsection}{\numberline {9.10}Entrant Exclusion (Medical Reasons)}{88}
-\contentsline {subsection}{\numberline {9.11}Submission of Invalid Time Value}{89}
-\contentsline {subsection}{\numberline {9.12}System Activity Logging}{89}
-\contentsline {subsection}{\numberline {9.13}File Lock Access Prevention}{90}
-\contentsline {subsection}{\numberline {9.14}Entrant Times File Generation}{91}
-\contentsline {section}{\numberline {10}Event Manager (C) - Build/Compilation Log}{92}
-\contentsline {section}{\numberline {11}Event Manager - Example Usage}{93}
-\contentsline {section}{\numberline {12}Event Manager - Results Output}{98}
-\contentsline {section}{\numberline {13}Event Manager - System Activity Log}{99}
-\contentsline {section}{\numberline {14}System Description}{100}
-\contentsline {subsection}{\numberline {14.1}Event Creator (C++)}{100}
-\contentsline {subsection}{\numberline {14.2}Checkpoint Manager (Java)}{101}
-\contentsline {subsection}{\numberline {14.3}Event Manager (C)}{101}
-\contentsline {section}{References}{101}
+\contentsline {subsubsection}{\numberline {3.2.6}Event.cpp}{33}
+\contentsline {subsubsection}{\numberline {3.2.7}Entrant.cpp}{35}
+\contentsline {subsubsection}{\numberline {3.2.8}Node.cpp}{36}
+\contentsline {subsubsection}{\numberline {3.2.9}Course.cpp}{37}
+\contentsline {section}{\numberline {4}Event Creator - Build/Compilation Log}{39}
+\contentsline {section}{\numberline {5}Event Creator - Example Usage}{40}
+\contentsline {section}{\numberline {6}Event Creator - File Output}{46}
+\contentsline {section}{\numberline {7}Checkpoint Manager (Java) - Source Code}{47}
+\contentsline {subsection}{\numberline {7.1}`Driver' Package}{47}
+\contentsline {subsubsection}{\numberline {7.1.1}CMDriver.java}{47}
+\contentsline {subsection}{\numberline {7.2}`Util' Package}{48}
+\contentsline {subsubsection}{\numberline {7.2.1}ProcessData.java}{48}
+\contentsline {subsubsection}{\numberline {7.2.2}FileIO.java}{57}
+\contentsline {subsubsection}{\numberline {7.2.3}LoadData.java}{60}
+\contentsline {subsection}{\numberline {7.3}`Model' Package}{64}
+\contentsline {subsubsection}{\numberline {7.3.1}Datastore.java}{64}
+\contentsline {subsubsection}{\numberline {7.3.2}Entrant.java}{65}
+\contentsline {subsubsection}{\numberline {7.3.3}Course.java}{69}
+\contentsline {subsubsection}{\numberline {7.3.4}Node.java}{71}
+\contentsline {subsubsection}{\numberline {7.3.5}Datatype.java}{73}
+\contentsline {subsection}{\numberline {7.4}`GUI' Package}{74}
+\contentsline {subsubsection}{\numberline {7.4.1}GUIFrame.java}{74}
+\contentsline {subsubsection}{\numberline {7.4.2}GUIPanel.java}{75}
+\contentsline {section}{\numberline {8}Checkpoint Manager - Build/Compilation Log}{83}
+\contentsline {section}{\numberline {9}Checkpoint Manager - Example Usage}{84}
+\contentsline {subsection}{\numberline {9.1}Loading External Data Files}{84}
+\contentsline {subsubsection}{\numberline {9.1.1}Correct File Parameters}{84}
+\contentsline {subsubsection}{\numberline {9.1.2}Incorrect File Parameters}{85}
+\contentsline {subsection}{\numberline {9.2}Submit Correct Time Entry}{85}
+\contentsline {subsection}{\numberline {9.3}Submit Incorrect Time Entry}{86}
+\contentsline {subsection}{\numberline {9.4}Entrant Exclusion (Incorrect Node)}{86}
+\contentsline {subsection}{\numberline {9.5}Entrant Course Completion}{87}
+\contentsline {subsection}{\numberline {9.6}Medical Checkpoint - Successful Arrival}{87}
+\contentsline {subsection}{\numberline {9.7}Medical Checkpoint - Successful Departure}{88}
+\contentsline {subsection}{\numberline {9.8}Medical Checkpoint - Incorrect Arrival}{88}
+\contentsline {subsection}{\numberline {9.9}Medical Checkpoint - Incorrect Departure}{89}
+\contentsline {subsection}{\numberline {9.10}Entrant Exclusion (Medical Reasons)}{89}
+\contentsline {subsection}{\numberline {9.11}Submission of Invalid Time Value}{90}
+\contentsline {subsection}{\numberline {9.12}System Activity Logging}{90}
+\contentsline {subsection}{\numberline {9.13}File Lock Access Prevention}{91}
+\contentsline {subsection}{\numberline {9.14}Entrant Times File Generation}{92}
+\contentsline {section}{\numberline {10}Event Manager (C) - Build/Compilation Log}{93}
+\contentsline {section}{\numberline {11}Event Manager - Example Usage}{94}
+\contentsline {section}{\numberline {12}Event Manager - Results Output}{99}
+\contentsline {section}{\numberline {13}Event Manager - System Activity Log}{100}
+\contentsline {section}{\numberline {14}System Description}{101}
+\contentsline {subsection}{\numberline {14.1}Event Creator (C++)}{101}
+\contentsline {subsection}{\numberline {14.2}Checkpoint Manager (Java)}{102}
+\contentsline {subsection}{\numberline {14.3}Event Manager (C)}{102}
+\contentsline {section}{References}{102}

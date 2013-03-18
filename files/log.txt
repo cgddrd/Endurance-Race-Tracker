@@ -44,3 +44,6 @@ LOG - CM: Time logs file loaded successfully (times.txt) - 12/03/2013 13:32:39
 LOG - CM: Submitted checkpoint 1 incorrect for course. (Entrant No: 69) - 12/03/2013 13:32:39
 LOG - CM: Time logs file loaded successfully (times.txt) - 12/03/2013 13:33:14
 LOG - CM: Submitted checkpoint 9 incorrect for course. (Entrant No: 69) - 12/03/2013 13:33:14
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 18/03/2013 12:28:07
+LOG - CM: Courses file loaded successfully (courses.txt) - 18/03/2013 12:28:07
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 18/03/2013 12:28:07

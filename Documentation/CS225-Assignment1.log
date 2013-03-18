@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  17 MAR 2013 20:46
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  18 MAR 2013 11:42
 entering extended mode
  %&-line parsing enabled.
 **CS225-Assignment1.tex
@@ -164,6 +164,9 @@ LaTeX Warning: Label `notes' multiply defined.
 
 LaTeX Warning: Label `notes' multiply defined.
 
+
+LaTeX Warning: Label `notes' multiply defined.
+
 )
 \openout1 = `CS225-Assignment1.aux'.
 
@@ -271,71 +274,71 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 ] [27]) [28]
 (../Event-Creator/FileIO.cpp [29
 
-] [30]) [31] (../Event-Creator/Event.cpp
-[32
+] [30] [31]) [32] (../Event-Creator/Event.cpp
+[33
 
-]) [33] (../Event-Creator/Entrant.cpp) [34
+]) [34] (../Event-Creator/Entrant.cpp) [35
 
 ] (../Event-Creator/Node.cpp)
-[35
+[36
 
-] (../Event-Creator/Course.cpp [36
+] (../Event-Creator/Course.cpp [37
 
-]) [37] (./event-creator-buildlog.txt)
-[38
+]) [38] (./event-creator-buildlog.txt)
+[39
 
-] (./event-creator-output.txt [39
+] (./event-creator-output.txt [40
 
-] [40] [41] [42] [43]) [44]
+] [41] [42] [43] [44]) [45]
 (../files/exampleevent.txt) (../files/examplecourses.txt)
-(../files/exampleentrants.txt) [45
+(../files/exampleentrants.txt) [46
 
 ]
 (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/driver/CMDriver.java)
-[46
-
-] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/ProcessData.java
 [47
 
-] [48] [49] [50] [51] [52] [53] [54]) [55]
-(../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/FileIO.java [56
+] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/ProcessData.java
+[48
+
+] [49] [50] [51] [52] [53] [54] [55]) [56]
+(../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/FileIO.java [57
 
 ]
-[57]) [58] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/LoadData.java
-[59
+[58]) [59] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/util/LoadData.java
+[60
 
-] [60] [61]) [62]
+] [61] [62]) [63]
 (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Datastore.java)
-[63
-
-] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Entrant.java
 [64
 
-] [65] [66]) [67]
-(../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Course.java [68
+] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Entrant.java
+[65
+
+] [66] [67]) [68]
+(../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Course.java [69
 
 ])
-[69] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Node.java [70
+[70] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Node.java [71
 
 ])
-[71] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Datatype.java)
-[72
-
-] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIFrame.java)
+[72] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/model/Datatype.java)
 [73
 
-] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIPanel.java
+] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIFrame.java)
 [74
 
-] [75] [76] [77] [78] [79] [80]) [81]
+] (../Checkpoint-Manager/src/aber/dcs/cs22510/clg11/gui/GUIPanel.java
+[75
+
+] [76] [77] [78] [79] [80] [81]) [82]
 Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
-(./checkpoint-manager-buildlog.txt) [82
+(./checkpoint-manager-buildlog.txt) [83
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 280--281
@@ -354,14 +357,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 286--288
  []
 
 (./checkpoint-manager-output.txt)
-<cm-loadsuccess.png, id=276, 1606.0pt x 903.375pt>
+<cm-loadsuccess.png, id=279, 1606.0pt x 903.375pt>
 File: cm-loadsuccess.png Graphic file (type png)
  <use cm-loadsuccess.png>
 Overfull \hbox (57.21748pt too wide) in paragraph at lines 292--293
  [][] 
  []
 
-[83
+[84
 
  <./cm-loadsuccess.png (PNG copy)>]
 Overfull \hbox (21.43848pt too wide) in paragraph at lines 299--301
@@ -375,10 +378,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--301
  []
 
 (./checkpoint-manager-output-failure.txt)
-<cm-submit.png, id=280, 1606.0pt x 903.375pt>
+<cm-submit.png, id=284, 1606.0pt x 903.375pt>
 File: cm-submit.png Graphic file (type png)
  <use cm-submit.png>
-<cm-submitsuccess.png, id=281, 501.875pt x 250.9375pt>
+<cm-submitsuccess.png, id=285, 501.875pt x 250.9375pt>
 File: cm-submitsuccess.png Graphic file (type png)
 
 <use cm-submitsuccess.png>
@@ -386,10 +389,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
-[84
+[85
 
  <./cm-submit.png (PNG copy)> <./cm-submitsuccess.png (PNG copy)>]
-<cm-submitincorrect.png, id=286, 501.875pt x 250.9375pt>
+<cm-submitincorrect.png, id=289, 501.875pt x 250.9375pt>
 File: cm-submitincorrect.png Graphic file (type png)
 
 <use cm-submitincorrect.png>
@@ -397,33 +400,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-<cm-submitexclude.png, id=287, 501.875pt x 250.9375pt>
+<cm-submitexclude.png, id=290, 501.875pt x 250.9375pt>
 File: cm-submitexclude.png Graphic file (type png)
 
-<use cm-submitexclude.png> [85 <./cm-submitincorrect.png (PNG copy)> <./cm-subm
+<use cm-submitexclude.png> [86 <./cm-submitincorrect.png (PNG copy)> <./cm-subm
 itexclude.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 344--345
 
  []
 
-<cm-finished.png, id=291, 501.875pt x 250.9375pt>
+<cm-finished.png, id=294, 501.875pt x 250.9375pt>
 File: cm-finished.png Graphic file (type png)
  <use cm-finished.png>
 Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
-<cm-mcarrivesuccess.png, id=292, 501.875pt x 250.9375pt>
+<cm-mcarrivesuccess.png, id=295, 501.875pt x 250.9375pt>
 File: cm-mcarrivesuccess.png Graphic file (type png)
 
-<use cm-mcarrivesuccess.png> [86
+<use cm-mcarrivesuccess.png> [87
 
  <./cm-finished.png (PNG copy)> <./cm-mcarrivesuccess.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 367--368
 
  []
 
-<cm-mcdepartsuccess.png, id=296, 501.875pt x 250.9375pt>
+<cm-mcdepartsuccess.png, id=299, 501.875pt x 250.9375pt>
 File: cm-mcdepartsuccess.png Graphic file (type png)
 
 <use cm-mcdepartsuccess.png>
@@ -431,17 +434,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
-<cm-mcarrivefailure.png, id=297, 501.875pt x 250.9375pt>
+<cm-mcarrivefailure.png, id=300, 501.875pt x 250.9375pt>
 File: cm-mcarrivefailure.png Graphic file (type png)
 
-<use cm-mcarrivefailure.png> [87
+<use cm-mcarrivefailure.png> [88
 
  <./cm-mcdepartsuccess.png (PNG copy)> <./cm-mcarrivefailure.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 390--391
 
  []
 
-<cm-mcdepartfailure.png, id=301, 501.875pt x 250.9375pt>
+<cm-mcdepartfailure.png, id=304, 501.875pt x 250.9375pt>
 File: cm-mcdepartfailure.png Graphic file (type png)
 
 <use cm-mcdepartfailure.png>
@@ -449,17 +452,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 401--402
 
  []
 
-<cm-mcexclude.png, id=302, 501.875pt x 250.9375pt>
+<cm-mcexclude.png, id=305, 501.875pt x 250.9375pt>
 File: cm-mcexclude.png Graphic file (type png)
  <use cm-mcexclude.png>
-[88
+[89
 
  <./cm-mcdepartfailure.png (PNG copy)> <./cm-mcexclude.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 413--414
 
  []
 
-<cm-timesubmitfailure.png, id=306, 501.875pt x 250.9375pt>
+<cm-timesubmitfailure.png, id=309, 501.875pt x 250.9375pt>
 File: cm-timesubmitfailure.png Graphic file (type png)
 
 <use cm-timesubmitfailure.png>
@@ -472,7 +475,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 424--427
 
  []
 
-(./cm-log.txt) [89
+(./cm-log.txt) [90
 
  <./cm-timesubmitfailure.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 434--437
@@ -489,23 +492,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 434--437
 
  []
 
-<cm-filelock.png, id=310, 724.20563pt x 447.17062pt>
+<cm-filelock.png, id=314, 724.20563pt x 447.17062pt>
 File: cm-filelock.png Graphic file (type png)
  <use cm-filelock.png>
 Overfull \hbox (46.14183pt too wide) in paragraph at lines 461--462
  [][] 
  []
 
-[90
+[91
 
- <./cm-filelock.png (PNG copy)>] (./cm-times.txt) [91
+ <./cm-filelock.png (PNG copy)>] (./cm-times.txt) [92
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 475--476
 
  []
 
-(./event-manager-buildlog.txt) [92
+(./event-manager-buildlog.txt) [93
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 481--483
@@ -552,7 +555,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 51--52
 [][][] 
  []
 
-[93
+[94
 
 ]
 Overfull \hbox (8.28603pt too wide) in paragraph at lines 53--54
@@ -589,7 +592,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 103--104
 [][][] 
  []
 
-[94]
+[95]
 Overfull \hbox (8.28603pt too wide) in paragraph at lines 142--143
 [][][] 
  []
@@ -614,7 +617,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 184--186
 [][][] 
  []
 
-[95]
+[96]
 Overfull \hbox (8.28603pt too wide) in paragraph at lines 204--205
 [][][] 
  []
@@ -644,21 +647,21 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 231--232
 [][][] 
  []
 
-[96]) [97]
+[97]) [98]
 Underfull \hbox (badness 10000) in paragraph at lines 488--490
 
  []
 
-[98
+[99
 
-] (./em-log.txt) [99
+] (./em-log.txt) [100
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 504--506
 
  []
 
-<event_creator_class_diagram.jpg, id=343, 1109.14375pt x 904.37875pt>
+<event_creator_class_diagram.jpg, id=346, 1109.14375pt x 904.37875pt>
 File: event_creator_class_diagram.jpg Graphic file (type jpg)
 
 <use event_creator_class_diagram.jpg>
@@ -666,14 +669,14 @@ Overfull \hbox (19.0634pt too wide) in paragraph at lines 509--510
  [][] 
  []
 
-[100
+[101
 
  <./event_creator_class_diagram.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 516--518
 
  []
 
-<checkpoint_manager_class_diagram.jpg, id=347, 1196.47pt x 867.24pt>
+<checkpoint_manager_class_diagram.jpg, id=350, 1196.47pt x 867.24pt>
 File: checkpoint_manager_class_diagram.jpg Graphic file (type jpg)
 
 <use checkpoint_manager_class_diagram.jpg>
@@ -686,7 +689,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 527--529
 
  []
 
-[101
+[102
 
  <./checkpoint_manager_class_diagram.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 541--542
@@ -706,16 +709,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 541--542
 aniochannelsFileChannel
  []
 
-AED: lastpage setting LastPage [102] (./CS225-Assignment1.aux)
+AED: lastpage setting LastPage [103] (./CS225-Assignment1.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4772 strings out of 493848
- 65405 string characters out of 1152823
+ 4800 strings out of 493848
+ 65737 string characters out of 1152823
  541396 words of memory out of 3000000
- 7895 multiletter control sequences out of 15000+50000
+ 7923 multiletter control sequences out of 15000+50000
  9573 words of font info for 35 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  39i,12n,68p,598b,1686s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -730,9 +733,9 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmtt8.pfb>
-Output written on CS225-Assignment1.pdf (103 pages, 2766167 bytes).
+Output written on CS225-Assignment1.pdf (104 pages, 2772144 bytes).
 PDF statistics:
- 396 PDF objects out of 1000 (max. 8388607)
+ 399 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
