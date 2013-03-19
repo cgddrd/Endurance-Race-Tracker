@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  18 MAR 2013 11:42
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  19 MAR 2013 09:36
 entering extended mode
  %&-line parsing enabled.
 **CS225-Assignment1.tex
@@ -657,22 +657,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 488--490
 ] (./em-log.txt) [100
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 504--506
+Underfull \hbox (badness 10000) in paragraph at lines 504--507
 
  []
 
-<event_creator_class_diagram.jpg, id=346, 1109.14375pt x 904.37875pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--507
+
+ []
+
+<event_creator_class_diagram.jpg, id=346, 945.5325pt x 770.88pt>
 File: event_creator_class_diagram.jpg Graphic file (type jpg)
 
-<use event_creator_class_diagram.jpg>
-Overfull \hbox (19.0634pt too wide) in paragraph at lines 509--510
- [][] 
- []
-
-[101
+<use event_creator_class_diagram.jpg> [101
 
  <./event_creator_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 516--518
+Underfull \hbox (badness 10000) in paragraph at lines 517--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 517--520
 
  []
 
@@ -680,31 +685,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 516--518
 File: checkpoint_manager_class_diagram.jpg Graphic file (type jpg)
 
 <use checkpoint_manager_class_diagram.jpg>
-Overfull \hbox (30.07709pt too wide) in paragraph at lines 521--522
+Overfull \hbox (30.07709pt too wide) in paragraph at lines 523--524
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--529
+Underfull \hbox (badness 10000) in paragraph at lines 529--532
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 529--532
 
  []
 
 [102
 
  <./checkpoint_manager_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 541--542
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
 []\OT1/cmr/m/it/10 ``Demonstrates file lock-ing and sim-ple file read and write
  op-er-a-tions us-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--542
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
 \OT1/cmr/m/it/10 ing java.nio.channels.FileChannel" \OT1/cmr/m/n/10 - http://ja
 va2s.com/Code/Java/File-Input-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--542
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
 \OT1/cmr/m/n/10 Output/Demonstratesfilelockingandsimplefilereadandwriteusingjav
 aniochannelsFileChannel
  []
@@ -721,7 +731,7 @@ Here is how much of TeX's memory you used:
  7923 multiletter control sequences out of 15000+50000
  9573 words of font info for 35 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,12n,68p,598b,1686s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,12n,68p,747b,1686s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texmf-texlive/font
@@ -733,7 +743,7 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmtt8.pfb>
-Output written on CS225-Assignment1.pdf (104 pages, 2772144 bytes).
+Output written on CS225-Assignment1.pdf (104 pages, 2035265 bytes).
 PDF statistics:
  399 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

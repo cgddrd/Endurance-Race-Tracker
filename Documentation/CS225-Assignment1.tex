@@ -501,20 +501,22 @@ This section provides a general description of the structure and implementation 
 
 \subsection{Event Creator (C++)}
 
-The event creator application was built using an object-orientated design in C++. It contains a variety of class (.cpp) and header (.h) files that perform a variety of tasks to form the complete application.\\\\
-The data model for the application consists of ``container" classes (\textit{Entrant, Event, Course, Node}) that represent each of the four core datatypes respectively. Instances of these (created by the application) are stored (some as collections) in a shared \textit{Datastore} class that can accessed from the UI (\textit{Menu}), and core processing (\textit{Process}) classes. All external file input/output operations are performed by the \textit{FileIO} class which can be acessed again from the \textit{Menu} and \textit{Process} classes as required. 
+The event creator application was built using an object-orientated design in C++.\\\\
+The data model for the application consists of ``container" classes (\textit{Entrant, Event, Course, Node}) that represent each of the four core datatypes respectively. Instances of these (created by the application) are stored (some as collections) in a shared \textit{Datastore} class that can accessed from the UI (\textit{Menu}), and core processing (\textit{Process}) classes. All external file input/output operations are performed by the \textit{FileIO} class which can be accessed from the \textit{Menu} and \textit{Process} classes as required. \\\\
+I believe the functionality of the application fulfills the assignment brief well. Users are able to create new events, courses and entrants which are then exported to the relevant files in folders unique to each course. A high level of error-checking is integrated into the textual interface, in an attempt to prevent the system crashing, or incorrect data being created as a result of user error. This system was the most difficult, and took the most time to implement as I was unfamiliar with the C++ language, however it has been a major learning curve, and I am happy with the state of the final application.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.4]{event_creator_class_diagram.jpg}
+\includegraphics[scale=0.39]{event_creator_class_diagram.jpg}
 \caption{UML class diagram detailing the structural design of the event creator application.}
 \end{figure}
 
 \clearpage
 \subsection{Checkpoint Manager (Java)}
 
-This application uses a structural design not too dissimilar to that of the event creator application. Three ``model" classes (\textit{Entrant, Course, Node}) and a shared \textit{Datastore} class form the data model for the application, and the \textit{ProcessData} class provides the core processing/functionality for the application. A public ENUM class (\textit{Datatype}) is used to differentiate between the data types processed by the system. \\\\
-The GUI consists of a `JFrame' \textit{GUIFrame} class (window) and a `JPanel' \textit{GUIPanel} class (content) that interacts with the \textit{Datastore}, \textit{ProcessData} and \textit{FileIO} classes to allow the user to interact with the system and add new checkpoint times. The majority of error checking and exception handling occurs within the \textit{GUIPanel} class.
+This application uses a structural design not too dissimilar to that of the event creator application. Three ``model" classes (\textit{Entrant, Course, Node}) and a shared \textit{Datastore} class form the data model for the application, and the \textit{ProcessData} class provides the core processing/functionality for the application. A public ENUM class (\textit{Datatype}) is used to differentiate between data types processed by the system. \\\\
+The GUI consists of a `JFrame' \textit{GUIFrame} class (window) and a `JPanel' \textit{GUIPanel} class (content) that interacts with the \textit{Datastore}, \textit{ProcessData} and \textit{FileIO} classes to allow the user to interact with the system and submit new checkpoint times. The majority of error checking is also handled by the GUI (e.g. a user can only select arrival/depart options when a medical checkpoint has been selected). \\\\
+I believe the application contains all the required functionality, and provides sophisticated error checking via the GUI. To ensure the application conformed to the brief, the GUI design is very ``minimal", however I believe the it contains all the GUI components necessary to ensure a user can interact well with, and obtain all the necessary information from the system. This application also contains \textbf{logging functionality}. Based on the description of the ``log.txt" file in the assignment brief, I ensured that both the checkpoint manager, and event manager applications could log activity to the log file. File locking mechanisms ensure that both cannot write to the log file at the same time.
 
 \begin{figure}[ht!]
 \centering
@@ -524,8 +526,9 @@ The GUI consists of a `JFrame' \textit{GUIFrame} class (window) and a `JPanel' \
 
 \subsection{Event Manager (C)}
 
-The event manager application is almost identical to that of the 'extended mission' application produced for CS23710, with the addition of file writing and file locking operations which allow the system to log user activity to an external file. \\\\
-Apart from the addition of logging functions, and the removal of the ability to manually enter in checkpoint times (now the responsibility of the checkpoint manager application) no major changes have been made to the original application. 
+The event manager application is almost identical to that of the 'extended mission' application produced for CS23710, with the addition of file writing operations which allow the system to log user activity to an external file. \\\\
+I made the assumption that multiple event manager applications could potentially be running at the same time, and so added file locking facilities to the existing application. This also ensured that both the checkpoint manager, and event manager applications could not write to the log file at the same time. \\\\
+The two main changes to the event manager application are the addition of logging functions (file writing and file locking), and the removal of the ability to manually enter in checkpoint times (now the responsibility of the checkpoint manager application)
 
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{plain}

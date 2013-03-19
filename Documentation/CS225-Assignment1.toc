@@ -67,5 +67,5 @@
 \contentsline {section}{\numberline {14}System Description}{101}
 \contentsline {subsection}{\numberline {14.1}Event Creator (C++)}{101}
 \contentsline {subsection}{\numberline {14.2}Checkpoint Manager (Java)}{102}
-\contentsline {subsection}{\numberline {14.3}Event Manager (C)}{102}
-\contentsline {section}{References}{102}
+\contentsline {subsection}{\numberline {14.3}Event Manager (C)}{103}
+\contentsline {section}{References}{103}

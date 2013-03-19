@@ -4,7 +4,6 @@ import aber.dcs.cs22510.clg11.util.LoadData;
 import aber.dcs.cs22510.clg11.gui.GUIFrame;
 import aber.dcs.cs22510.clg11.model.Datastore;
 import aber.dcs.cs22510.clg11.model.Datatype;
-import aber.dcs.cs22510.clg11.util.FileIO;
 
 /**
  * Bootstrap class - Initialises the application.

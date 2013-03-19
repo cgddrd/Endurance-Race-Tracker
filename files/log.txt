@@ -47,3 +47,6 @@ LOG - CM: Submitted checkpoint 9 incorrect for course. (Entrant No: 69) - 12/03/
 LOG - CM: Nodes file loaded successfully (nodes.txt) - 18/03/2013 12:28:07
 LOG - CM: Courses file loaded successfully (courses.txt) - 18/03/2013 12:28:07
 LOG - CM: Entrants file loaded successfully (entrants.txt) - 18/03/2013 12:28:07
+LOG - CM: Nodes file loaded successfully (nodes.txt) - 19/03/2013 08:49:52
+LOG - CM: Courses file loaded successfully (courses.txt) - 19/03/2013 08:49:52
+LOG - CM: Entrants file loaded successfully (entrants.txt) - 19/03/2013 08:49:52
