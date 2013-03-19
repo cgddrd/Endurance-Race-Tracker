@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  19 MAR 2013 10:44
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  19 MAR 2013 20:04
 entering extended mode
  %&-line parsing enabled.
 **CS225-Assignment1.tex
@@ -334,25 +334,25 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 [75
 
 ] [76] [77] [78] [79] [80] [81]) [82]
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
 (./checkpoint-manager-buildlog.txt) [83
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
 
  []
 
 
-Overfull \hbox (5.68861pt too wide) in paragraph at lines 286--288
+Overfull \hbox (5.68861pt too wide) in paragraph at lines 288--290
 \OT1/cmr/m/n/10 Parameter In-put: []\OT1/cmtt/m/n/10 "../files/nodes.txt" "../f
 iles/courses.txt" "../files/entrants.txt" 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--288
+Underfull \hbox (badness 10000) in paragraph at lines 288--290
 
  []
 
@@ -360,20 +360,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 286--288
 <cm-loadsuccess.png, id=279, 1606.0pt x 903.375pt>
 File: cm-loadsuccess.png Graphic file (type png)
  <use cm-loadsuccess.png>
-Overfull \hbox (57.21748pt too wide) in paragraph at lines 292--293
+Overfull \hbox (57.21748pt too wide) in paragraph at lines 294--295
  [][] 
  []
 
 [84
 
  <./cm-loadsuccess.png (PNG copy)>]
-Overfull \hbox (21.43848pt too wide) in paragraph at lines 299--301
+Overfull \hbox (21.43848pt too wide) in paragraph at lines 301--303
 \OT1/cmr/m/n/10 Parameter In-put: []\OT1/cmtt/m/n/10 "../files/nodes.txt" "../f
 iles/idontknow.txt" "../files/entrants.txt"" 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--301
+Underfull \hbox (badness 10000) in paragraph at lines 301--303
 
  []
 
@@ -385,7 +385,7 @@ File: cm-submit.png Graphic file (type png)
 File: cm-submitsuccess.png Graphic file (type png)
 
 <use cm-submitsuccess.png>
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
 
  []
 
@@ -396,7 +396,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 321--322
 File: cm-submitincorrect.png Graphic file (type png)
 
 <use cm-submitincorrect.png>
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
  []
 
@@ -405,14 +405,14 @@ File: cm-submitexclude.png Graphic file (type png)
 
 <use cm-submitexclude.png> [86 <./cm-submitincorrect.png (PNG copy)> <./cm-subm
 itexclude.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
 <cm-finished.png, id=294, 501.875pt x 250.9375pt>
 File: cm-finished.png Graphic file (type png)
  <use cm-finished.png>
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
@@ -422,7 +422,7 @@ File: cm-mcarrivesuccess.png Graphic file (type png)
 <use cm-mcarrivesuccess.png> [87
 
  <./cm-finished.png (PNG copy)> <./cm-mcarrivesuccess.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
 
  []
 
@@ -430,7 +430,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 367--368
 File: cm-mcdepartsuccess.png Graphic file (type png)
 
 <use cm-mcdepartsuccess.png>
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 
  []
 
@@ -440,7 +440,7 @@ File: cm-mcarrivefailure.png Graphic file (type png)
 <use cm-mcarrivefailure.png> [88
 
  <./cm-mcdepartsuccess.png (PNG copy)> <./cm-mcarrivefailure.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 390--391
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
 
  []
 
@@ -448,7 +448,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 390--391
 File: cm-mcdepartfailure.png Graphic file (type png)
 
 <use cm-mcdepartfailure.png>
-Underfull \hbox (badness 10000) in paragraph at lines 401--402
+Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
@@ -458,7 +458,7 @@ File: cm-mcexclude.png Graphic file (type png)
 [89
 
  <./cm-mcdepartfailure.png (PNG copy)> <./cm-mcexclude.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
 
  []
 
@@ -466,60 +466,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 413--414
 File: cm-timesubmitfailure.png Graphic file (type png)
 
 <use cm-timesubmitfailure.png>
-Underfull \hbox (badness 10000) in paragraph at lines 424--427
+Underfull \hbox (badness 10000) in paragraph at lines 426--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--427
+Underfull \hbox (badness 10000) in paragraph at lines 426--429
 
  []
 
 (./cm-log.txt) [90
 
  <./cm-timesubmitfailure.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 434--437
+Underfull \hbox (badness 10000) in paragraph at lines 436--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--437
+Underfull \hbox (badness 10000) in paragraph at lines 436--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--437
+Underfull \hbox (badness 10000) in paragraph at lines 436--439
 
  []
 
 <cm-filelock.png, id=314, 724.20563pt x 447.17062pt>
 File: cm-filelock.png Graphic file (type png)
  <use cm-filelock.png>
-Overfull \hbox (46.14183pt too wide) in paragraph at lines 461--462
+Overfull \hbox (46.14183pt too wide) in paragraph at lines 463--464
  [][] 
  []
 
 [91
 
  <./cm-filelock.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 468--470
+Underfull \hbox (badness 10000) in paragraph at lines 470--472
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 468--470
+Underfull \hbox (badness 10000) in paragraph at lines 470--472
 
  []
 
 <cm-cpnormal.png, id=318, 503.8825pt x 280.04625pt>
 File: cm-cpnormal.png Graphic file (type png)
  <use cm-cpnormal.png>
-Underfull \hbox (badness 10000) in paragraph at lines 480--482
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--482
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
 
  []
 
@@ -531,14 +531,14 @@ File: cm-cpmedical.png Graphic file (type png)
  <./cm-cpnormal.png> <./cm-cpmedical.png>] (./cm-times.txt) [93
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 500--501
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
 
  []
 
 (./event-manager-buildlog.txt) [94
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 506--508
+Underfull \hbox (badness 10000) in paragraph at lines 508--510
 
  []
 
@@ -675,7 +675,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 231--232
  []
 
 [98]) [99]
-Underfull \hbox (badness 10000) in paragraph at lines 513--515
+Underfull \hbox (badness 10000) in paragraph at lines 515--517
 
  []
 
@@ -684,12 +684,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 513--515
 ] (./em-log.txt) [101
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Underfull \hbox (badness 10000) in paragraph at lines 531--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Underfull \hbox (badness 10000) in paragraph at lines 531--534
 
  []
 
@@ -699,12 +699,12 @@ File: event_creator_class_diagram.jpg Graphic file (type jpg)
 <use event_creator_class_diagram.jpg> [102
 
  <./event_creator_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 542--545
+Underfull \hbox (badness 10000) in paragraph at lines 544--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 542--545
+Underfull \hbox (badness 10000) in paragraph at lines 544--547
 
  []
 
@@ -712,36 +712,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 542--545
 File: checkpoint_manager_class_diagram.jpg Graphic file (type jpg)
 
 <use checkpoint_manager_class_diagram.jpg>
-Overfull \hbox (30.07709pt too wide) in paragraph at lines 548--549
+Overfull \hbox (30.07709pt too wide) in paragraph at lines 550--551
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 554--557
+Underfull \hbox (badness 10000) in paragraph at lines 556--559
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 554--557
+Underfull \hbox (badness 10000) in paragraph at lines 556--559
 
  []
 
 [103
 
  <./checkpoint_manager_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 569--570
+Underfull \hbox (badness 10000) in paragraph at lines 571--572
 []\OT1/cmr/m/it/10 ``Demonstrates file lock-ing and sim-ple file read and write
  op-er-a-tions us-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--570
+Underfull \hbox (badness 10000) in paragraph at lines 571--572
 \OT1/cmr/m/it/10 ing java.nio.channels.FileChannel" \OT1/cmr/m/n/10 - http://ja
 va2s.com/Code/Java/File-Input-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--570
+Underfull \hbox (badness 10000) in paragraph at lines 571--572
 \OT1/cmr/m/n/10 Output/Demonstratesfilelockingandsimplefilereadandwriteusingjav
 aniochannelsFileChannel
  []
@@ -770,7 +770,7 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmtt8.pfb>
-Output written on CS225-Assignment1.pdf (105 pages, 2065422 bytes).
+Output written on CS225-Assignment1.pdf (105 pages, 2065734 bytes).
 PDF statistics:
  407 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

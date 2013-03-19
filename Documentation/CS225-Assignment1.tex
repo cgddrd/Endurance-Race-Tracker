@@ -99,14 +99,16 @@ The objectives of this document are:
 
 \section{Design Assumptions}
 
-To allow a definitive design for the Checkpoint Manager application to be established, the following assumptions have had to be drawn:
+To allow a definitive design for the system to be established, the following assumptions have had to be drawn:
 
 \begin{enumerate}
 
-\item When logging new time values for \textbf{medical checkpoints}, a user will submit arrival and departure times \textbf{separatly} (i.e. as separate transactions), and not at the same time. \\\\
+\item When logging new time values for \textbf{medical checkpoints} within the checkpoint manager application, a user will submit arrival and departure times \textbf{separately} (i.e. as separate transactions), and not at the same time. \\\\
 This will allow other entrant checkpoint time values to be logged while an entrant is waiting at a medical checkpoint, and prevents ``time being re-written" by having to insert arrival times ``in the past" within the times log file. This could however be achieved using a priority queue data structure.
 
-\item Only \textbf{one} time log file (``times.txt") will be used to log entrant checkpoint times. This file will be read-in by each running instance of the CP manager application to update its own internal record of the entrants' progress, before appending the new time to the end of the same file. File locking mechanisms will be utilized to prevent corruption of the shared data file. 
+\item Only \textbf{one} times file (``times.txt") will be used to log entrant checkpoint times. This file will be read-in by each running instance of the checkpoint manager application to update its own internal record of the entrants' progress, before appending the new time to the end of the same file. File locking mechanisms will be utilized to prevent corruption of the shared data file. 
+
+\item It is assumed that the `tracks' file (``tracks.txt") that details the tracks and links between course nodes would be created as a result of the structure of courses created by the event creator application. This means that the event creator application \textbf{would not} require the tracks file to create courses, and instead would only require the course nodes detailed in ``nodes.txt".
 
 \end{enumerate}
 
