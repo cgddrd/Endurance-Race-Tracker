@@ -59,13 +59,15 @@
 \contentsline {subsection}{\numberline {9.11}Submission of Invalid Time Value}{90}
 \contentsline {subsection}{\numberline {9.12}System Activity Logging}{90}
 \contentsline {subsection}{\numberline {9.13}File Lock Access Prevention}{91}
-\contentsline {subsection}{\numberline {9.14}Entrant Times File Generation}{92}
-\contentsline {section}{\numberline {10}Event Manager (C) - Build/Compilation Log}{93}
-\contentsline {section}{\numberline {11}Event Manager - Example Usage}{94}
-\contentsline {section}{\numberline {12}Event Manager - Results Output}{99}
-\contentsline {section}{\numberline {13}Event Manager - System Activity Log}{100}
-\contentsline {section}{\numberline {14}System Description}{101}
-\contentsline {subsection}{\numberline {14.1}Event Creator (C++)}{101}
-\contentsline {subsection}{\numberline {14.2}Checkpoint Manager (Java)}{102}
-\contentsline {subsection}{\numberline {14.3}Event Manager (C)}{103}
-\contentsline {section}{References}{103}
+\contentsline {subsection}{\numberline {9.14}Checkpoint Type Differentiation (Time CP)}{92}
+\contentsline {subsection}{\numberline {9.15}Checkpoint Type Differentiation (Medical CP)}{92}
+\contentsline {subsection}{\numberline {9.16}Entrant Times File Generation}{93}
+\contentsline {section}{\numberline {10}Event Manager (C) - Build/Compilation Log}{94}
+\contentsline {section}{\numberline {11}Event Manager - Example Usage}{95}
+\contentsline {section}{\numberline {12}Event Manager - Results Output}{100}
+\contentsline {section}{\numberline {13}Event Manager - System Activity Log}{101}
+\contentsline {section}{\numberline {14}System Description}{102}
+\contentsline {subsection}{\numberline {14.1}Event Creator (C++)}{102}
+\contentsline {subsection}{\numberline {14.2}Checkpoint Manager (Java)}{103}
+\contentsline {subsection}{\numberline {14.3}Event Manager (C)}{104}
+\contentsline {section}{References}{104}

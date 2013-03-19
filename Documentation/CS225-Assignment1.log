@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  19 MAR 2013 09:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.3.17)  19 MAR 2013 10:44
 entering extended mode
  %&-line parsing enabled.
 **CS225-Assignment1.tex
@@ -501,17 +501,44 @@ Overfull \hbox (46.14183pt too wide) in paragraph at lines 461--462
 
 [91
 
- <./cm-filelock.png (PNG copy)>] (./cm-times.txt) [92
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 475--476
+ <./cm-filelock.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 468--470
 
  []
 
-(./event-manager-buildlog.txt) [93
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--470
+
+ []
+
+<cm-cpnormal.png, id=318, 503.8825pt x 280.04625pt>
+File: cm-cpnormal.png Graphic file (type png)
+ <use cm-cpnormal.png>
+Underfull \hbox (badness 10000) in paragraph at lines 480--482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 480--482
+
+ []
+
+<cm-cpmedical.png, id=320, 503.8825pt x 280.04625pt>
+File: cm-cpmedical.png Graphic file (type png)
+ <use cm-cpmedical.png>
+[92
+
+ <./cm-cpnormal.png> <./cm-cpmedical.png>] (./cm-times.txt) [93
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 481--483
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
+
+ []
+
+(./event-manager-buildlog.txt) [94
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 506--508
 
  []
 
@@ -555,7 +582,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 51--52
 [][][] 
  []
 
-[94
+[95
 
 ]
 Overfull \hbox (8.28603pt too wide) in paragraph at lines 53--54
@@ -592,7 +619,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 103--104
 [][][] 
  []
 
-[95]
+[96]
 Overfull \hbox (8.28603pt too wide) in paragraph at lines 142--143
 [][][] 
  []
@@ -617,7 +644,7 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 184--186
 [][][] 
  []
 
-[96]
+[97]
 Overfull \hbox (8.28603pt too wide) in paragraph at lines 204--205
 [][][] 
  []
@@ -647,88 +674,88 @@ Overfull \hbox (8.28603pt too wide) in paragraph at lines 231--232
 [][][] 
  []
 
-[97]) [98]
-Underfull \hbox (badness 10000) in paragraph at lines 488--490
+[98]) [99]
+Underfull \hbox (badness 10000) in paragraph at lines 513--515
 
  []
 
-[99
+[100
 
-] (./em-log.txt) [100
+] (./em-log.txt) [101
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 504--507
+Underfull \hbox (badness 10000) in paragraph at lines 529--532
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--507
+Underfull \hbox (badness 10000) in paragraph at lines 529--532
 
  []
 
-<event_creator_class_diagram.jpg, id=346, 945.5325pt x 770.88pt>
+<event_creator_class_diagram.jpg, id=354, 945.5325pt x 770.88pt>
 File: event_creator_class_diagram.jpg Graphic file (type jpg)
 
-<use event_creator_class_diagram.jpg> [101
+<use event_creator_class_diagram.jpg> [102
 
  <./event_creator_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 517--520
+Underfull \hbox (badness 10000) in paragraph at lines 542--545
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--520
+Underfull \hbox (badness 10000) in paragraph at lines 542--545
 
  []
 
-<checkpoint_manager_class_diagram.jpg, id=350, 1196.47pt x 867.24pt>
+<checkpoint_manager_class_diagram.jpg, id=359, 1196.47pt x 867.24pt>
 File: checkpoint_manager_class_diagram.jpg Graphic file (type jpg)
 
 <use checkpoint_manager_class_diagram.jpg>
-Overfull \hbox (30.07709pt too wide) in paragraph at lines 523--524
+Overfull \hbox (30.07709pt too wide) in paragraph at lines 548--549
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Underfull \hbox (badness 10000) in paragraph at lines 554--557
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
+Underfull \hbox (badness 10000) in paragraph at lines 554--557
 
  []
 
-[102
+[103
 
  <./checkpoint_manager_class_diagram.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
 []\OT1/cmr/m/it/10 ``Demonstrates file lock-ing and sim-ple file read and write
  op-er-a-tions us-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
 \OT1/cmr/m/it/10 ing java.nio.channels.FileChannel" \OT1/cmr/m/n/10 - http://ja
 va2s.com/Code/Java/File-Input-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
 \OT1/cmr/m/n/10 Output/Demonstratesfilelockingandsimplefilereadandwriteusingjav
 aniochannelsFileChannel
  []
 
-AED: lastpage setting LastPage [103] (./CS225-Assignment1.aux)
+AED: lastpage setting LastPage [104] (./CS225-Assignment1.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4800 strings out of 493848
- 65737 string characters out of 1152823
+ 4810 strings out of 493848
+ 65930 string characters out of 1152823
  541396 words of memory out of 3000000
- 7923 multiletter control sequences out of 15000+50000
+ 7931 multiletter control sequences out of 15000+50000
  9573 words of font info for 35 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  39i,12n,68p,747b,1686s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -743,9 +770,9 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmtt8.pfb>
-Output written on CS225-Assignment1.pdf (104 pages, 2035265 bytes).
+Output written on CS225-Assignment1.pdf (105 pages, 2065422 bytes).
 PDF statistics:
- 399 PDF objects out of 1000 (max. 8388607)
+ 407 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
